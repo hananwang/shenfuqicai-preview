@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>连山易 · 身赋奇才 · 在线预览</title>
+<style>
+:root{
+  --ink:#0f1419; --gold:#d9b46a; --gold-dim:#8a7748;
+  --jade:#6fae9a; --txt:#ece4d4; --txt-dim:#9a9384;
+  --serif:"Songti SC","STSong","SimSun",serif;
+  --sans:"PingFang SC","Heiti SC","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100vh;font-family:var(--sans);color:var(--txt);
+  background:radial-gradient(circle at 20% 10%,rgba(217,180,106,.12),transparent 40%),
+    radial-gradient(circle at 80% 90%,rgba(111,174,154,.10),transparent 45%),#05080c;
+  display:flex;align-items:center;justify-content:center;padding:32px 20px;
+}
+.wrap{max-width:520px;width:100%;text-align:center}
+.seal{
+  width:64px;height:64px;border-radius:14px;margin:0 auto 20px;
+  display:grid;place-items:center;background:linear-gradient(145deg,#c1583a,#9c4329);
+  color:#fbeede;font-family:var(--serif);font-size:34px;font-weight:700;
+  box-shadow:0 8px 24px rgba(193,88,58,.35);
+}
+h1{font-family:var(--serif);font-size:32px;letter-spacing:6px;color:var(--gold);margin-bottom:8px}
+.sub{font-size:12px;letter-spacing:5px;color:var(--txt-dim);margin-bottom:28px}
+.desc{font-size:14px;line-height:2;color:var(--txt-dim);margin-bottom:36px}
+.cards{display:flex;flex-direction:column;gap:14px}
+.card{
+  display:block;text-decoration:none;color:inherit;
+  background:rgba(255,255,255,.04);border:1px solid rgba(217,180,106,.18);
+  border-radius:16px;padding:20px 22px;text-align:left;transition:.25s;
+}
+.card:hover{border-color:var(--gold-dim);background:rgba(217,180,106,.06);transform:translateY(-2px)}
+.card .tag{font-size:10px;color:var(--jade);letter-spacing:2px;margin-bottom:6px}
+.card .title{font-family:var(--serif);font-size:18px;color:var(--gold);letter-spacing:2px}
+.card .hint{font-size:12px;color:var(--txt-dim);margin-top:8px;line-height:1.7}
+.foot{margin-top:32px;font-size:11px;color:var(--txt-dim);line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="seal">赋</div>
+  <h1>身赋奇才</h1>
+  <div class="sub">LIAN SHAN YI · SHEN FU QI CAI</div>
+  <p class="desc">东方传统文化 × AI · 家庭自我认知与情绪陪伴<br>以下为产品原型与投资一页纸的在线预览</p>
+  <div class="cards">
+    <a class="card" href="prototype.html">
+      <div class="tag">移动端可交互原型</div>
+      <div class="title">📱 产品原型体验</div>
+      <div class="hint">今日运势 · 测评报告 · 家庭网络 · AI 陪伴 · 完整交互流程</div>
+    </a>
+    <a class="card" href="bp.html">
+      <div class="tag">投资一页纸 · A4 打印版</div>
+      <div class="title">📄 商业计划摘要</div>
+      <div class="hint">痛点 · 方案 · 商业模式 · 壁垒 · 路线图 · 合规边界</div>
+    </a>
+  </div>
+  <p class="foot">本内容基于东方传统文化整理 · 仅供文化娱乐与自我参考<br>© 2026 连山易 · 身赋奇才</p>
+</div>
+</body>
+</html>

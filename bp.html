@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>连山易 · 身赋奇才 ｜ 投资一页纸</title>
+<style>
+:root{
+  --ink:#11161e; --ink2:#1a212c; --paper:#f7f2e8;
+  --gold:#b48a3e; --gold-d:#8a6a2e; --jade:#3f7d6c; --vermilion:#b04a30;
+  --txt:#2a2620; --txt-dim:#6b6354; --line:#e2d8c2;
+  --serif:"Songti SC","STSong","SimSun",serif;
+  --sans:"PingFang SC","Heiti SC","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#5a534a;font-family:var(--sans);color:var(--txt);padding:24px;display:flex;justify-content:center}
+.page{
+  width:210mm;min-height:297mm;background:var(--paper);position:relative;overflow:hidden;
+  box-shadow:0 10px 50px rgba(0,0,0,.4);
+  background-image:radial-gradient(circle at 90% 6%,rgba(180,138,62,.06),transparent 30%);
+}
+.page::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--gold-d),var(--gold),var(--jade))}
+.inner{padding:20mm 16mm 14mm}
+
+/* 头部 */
+.head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--gold);padding-bottom:14px}
+.brand{display:flex;align-items:center;gap:12px}
+.seal{width:48px;height:48px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(145deg,var(--vermilion),#8a3a26);color:#fbeede;font-family:var(--serif);font-size:28px;line-height:1}
+.brand h1{font-family:var(--serif);font-size:27px;letter-spacing:4px;color:var(--ink)}
+.brand .en{font-size:10px;letter-spacing:5px;color:var(--gold-d);margin-top:3px}
+.brand .plat{font-size:11px;color:var(--txt-dim);margin-top:4px}
+.tagline{text-align:right;max-width:88mm}
+.tagline .big{font-family:var(--serif);font-size:15px;color:var(--gold-d);line-height:1.7;letter-spacing:1px}
+.tagline .sm{font-size:10.5px;color:var(--txt-dim);margin-top:6px;line-height:1.6}
+
+/* 分栏 */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.full{grid-column:span 2}
+.box{border:1px solid var(--line);border-radius:10px;padding:13px 15px;background:rgba(255,255,255,.4)}
+.box h2{font-family:var(--serif);font-size:13px;color:var(--vermilion);letter-spacing:2px;margin-bottom:9px;display:flex;align-items:center;gap:7px}
+.box h2::before{content:"";width:4px;height:14px;background:var(--gold);border-radius:2px}
+.box p,.box li{font-size:11px;line-height:1.75;color:var(--txt)}
+.box ul{list-style:none}
+.box li{padding-left:14px;position:relative;margin-bottom:3px}
+.box li::before{content:"›";position:absolute;left:0;color:var(--gold-d);font-weight:700}
+.em{color:var(--vermilion);font-weight:600}
+.gd{color:var(--gold-d);font-weight:600}
+
+/* 模块网格 */
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:4px}
+.m{text-align:center;background:rgba(180,138,62,.06);border:1px solid var(--line);border-radius:8px;padding:9px 4px}
+.m .i{font-size:18px}
+.m .n{font-size:10px;color:var(--txt);margin-top:4px;letter-spacing:.5px}
+
+/* 收入表 */
+.rev{width:100%;border-collapse:collapse;font-size:10.5px}
+.rev td{padding:5px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+.rev td:first-child{color:var(--gold-d);font-weight:600;white-space:nowrap;width:30%}
+.rev tr:last-child td{border-bottom:none}
+
+/* 指标条 */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.kpi{text-align:center}
+.kpi .v{font-family:var(--serif);font-size:24px;color:var(--vermilion);line-height:1}
+.kpi .l{font-size:9.5px;color:var(--txt-dim);margin-top:5px;line-height:1.4}
+
+/* 路线 */
+.road{display:flex;gap:8px}
+.ph{flex:1;text-align:center;position:relative;padding-top:16px}
+.ph::before{content:"";position:absolute;top:5px;left:0;right:0;height:2px;background:var(--line)}
+.ph .dot{position:absolute;top:1px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--gold)}
+.ph .t{font-family:var(--serif);font-size:11px;color:var(--ink);font-weight:600}
+.ph .d{font-size:9.5px;color:var(--txt-dim);margin-top:3px;line-height:1.4}
+
+/* 合规 */
+.comp{background:rgba(63,125,108,.08);border:1px solid rgba(63,125,108,.3);border-radius:10px;padding:11px 14px;margin-top:4px}
+.comp h2::before{background:var(--jade)} .comp h2{color:var(--jade)}
+
+/* 页脚 */
+.foot{margin-top:16px;border-top:1px solid var(--line);padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--txt-dim)}
+.foot .ask{font-family:var(--serif);font-size:12.5px;color:var(--vermilion)}
+.watermark{position:absolute;right:-10mm;bottom:-6mm;font-family:var(--serif);font-size:120px;color:rgba(180,138,62,.05);letter-spacing:8px;pointer-events:none}
+
+@media print{
+  body{background:#fff;padding:0}
+  .page{box-shadow:none;width:100%;min-height:auto}
+  @page{size:A4;margin:0}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="watermark">奇才</div>
+  <div class="inner">
+
+    <!-- 头部 -->
+    <div class="head">
+      <div class="brand">
+        <div class="seal">赋</div>
+        <div>
+          <h1>身赋奇才</h1>
+          <div class="en">SHEN FU QI CAI</div>
+          <div class="plat">连山易平台 · 出品</div>
+        </div>
+      </div>
+      <div class="tagline">
+        <div class="big">东方传统文化 × AI<br>家庭自我认知与情绪陪伴平台</div>
+        <div class="sm">用生辰为一家人生成「性格·天赋·沟通·状态」地图，<br>让全家愿意每天看一眼、长期一起用。</div>
+      </div>
+    </div>
+
+    <div class="cols">
+
+      <!-- 痛点 -->
+      <div class="box">
+        <h2>痛点 · 我们解决什么</h2>
+        <ul>
+          <li>人在不确定里，渴望<span class="em">确定感</span>与"我是谁、往哪走"的解释。</li>
+          <li>父母想<span class="em">读懂孩子</span>、家庭想<span class="em">少些冲突</span>，却缺工具。</li>
+          <li>星座/命理类产品<span class="em">测完即走</span>，无留存、难合规、难规模化。</li>
+        </ul>
+      </div>
+
+      <!-- 方案 -->
+      <div class="box">
+        <h2>方案 · 我们怎么做</h2>
+        <ul>
+          <li>以<span class="gd">家庭</span>为单位的东方自我认知"操作系统"。</li>
+          <li><span class="gd">每日状态指数 + AI 陪伴 + 实体玩具</span>三位一体做留存。</li>
+          <li>玄学只做<span class="gd">叙事外壳</span>，内核是"自我与关系的解释+情绪陪伴"。</li>
+        </ul>
+      </div>
+
+      <!-- 产品 -->
+      <div class="box full">
+        <h2>产品 · 17 大模块 · 双留存引擎</h2>
+        <div class="mods">
+          <div class="m"><div class="i">🦌</div><div class="n">神兽性格</div></div>
+          <div class="m"><div class="i">🔥</div><div class="n">奋斗愿力</div></div>
+          <div class="m"><div class="i">✨</div><div class="n">潜能激发</div></div>
+          <div class="m"><div class="i">🫀</div><div class="n">先天体质</div></div>
+          <div class="m"><div class="i">💞</div><div class="n">关系匹配</div></div>
+          <div class="m"><div class="i">🌳</div><div class="n">家庭/家族</div></div>
+          <div class="m"><div class="i">🧭</div><div class="n">职业规划</div></div>
+          <div class="m"><div class="i">☀️</div><div class="n">每日运势★</div></div>
+          <div class="m"><div class="i">⏳</div><div class="n">对冲提醒★</div></div>
+          <div class="m"><div class="i">🫧</div><div class="n">情绪陪伴</div></div>
+          <div class="m"><div class="i">🧧</div><div class="n">吉祥物</div></div>
+          <div class="m"><div class="i">🐉</div><div class="n">陪伴玩具</div></div>
+        </div>
+        <p style="margin-top:9px;font-size:10px;color:var(--txt-dim)">★ <span class="gd">每日运势 + 对冲提醒</span>＝每天必看的双引擎；<span class="gd">家庭网络</span>＝退出成本与裂变源；<span class="gd">实体玩具</span>＝把数字习惯实体化。</p>
+      </div>
+
+      <!-- 商业模式 -->
+      <div class="box">
+        <h2>商业模式 · 六条收入线</h2>
+        <table class="rev">
+          <tr><td>家庭年费</td><td>365 元/年/家庭（一天一元，主力现金流）</td></tr>
+          <tr><td>深度报告</td><td>99–699 元（升学/职业/关系"高报"）</td></tr>
+          <tr><td>人工咨询</td><td>99–100 元/次起（解读师/持证咨询师）</td></tr>
+          <tr><td>实体电商</td><td>玩具 199/299、吉祥物/文昌卡</td></tr>
+          <tr><td>B 端授权</td><td>教培/母婴/礼品厂 SaaS 与贴牌</td></tr>
+          <tr><td>课程分销</td><td>合伙人/讲师真实销售分润</td></tr>
+        </table>
+      </div>
+
+      <!-- 市场与壁垒 -->
+      <div class="box">
+        <h2>市场 · 壁垒</h2>
+        <ul>
+          <li>对标"测测"等估值<span class="em">约 1 亿级</span>；情绪/自我认知/亲子为<span class="em">高频刚需</span>。</li>
+          <li>壁垒：<span class="gd">家庭关系数据网络</span> + <span class="gd">算法规则库</span>（商业秘密）+ 解读师网络 + 玩具供应链。</li>
+          <li>渠道：<span class="gd">地推 + 家庭裂变 + 弟子合伙人</span>，获客成本可被裂变摊薄。</li>
+        </ul>
+      </div>
+
+      <!-- 关键指标目标 -->
+      <div class="box full">
+        <h2>关键目标（北极星：周活跃家庭数）</h2>
+        <div class="kpis">
+          <div class="kpi"><div class="v">≥30%</div><div class="l">MVP 次日留存</div></div>
+          <div class="kpi"><div class="v">≥3%</div><div class="l">年费付费转化</div></div>
+          <div class="kpi"><div class="v">10万</div><div class="l">P3 目标用户</div></div>
+          <div class="kpi"><div class="v">400-600</div><div class="l">付费用户 ARPU(元/年)</div></div>
+        </div>
+      </div>
+
+      <!-- 路线图 -->
+      <div class="box full">
+        <h2>路线图 · 18 个月</h2>
+        <div class="road">
+          <div class="ph"><div class="dot"></div><div class="t">P0 设计·合规</div><div class="d">0–1月<br>文档+原型+法务</div></div>
+          <div class="ph"><div class="dot"></div><div class="t">P1 MVP</div><div class="d">2–4月<br>验证留存裂变</div></div>
+          <div class="ph"><div class="dot"></div><div class="t">P2 网络·变现</div><div class="d">5–8月<br>会员+对冲+咨询</div></div>
+          <div class="ph"><div class="dot"></div><div class="t">P3 规模·实体</div><div class="d">9–18月<br>玩具+B端+地推</div></div>
+        </div>
+      </div>
+
+      <!-- 合规 -->
+      <div class="box full comp">
+        <h2>合规前置 · 我们清醒的边界</h2>
+        <p>全站定位 <span class="gd">传统文化 · 自我认知 · 情绪陪伴</span>（文化娱乐声明常驻）；<span class="em">不算命承诺、不医疗治疗、不恐吓营销、不传销、不碰未成年人违规数据</span>。情绪低落强制转介专业医疗。上线前法务 + 平台双审。<b>把绿区做大、黄区翻译好、红区切干净。</b></p>
+      </div>
+
+    </div>
+
+    <!-- 页脚 -->
+    <div class="foot">
+      <div>
+        <div class="ask">融资用途：MVP 研发 · 解读师网络 · 地推获客 · 合规法务</div>
+        <div style="margin-top:3px">团队：产品(创始人) · 命理文化专家 · 全栈 · 设计 · 解读师网络</div>
+      </div>
+      <div style="text-align:right">
+        <div class="gd" style="font-family:var(--serif);font-size:13px">连山易 · 身赋奇才</div>
+        <div style="margin-top:3px">v1.0 · 2026-06 · 详见系统设计文档集</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

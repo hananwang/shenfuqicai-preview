@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0f1419">
+<title>连山易 · 身赋奇才</title>
+<style>
+:root{
+  --bg:#05080c;
+  --ink:#0f1419; --ink2:#161d26; --ink3:#1e2733;
+  --gold:#d9b46a; --gold-bright:#f0d398; --gold-dim:#8a7748;
+  --jade:#6fae9a; --jade-dim:#3f5e54;
+  --vermilion:#c1583a; --vermilion-bright:#e0795c;
+  --txt:#ece4d4; --txt-dim:#9a9384; --txt-faint:#6b6658;
+  --line:rgba(217,180,106,.16);
+  --card:rgba(255,255,255,.035);
+  --card2:rgba(255,255,255,.03);
+  --track:rgba(255,255,255,.07);
+  --bar-bg:rgba(15,20,25,.94);
+  --scrim:rgba(5,8,12,.78);
+  --star:1;
+  --serif:"Songti SC","STSong","SimSun",serif;
+  --sans:"PingFang SC","Heiti SC","Microsoft YaHei",sans-serif;
+  --caret:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23d9b46a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+/* ===== 白天（亮色）主题 ===== */
+body.light{
+  --bg:#ddd3c2;
+  --ink:#f6f1e7; --ink2:#fffdf8; --ink3:#fffdf8;
+  --gold:#a47a28; --gold-bright:#8a6411; --gold-dim:#b59a5c;
+  --jade:#2f7d68; --jade-dim:#9cc2b6;
+  --vermilion:#b34a2e; --vermilion-bright:#9c3f27;
+  --txt:#2c2820; --txt-dim:#6a6252; --txt-faint:#9a917e;
+  --line:rgba(138,106,46,.22);
+  --card:rgba(160,120,40,.06);
+  --card2:rgba(60,45,15,.04);
+  --track:rgba(60,45,15,.10);
+  --bar-bg:rgba(255,253,248,.94);
+  --scrim:rgba(60,52,40,.45);
+  --star:.35;
+  --cal-filter:none;
+  --caret:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23a47a28' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family:var(--sans);
+  background:var(--bg);
+  color:var(--txt);
+  display:flex;align-items:center;justify-content:center;
+  height:100vh;height:100dvh;overflow:hidden;
+  padding:0;
+  transition:background .4s ease,color .4s ease;
+}
+.phone,.card,.idx,.mod,.tabbar,.field input,.field select{transition:background .4s ease,border-color .4s ease,color .4s ease}
+/* ===== 手机外壳 ===== */
+.phone{
+  position:relative;width:100%;max-width:430px;height:100vh;height:100dvh;max-height:932px;
+  background:var(--ink);overflow:hidden;
+  display:flex;flex-direction:column;
+  box-shadow:0 0 80px rgba(0,0,0,.6);
+}
+@media(min-width:480px){
+  .phone{height:92vh;border-radius:42px;border:1px solid rgba(217,180,106,.18)}
+}
+/* 背景星图纹理 */
+.phone::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;opacity:var(--star);
+  background:
+    radial-gradient(circle at 18% 12%, rgba(217,180,106,.10), transparent 38%),
+    radial-gradient(circle at 85% 88%, rgba(111,174,154,.08), transparent 42%),
+    radial-gradient(1px 1px at 20% 30%, rgba(236,228,212,.5), transparent),
+    radial-gradient(1px 1px at 60% 20%, rgba(236,228,212,.35), transparent),
+    radial-gradient(1px 1px at 80% 60%, rgba(236,228,212,.3), transparent),
+    radial-gradient(1.5px 1.5px at 35% 75%, rgba(217,180,106,.4), transparent),
+    radial-gradient(1px 1px at 70% 85%, rgba(236,228,212,.3), transparent);
+}
+/* ===== 顶栏 ===== */
+.statusbar{
+  position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;
+  padding:14px 22px 6px;font-size:13px;color:var(--txt-dim);font-variant-numeric:tabular-nums;
+}
+.statusbar .dots{letter-spacing:2px}
+.topbar{
+  position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;
+  padding:4px 20px 12px;
+}
+.brand{display:flex;align-items:center;gap:9px}
+.seal{
+  width:34px;height:34px;border-radius:8px;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--vermilion),#9c4329);
+  color:#fbeede;font-family:var(--serif);font-size:19px;font-weight:700;
+  box-shadow:0 3px 10px rgba(193,88,58,.35);line-height:1;
+}
+.brand .t1{font-family:var(--serif);font-size:18px;letter-spacing:3px;color:var(--gold-bright)}
+.brand .t2{font-size:10px;letter-spacing:4px;color:var(--txt-faint);margin-top:1px}
+.topacts{display:flex;align-items:center;gap:10px}
+.iconbtn{position:relative;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--card);border:1px solid var(--line);font-size:15px;color:var(--txt);cursor:pointer;transition:.22s}
+.iconbtn:active{transform:scale(.9)}
+.iconbtn:hover{border-color:var(--gold-dim)}
+.theme-toggle .ti{transition:transform .5s cubic-bezier(.34,1.56,.64,1)}
+.theme-toggle:active .ti{transform:rotate(180deg)}
+.bell .badge{position:absolute;top:-3px;right:-3px;min-width:16px;height:16px;padding:0 4px;border-radius:9px;background:var(--vermilion);color:#fff;font-size:10px;line-height:16px;text-align:center;font-family:var(--sans);box-shadow:0 0 0 2px var(--ink);font-variant-numeric:tabular-nums}
+.bell.ring-anim{animation:bellring 4.5s ease infinite;transform-origin:50% 4px}
+@keyframes bellring{0%,82%,100%{transform:rotate(0)}84%{transform:rotate(12deg)}87%{transform:rotate(-10deg)}90%{transform:rotate(7deg)}93%{transform:rotate(-4deg)}96%{transform:rotate(2deg)}}
+.bell .badge.empty{display:none}
+/* 通知面板 */
+.notif-mask{position:absolute;inset:0;z-index:40;background:var(--scrim);opacity:0;visibility:hidden;transition:.28s;backdrop-filter:blur(2px)}
+.notif-mask.open{opacity:1;visibility:visible}
+.notif-panel{position:absolute;top:54px;right:14px;left:14px;z-index:41;background:var(--ink2);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 50px rgba(0,0,0,.5);transform:translateY(-12px) scale(.97);transform-origin:top right;opacity:0;visibility:hidden;transition:.28s cubic-bezier(.2,.8,.3,1);overflow:hidden}
+.notif-panel.open{transform:none;opacity:1;visibility:visible}
+.np-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px 10px;font-family:var(--serif);font-size:14px;letter-spacing:2px;color:var(--gold-bright);border-bottom:1px solid var(--line)}
+.np-clear{background:none;border:none;color:var(--jade);font-size:11px;letter-spacing:.5px;cursor:pointer;padding:4px 6px}
+.np-list{max-height:300px;overflow-y:auto}
+.np-item{display:flex;gap:11px;align-items:flex-start;padding:13px 16px;border-bottom:1px solid var(--line);position:relative;transition:.2s}
+.np-item:last-child{border-bottom:none}
+.np-item .nic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:15px;flex-shrink:0;background:var(--card2)}
+.np-item.unread{background:rgba(217,180,106,.05)}
+.np-item.unread::before{content:"";position:absolute;left:7px;top:19px;width:5px;height:5px;border-radius:50%;background:var(--vermilion)}
+.np-item .nbd{flex:1;min-width:0}
+.np-item .nh{font-size:12.5px;color:var(--txt);font-weight:600;letter-spacing:.5px}
+.np-item .np{font-size:11px;color:var(--txt-dim);line-height:1.6;margin-top:3px}
+.np-item .nt{font-size:10px;color:var(--txt-faint);margin-top:4px}
+.np-empty{padding:34px 16px;text-align:center;color:var(--txt-faint);font-size:12px}
+/* 合规声明条 */
+.compliance{
+  position:relative;z-index:3;margin:0 16px 4px;padding:5px 12px;border-radius:8px;
+  background:rgba(111,174,154,.08);border:1px solid rgba(111,174,154,.18);
+  font-size:10.5px;color:var(--jade);letter-spacing:.5px;text-align:center;
+}
+/* ===== 内容区 ===== */
+.viewport{position:relative;z-index:2;flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.viewport::-webkit-scrollbar{width:0}
+.screen{display:none;padding:8px 16px 24px;animation:fade .45s ease}
+.screen.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* ===== 通用卡片 ===== */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;
+  padding:18px;margin-bottom:14px;position:relative;overflow:hidden;
+  backdrop-filter:blur(4px);
+}
+.card-title{font-family:var(--serif);font-size:15px;color:var(--gold-bright);letter-spacing:2px;display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.card-title .ln{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.sub{font-size:11px;color:var(--txt-faint);letter-spacing:1px}
+.hint{font-size:10.5px;color:var(--txt-faint);line-height:1.7;margin-top:8px}
+
+/* 节标题 */
+.section-h{font-family:var(--serif);font-size:13px;color:var(--gold-dim);letter-spacing:3px;margin:18px 4px 10px;display:flex;align-items:center;gap:10px}
+.section-h::before{content:"";width:14px;height:1px;background:var(--gold-dim)}
+
+/* ===== 今日：运势环 ===== */
+.today-hero{text-align:center;padding:6px 0 2px}
+.today-date{font-size:11px;color:var(--txt-dim);letter-spacing:3px}
+.today-gan{font-family:var(--serif);font-size:13px;color:var(--gold);letter-spacing:2px;margin-top:3px}
+.ring-wrap{position:relative;width:212px;height:212px;margin:14px auto 0}
+.ring{width:100%;height:100%;border-radius:50%;
+  background:conic-gradient(
+    #6fae9a 0 12.5%, #8fbf86 12.5% 25%, #c9b06a 25% 37.5%,
+    #f0d398 37.5% 50%, #d99a52 50% 62.5%, #c1583a 62.5% 75%,
+    #8a6f6a 75% 87.5%, #56788f 87.5% 100%);
+  -webkit-mask:radial-gradient(transparent 62%, #000 63%);
+  mask:radial-gradient(transparent 62%, #000 63%);
+  animation:spin 90s linear infinite;opacity:.85;
+  filter:saturate(.9);
+}
+.ring-wrap::after{content:"";position:absolute;inset:0;border-radius:50%;
+  box-shadow:inset 0 0 30px rgba(0,0,0,.5),0 0 40px rgba(217,180,106,.12);pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ring-core{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.ring-score{font-family:var(--serif);font-size:50px;color:var(--gold-bright);line-height:1;text-shadow:0 0 24px rgba(217,180,106,.4)}
+.ring-label{font-size:11px;color:var(--txt-dim);letter-spacing:3px;margin-top:8px}
+.ring-color{display:inline-flex;align-items:center;justify-content:center;margin:10px auto 4px;font-size:11px;color:var(--jade);letter-spacing:1px;background:rgba(111,174,154,.10);border:1px solid var(--jade-dim);border-radius:20px;padding:5px 14px}
+.ring-color b{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--jade);margin-right:6px;box-shadow:0 0 8px var(--jade)}
+
+/* 今日一句话 */
+.oneword{
+  text-align:center;font-family:var(--serif);font-size:16px;line-height:1.9;color:var(--txt);
+  letter-spacing:1.5px;padding:4px 6px;
+}
+.oneword .em{color:var(--gold-bright)}
+
+/* 动态指数 */
+.idx-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.idx{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 13px}
+.idx .top{display:flex;justify-content:space-between;align-items:baseline}
+.idx .nm{font-size:12px;color:var(--txt-dim);letter-spacing:1px}
+.idx .vl{font-family:var(--serif);font-size:22px;color:var(--gold-bright)}
+.bar{height:5px;border-radius:3px;background:var(--track);margin-top:9px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--jade),var(--gold));width:0;transition:width 1.1s cubic-bezier(.2,.7,.3,1)}
+.idx .tip{font-size:10px;color:var(--txt-faint);margin-top:7px;line-height:1.5}
+
+/* 提醒条 */
+.alert{display:flex;gap:11px;align-items:flex-start;padding:13px 14px;border-radius:13px;margin-bottom:11px;border:1px solid}
+.alert .ic{font-size:17px;line-height:1.3}
+.alert .bd{flex:1}
+.alert .h{font-size:12.5px;font-weight:600;letter-spacing:1px;margin-bottom:3px}
+.alert .p{font-size:11px;line-height:1.6}
+.alert.warn{background:rgba(193,88,58,.10);border-color:rgba(193,88,58,.3)}
+.alert.warn .h{color:var(--vermilion-bright)} .alert.warn .p{color:#caa99e}
+.alert.good{background:rgba(111,174,154,.10);border-color:rgba(111,174,154,.28)}
+.alert.good .h{color:var(--jade)} .alert.good .p{color:#9bbdb2}
+
+/* 出行小工具 */
+.travel{display:flex;gap:10px}
+.travel .t{flex:1;text-align:center;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 6px}
+.travel .t .ic{font-size:20px} .travel .t .v{font-family:var(--serif);font-size:15px;color:var(--gold-bright);margin-top:5px} .travel .t .l{font-size:10px;color:var(--txt-faint);margin-top:3px}
+
+/* ===== 测评列表 ===== */
+.mod-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.mod{
+  background:var(--card);border:1px solid var(--line);border-radius:16px;padding:15px 14px;
+  cursor:pointer;transition:.25s;position:relative;overflow:hidden;
+}
+.mod:active{transform:scale(.97)}
+.mod .ic{font-size:24px}
+.mod .nm{font-family:var(--serif);font-size:14.5px;color:var(--txt);letter-spacing:2px;margin-top:9px}
+.mod .ds{font-size:10px;color:var(--txt-faint);margin-top:4px;line-height:1.5}
+.mod .core{position:absolute;top:10px;right:10px;font-size:8.5px;color:var(--ink);background:var(--gold);padding:2px 6px;border-radius:6px;letter-spacing:1px}
+.mod.wide{grid-column:span 2;display:flex;align-items:center;gap:14px}
+.mod.wide .ic{font-size:28px}.mod.wide .nm{margin-top:0}
+
+/* ===== 报告（弹层） ===== */
+.sheet{position:absolute;inset:0;z-index:40;background:var(--ink);transform:translateY(100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column}
+.sheet.open{transform:none}
+.sheet-bar{display:flex;align-items:center;gap:12px;padding:16px 18px 10px;border-bottom:1px solid var(--line)}
+.sheet-bar .bk{font-size:20px;color:var(--gold);cursor:pointer}
+.sheet-bar .ti{font-family:var(--serif);font-size:16px;letter-spacing:2px;color:var(--gold-bright)}
+.sheet-body{flex:1;overflow-y:auto;padding:18px}
+.sheet-body::-webkit-scrollbar{width:0}
+
+/* 雷达图 */
+.radar-wrap{text-align:center;margin:6px 0 4px}
+canvas{max-width:100%}
+
+/* 神兽展示 */
+.beast{text-align:center;padding:10px 0}
+.beast .av{width:96px;height:96px;border-radius:50%;margin:0 auto;display:grid;place-items:center;font-size:46px;
+  background:radial-gradient(circle at 50% 35%,rgba(217,180,106,.22),rgba(111,174,154,.10));
+  border:1px solid var(--line);box-shadow:0 0 30px rgba(217,180,106,.18)}
+.beast .nm{font-family:var(--serif);font-size:22px;color:var(--gold-bright);letter-spacing:3px;margin-top:12px}
+.beast .tag{display:inline-block;font-size:11px;color:var(--jade);border:1px solid var(--jade-dim);border-radius:20px;padding:3px 12px;margin-top:9px;letter-spacing:1px}
+.beast .quote{font-family:var(--serif);font-size:14px;color:var(--txt);line-height:1.9;margin-top:14px;letter-spacing:1px}
+
+/* 仪表 */
+.gauge{display:flex;gap:16px;align-items:center}
+.gauge .num{font-family:var(--serif);font-size:40px;color:var(--gold-bright);line-height:1}
+.gauge .meta{flex:1}
+.gauge .meta .t{font-size:12px;color:var(--txt-dim);letter-spacing:1px}
+.gauge .meta .bar{margin-top:8px}
+
+/* 展开项（渐进式披露） */
+.acc{border:1px solid var(--line);border-radius:13px;margin-bottom:10px;overflow:hidden}
+.acc .hd{padding:14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:13px;color:var(--txt);letter-spacing:1px}
+.acc .hd .ar{color:var(--gold);transition:.3s}
+.acc.open .hd .ar{transform:rotate(90deg)}
+.acc .bd{max-height:0;overflow:hidden;transition:max-height .4s ease;font-size:12px;line-height:1.85;color:var(--txt-dim)}
+.acc.open .bd{max-height:400px}
+.acc .bd .inner{padding:0 14px 14px}
+
+/* 锁定/付费 */
+.locked{position:relative}
+.locked .blur{filter:blur(5px);opacity:.5;pointer-events:none}
+.paywall{margin-top:8px;text-align:center;padding:16px;border:1px dashed var(--gold-dim);border-radius:14px;background:rgba(217,180,106,.05)}
+.paywall .p{font-size:12px;color:var(--txt-dim);margin-bottom:12px;line-height:1.7}
+
+/* 按钮 */
+.btn{display:inline-block;border:none;border-radius:24px;padding:13px 26px;font-family:var(--sans);font-size:14px;letter-spacing:2px;cursor:pointer;transition:.2s}
+.btn:active{transform:scale(.96)}
+.btn-gold{background:linear-gradient(135deg,var(--gold-bright),var(--gold));color:#3a2f12;font-weight:600;box-shadow:0 6px 18px rgba(217,180,106,.28)}
+.btn-ghost{background:transparent;border:1px solid var(--line);color:var(--gold)}
+.btn-block{display:block;width:100%}
+.btn-jade{background:linear-gradient(135deg,var(--jade),#4f8475);color:#06231b;font-weight:600}
+/* 亮色主题：金色按钮保持明亮金，深字高对比 */
+body.light .btn-gold{background:linear-gradient(135deg,#eccd82,#c9a256);color:#3d300f;box-shadow:0 6px 18px rgba(180,138,62,.30)}
+body.light .btn-jade{background:linear-gradient(135deg,#3f9a82,#2f7d68);color:#fff}
+body.light .seal{color:#fff}
+
+/* 分享卡 */
+.sharecard{background:linear-gradient(160deg,#1a2330,#11161e);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center;margin-bottom:14px}
+.sharecard .seal2{display:inline-block;font-family:var(--serif);color:var(--vermilion-bright);border:2px solid var(--vermilion);border-radius:8px;padding:4px 8px;font-size:13px;letter-spacing:2px}
+
+/* ===== 家庭 ===== */
+.tree{position:relative;padding:10px 0 4px;text-align:center}
+.node{display:inline-flex;flex-direction:column;align-items:center;margin:8px 6px;cursor:pointer}
+.node .c{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-size:24px;background:var(--card);border:1px solid var(--line);transition:.3s}
+.node.me .c{border-color:var(--gold);box-shadow:0 0 18px rgba(217,180,106,.3);background:radial-gradient(circle,rgba(217,180,106,.2),transparent)}
+.node.empty .c{border-style:dashed;color:var(--txt-faint);font-size:26px}
+.node.lit .c{border-color:var(--jade);box-shadow:0 0 18px rgba(111,174,154,.35)}
+.node .nm{font-size:11px;color:var(--txt-dim);margin-top:7px;letter-spacing:1px}
+.tree .row{display:flex;justify-content:center;flex-wrap:wrap}
+
+.match-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.match-row:last-child{border:none}
+.match-row .who{font-family:var(--serif);font-size:14px;color:var(--gold-bright);min-width:62px}
+.match-row .sc{font-family:var(--serif);font-size:18px;color:var(--jade);min-width:44px;text-align:right}
+.match-row .ds{flex:1;font-size:11px;color:var(--txt-dim);line-height:1.5}
+
+/* ===== 陪伴 ===== */
+.mood-faces{display:flex;justify-content:space-between;gap:8px;margin:6px 0 4px}
+.mood{flex:1;text-align:center;padding:12px 4px;border-radius:13px;border:1px solid var(--line);background:var(--card2);cursor:pointer;transition:.2s}
+.mood:active{transform:scale(.95)}
+.mood.sel{border-color:var(--gold);background:rgba(217,180,106,.1)}
+.mood .e{font-size:26px}.mood .l{font-size:10px;color:var(--txt-dim);margin-top:5px}
+
+.chat{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.bubble{max-width:80%;padding:11px 14px;border-radius:15px;font-size:13px;line-height:1.7;letter-spacing:.5px}
+.bubble.ai{align-self:flex-start;background:rgba(111,174,154,.12);border:1px solid rgba(111,174,154,.2);color:#bcd6cc;border-bottom-left-radius:4px}
+.bubble.me{align-self:flex-end;background:rgba(217,180,106,.14);border:1px solid rgba(217,180,106,.22);color:#e8d6ac;border-bottom-right-radius:4px}
+.toy{display:flex;align-items:center;gap:14px;padding:4px}
+.toy .av{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-size:32px;background:radial-gradient(circle at 40% 35%,rgba(217,180,106,.25),rgba(111,174,154,.12));border:1px solid var(--line)}
+
+/* ===== 我的 ===== */
+.vipcard{background:linear-gradient(135deg,#2a2113,#15171d);border:1px solid var(--gold-dim);border-radius:18px;padding:20px;position:relative;overflow:hidden;margin-bottom:14px}
+.vipcard::after{content:"連山易";position:absolute;right:-10px;bottom:-18px;font-family:var(--serif);font-size:70px;color:rgba(217,180,106,.06);letter-spacing:4px}
+.vipcard .lbl{font-size:11px;color:var(--gold);letter-spacing:3px}
+.vipcard .price{font-family:var(--serif);font-size:30px;color:var(--gold-bright);margin:8px 0 2px}
+.vipcard .price small{font-size:13px;color:var(--txt-dim)}
+.vipcard .desc{font-size:11px;color:var(--txt-dim);line-height:1.7;margin:8px 0 14px}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.shop{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.shop .ic{font-size:30px}.shop .nm{font-size:12px;color:var(--txt);margin-top:8px;letter-spacing:1px}.shop .pr{font-size:12px;color:var(--gold-bright);font-family:var(--serif);margin-top:4px}
+.row-item{display:flex;align-items:center;gap:12px;padding:14px 4px;border-bottom:1px solid var(--line);font-size:13px;color:var(--txt-dim)}
+.row-item .ic{font-size:18px;width:24px;text-align:center}
+.row-item .ar{margin-left:auto;color:var(--txt-faint)}
+
+/* ===== 底部导航 ===== */
+.tabbar{position:relative;z-index:5;display:flex;background:var(--bar-bg);border-top:1px solid var(--line);backdrop-filter:blur(12px);padding-bottom:env(safe-area-inset-bottom)}
+.tab{flex:1;text-align:center;padding:10px 0 11px;cursor:pointer;color:var(--txt-faint);transition:.2s}
+.tab .ic{font-size:20px;display:block}
+.tab .l{font-size:10px;letter-spacing:2px;margin-top:3px}
+.tab.active{color:var(--gold-bright)}
+.tab.active .ic{filter:drop-shadow(0 0 8px rgba(217,180,106,.5))}
+
+/* ===== 启动 / 录入 / 揭晓 ===== */
+.overlay{position:absolute;inset:0;z-index:60;background:var(--ink);display:flex;flex-direction:column;animation:fade .4s}
+.hidden{display:none!important}
+.overlay .onb,.overlay .reveal-stage{overflow-y:auto}
+.onb{flex:1;display:flex;flex-direction:column;justify-content:center;padding:36px 30px;text-align:center;position:relative;z-index:2}
+.onb .big{font-family:var(--serif);font-size:34px;letter-spacing:8px;color:var(--gold-bright);text-shadow:0 0 30px rgba(217,180,106,.3)}
+.onb .sm{font-size:12px;letter-spacing:6px;color:var(--txt-faint);margin-top:14px}
+.onb .desc{font-size:13px;color:var(--txt-dim);line-height:2;margin:28px 0}
+.field{text-align:left;margin-bottom:14px}
+.field label{font-size:12px;color:var(--gold);letter-spacing:1px;display:block;margin-bottom:7px}
+.field input,.field select{
+  width:100%;height:48px;background:var(--ink3);border:1px solid var(--line);border-radius:12px;
+  padding:0 14px;color:var(--txt);font-size:14px;font-family:var(--sans);line-height:48px;
+  text-align:left;-webkit-appearance:none;appearance:none;outline:none;
+}
+.field input::-webkit-date-and-time-value{text-align:left}
+.field input[type=date]{position:relative}
+.field input[type=date]::-webkit-calendar-picker-indicator{filter:var(--cal-filter,invert(.7));opacity:.7;cursor:pointer}
+.field input:focus,.field select:focus{border-color:var(--gold-dim);box-shadow:0 0 0 3px rgba(217,180,106,.10)}
+.field select{
+  padding-right:38px;cursor:pointer;
+  background-image:var(--caret);background-repeat:no-repeat;
+  background-position:right 14px center;background-size:12px 8px;
+}
+.field .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.field .two select{min-width:0}
+/* 揭晓动画 */
+.reveal-stage{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:2;padding:30px}
+.cast{width:150px;height:150px;border-radius:50%;border:1px solid var(--gold-dim);display:grid;place-items:center;position:relative;animation:castspin 8s linear infinite}
+.cast::before{content:"";position:absolute;inset:14px;border-radius:50%;border:1px dashed rgba(217,180,106,.3)}
+.cast .bg-char{font-family:var(--serif);font-size:40px;color:var(--gold-bright)}
+@keyframes castspin{to{transform:rotate(360deg)}}
+.cast.stop{animation:none}
+.loadtip{margin-top:26px;font-family:var(--serif);font-size:14px;color:var(--gold);letter-spacing:3px}
+.dots-load::after{content:"";animation:dl 1.4s infinite}
+@keyframes dl{0%{content:""}33%{content:"·"}66%{content:"··"}100%{content:"···"}}
+
+.fab-doc{position:absolute;right:14px;bottom:78px;z-index:6;background:var(--vermilion);color:#fff;font-size:11px;padding:8px 12px;border-radius:20px;box-shadow:0 4px 14px rgba(193,88,58,.4);cursor:pointer;letter-spacing:1px}
+
+/* 模态 */
+.modal{position:absolute;inset:0;z-index:80;background:var(--scrim);display:none;align-items:center;justify-content:center;padding:28px;backdrop-filter:blur(3px)}
+.modal.open{display:flex;animation:fade .3s}
+.modal .box{background:var(--ink2);border:1px solid var(--line);border-radius:20px;padding:24px;max-width:340px;text-align:center}
+.modal .box .ic{font-size:38px}
+.modal .box h3{font-family:var(--serif);font-size:18px;color:var(--gold-bright);letter-spacing:2px;margin:12px 0}
+.modal .box p{font-size:12.5px;color:var(--txt-dim);line-height:1.85;margin-bottom:16px}
+.modal .box .care{background:rgba(193,88,58,.1);border:1px solid rgba(193,88,58,.25);border-radius:12px;padding:12px;font-size:12px;color:var(--vermilion-bright);margin-bottom:14px;line-height:1.7}
+
+/* ===== 富报告组件 ===== */
+.rscore{font-family:var(--serif);font-size:42px;color:var(--gold-bright);margin-top:8px;text-shadow:0 0 22px rgba(217,180,106,.35)}
+.rscore span{font-size:15px;color:var(--txt-dim)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:6px 0 16px}
+.stat{background:linear-gradient(160deg,rgba(217,180,106,.07),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:14px;padding:14px 8px;text-align:center}
+.stat .v{font-family:var(--serif);font-size:21px;color:var(--gold-bright);letter-spacing:1px}
+.stat .k{font-size:11px;color:var(--txt-dim);margin-top:5px;letter-spacing:1px}
+.stat .sb{font-size:9.5px;color:var(--txt-faint);margin-top:3px}
+.barrow{margin-bottom:13px}
+.barrow:last-child{margin-bottom:2px}
+.barrow .bl{display:flex;justify-content:space-between;font-size:12px;color:var(--txt-dim);margin-bottom:6px;letter-spacing:.5px}
+.barrow .bv{font-family:var(--serif);color:var(--gold-bright)}
+.pillwrap{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 16px}
+.pill{font-size:11.5px;color:var(--jade);border:1px solid var(--jade-dim);background:rgba(111,174,154,.07);border-radius:20px;padding:6px 13px;letter-spacing:1px}
+.tline{position:relative;margin:4px 0 16px;padding-left:6px}
+.tline::before{content:"";position:absolute;left:11px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--gold-dim),transparent)}
+.tl{position:relative;display:flex;gap:14px;padding:8px 0}
+.tl .dot{width:11px;height:11px;border-radius:50%;background:var(--gold);margin-top:5px;flex-shrink:0;box-shadow:0 0 10px rgba(217,180,106,.5);z-index:1}
+.tl .tlt{font-family:var(--serif);font-size:13.5px;color:var(--gold-bright);letter-spacing:1px}
+.tl .tld{font-size:11.5px;color:var(--txt-dim);margin-top:3px;line-height:1.6}
+
+/* ===== 八色运势排名 ===== */
+.luck-list{display:flex;flex-direction:column;gap:9px}
+.luck{display:flex;align-items:center;gap:11px}
+.luck .rk{font-family:var(--serif);font-size:13px;color:var(--txt-faint);width:18px;text-align:center}
+.luck .sw{width:15px;height:15px;border-radius:4px;flex-shrink:0;box-shadow:0 0 8px rgba(0,0,0,.3)}
+.luck .nm{font-size:12.5px;color:var(--txt);width:30px;letter-spacing:1px}
+.luck .track{flex:1;height:7px;border-radius:4px;background:var(--track);overflow:hidden}
+.luck .track i{display:block;height:100%;border-radius:4px;width:0;transition:width 1s cubic-bezier(.2,.7,.3,1)}
+.luck .pv{font-family:var(--serif);font-size:12px;color:var(--gold-bright);width:26px;text-align:right}
+
+/* ===== 入场交错动画 ===== */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.screen.active>.card,.screen.active>.section-h,.screen.active>.alert,.screen.active>.mod-grid,.screen.active>.today-hero{
+  animation:rise .5s both;
+}
+.screen.active>*:nth-child(1){animation-delay:.02s}
+.screen.active>*:nth-child(2){animation-delay:.07s}
+.screen.active>*:nth-child(3){animation-delay:.12s}
+.screen.active>*:nth-child(4){animation-delay:.17s}
+.screen.active>*:nth-child(5){animation-delay:.22s}
+.screen.active>*:nth-child(6){animation-delay:.27s}
+.screen.active>*:nth-child(n+7){animation-delay:.3s}
+.sheet-body .acc,.sheet-body .card,.sheet-body .stat-grid,.sheet-body .pillwrap,.sheet-body .tline,.sheet-body .alert,.sheet-body .sharecard{animation:rise .45s both}
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- 状态栏 -->
+  <div class="statusbar">
+    <span id="clock">21:30</span>
+    <span class="dots">连山易 · 身赋奇才</span>
+    <span>📶 🔋</span>
+  </div>
+
+  <!-- 顶栏 -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="seal">赋</div>
+      <div>
+        <div class="t1">身赋奇才</div>
+        <div class="t2">LIAN SHAN YI</div>
+      </div>
+    </div>
+    <div class="topacts">
+      <button class="iconbtn theme-toggle" id="themeToggle" aria-label="切换日夜模式"><span class="ti">🌙</span></button>
+      <button class="iconbtn bell" id="bellBtn" aria-label="提醒">🔔<span class="badge" id="bellBadge">3</span></button>
+    </div>
+  </div>
+  <div class="compliance">本内容基于东方传统文化整理 · 仅供文化娱乐与自我参考</div>
+
+  <!-- 通知面板 -->
+  <div class="notif-mask" id="notifMask"></div>
+  <div class="notif-panel" id="notifPanel">
+    <div class="np-head">
+      <span>消息提醒</span>
+      <button class="np-clear" id="notifClear">全部已读</button>
+    </div>
+    <div class="np-list" id="notifList"></div>
+  </div>
+
+  <!-- 内容区 -->
+  <div class="viewport" id="viewport">
+
+    <!-- ===== 今日 ===== -->
+    <section class="screen active" id="s-today">
+      <div class="today-hero">
+        <div class="today-date" id="todayDate">丙午年 · 农历五月初五</div>
+        <div class="today-gan" id="todayGan">日值「庚子」· 你的旺日</div>
+        <div class="ring-wrap">
+          <div class="ring"></div>
+          <div class="ring-core">
+            <div class="ring-score" id="dayScore">88</div>
+            <div class="ring-label">今日综合状态</div>
+          </div>
+        </div>
+        <div class="ring-color"><b></b>今日幸运色 · 青</div>
+      </div>
+
+      <div class="card">
+        <div class="oneword">今日心宽气顺，<span class="em">宜主动</span>。<br>想做的那件事，<span class="em">上午开口</span>最好。</div>
+      </div>
+
+      <div class="section-h">今日动态指数</div>
+      <div class="card">
+        <div class="idx-grid" id="idxGrid"></div>
+        <div class="hint">指数每日变化，是你与外界关系的"状态参考"，并非吉凶预言。</div>
+      </div>
+
+      <div class="section-h">八色运势 · 今日排名</div>
+      <div class="card">
+        <div class="luck-list" id="luckList"></div>
+        <div class="hint">八色由高到低代表今日不同领域的顺畅度，今日主色为「青」。</div>
+      </div>
+
+      <div class="section-h">今日提醒 · 对冲系统</div>
+      <div class="alert good">
+        <div class="ic">🍃</div>
+        <div class="bd"><div class="h">交友 · 亲情指数偏高</div><div class="p">适合陪家人、约老友；想谈的心里话，今天容易说得出口。</div></div>
+      </div>
+      <div class="alert warn">
+        <div class="ic">⚠️</div>
+        <div class="bd"><div class="h">对冲提醒 · 本月商务宜缓</div><div class="p">本月与"午"相关的合作节奏放慢，重要签约可错峰；非禁止，仅供参考。</div></div>
+      </div>
+
+      <div class="section-h">出行指南</div>
+      <div class="card">
+        <div class="travel">
+          <div class="t"><div class="ic">🧭</div><div class="v">东南</div><div class="l">宜行方向</div></div>
+          <div class="t"><div class="ic">🌤️</div><div class="v">26°</div><div class="l">多云</div></div>
+          <div class="t"><div class="ic">👕</div><div class="v">薄外套</div><div class="l">穿衣</div></div>
+          <div class="t"><div class="ic">☂️</div><div class="v">无需</div><div class="l">带伞</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 测评 ===== -->
+    <section class="screen" id="s-test">
+      <div class="section-h">两大核心 · 重点推荐</div>
+      <div class="mod-grid">
+        <div class="mod wide" onclick="openReport('beast')">
+          <div class="ic">🦌</div>
+          <div><div class="nm">神兽性格</div><div class="ds">四维性格 · 内外向 · 名人同型 · 培养建议</div></div>
+          <span class="core">核心</span>
+        </div>
+        <div class="mod wide" onclick="openReport('drive')">
+          <div class="ic">🔥</div>
+          <div><div class="nm">奋斗愿力</div><div class="ds">天生奋斗值 + 流年奋斗值 · 每年更新</div></div>
+          <span class="core">核心</span>
+        </div>
+      </div>
+
+      <div class="section-h">自我认知</div>
+      <div class="mod-grid">
+        <div class="mod" onclick="openReport('body')"><div class="ic">🫀</div><div class="nm">先天体质</div><div class="ds">五运六气 · 五脏关怀</div></div>
+        <div class="mod" onclick="openReport('potential')"><div class="ic">✨</div><div class="nm">潜能激发</div><div class="ds">显性/隐性天赋</div></div>
+        <div class="mod" onclick="openReport('career')"><div class="ic">🧭</div><div class="nm">职业规划</div><div class="ds">行业·技能·岗位</div></div>
+        <div class="mod" onclick="openReport('study')"><div class="ic">🎓</div><div class="nm">拜师学艺</div><div class="ds">学段成长方向</div></div>
+        <div class="mod" onclick="openReport('confuse')"><div class="ic">🌫️</div><div class="nm">迷茫期检测</div><div class="ds">人生阶段识别</div></div>
+      </div>
+
+      <div class="section-h">关系与规划</div>
+      <div class="mod-grid">
+        <div class="mod" onclick="openReport('marriage')"><div class="ic">💞</div><div class="nm">婚姻测评</div><div class="ds">关系契合度</div></div>
+        <div class="mod" onclick="openReport('birth')"><div class="ic">🌱</div><div class="nm">生育规划</div><div class="ds">文化参考</div></div>
+        <div class="mod" onclick="openReport('geo')"><div class="ic">🗺️</div><div class="nm">地利方向</div><div class="ds">适合发展地</div></div>
+        <div class="mod" onclick="openReport('timing')"><div class="ic">⏳</div><div class="nm">天时时机</div><div class="ds">创业/决策时机</div></div>
+      </div>
+    </section>
+
+    <!-- ===== 家庭 ===== -->
+    <section class="screen" id="s-family">
+      <div class="card">
+        <div class="card-title">家族之树<span class="ln"></span><span class="sub">已连接 2 人</span></div>
+        <div class="tree" id="tree">
+          <div class="row">
+            <div class="node lit"><div class="c">👵</div><div class="nm">奶奶</div></div>
+            <div class="node lit"><div class="c">👴</div><div class="nm">爷爷</div></div>
+          </div>
+          <div class="row">
+            <div class="node empty" onclick="invite(this,'爸爸')"><div class="c">＋</div><div class="nm">邀请爸爸</div></div>
+            <div class="node me"><div class="c">🙂</div><div class="nm">我</div></div>
+            <div class="node empty" onclick="invite(this,'妈妈')"><div class="c">＋</div><div class="nm">邀请妈妈</div></div>
+          </div>
+          <div class="row">
+            <div class="node empty" onclick="invite(this,'伴侣')"><div class="c">＋</div><div class="nm">邀请伴侣</div></div>
+            <div class="node empty" onclick="invite(this,'孩子')"><div class="c">＋</div><div class="nm">添加孩子</div></div>
+          </div>
+        </div>
+        <div class="hint">首次可免费邀请父母体验；每位成员拥有独立的家族文化，无法互相替代。被邀请者不可再次邀请他人。</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">家庭沟通 · 找谁说<span class="ln"></span></div>
+        <div class="match-row"><div class="who">谈梦想</div><div class="ds">妈妈最懂你的方向，鼓励多于否定</div><div class="sc">90</div></div>
+        <div class="match-row"><div class="who">谈工作</div><div class="ds">爷爷的人生经验与你互补</div><div class="sc">82</div></div>
+        <div class="match-row"><div class="who">谈内心</div><div class="ds">奶奶情绪最稳，适合倾诉</div><div class="sc">86</div></div>
+        <div class="match-row"><div class="who">需留意</div><div class="ds">与爸爸工作话题易起争执，宜聊家事</div><div class="sc">48</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">家族文化<span class="ln"></span></div>
+        <div class="oneword" style="font-size:14px">家训：<span class="em">「勤而有度，和而不同」</span></div>
+        <div class="hint">建立你们家的文化与家风，沉淀成家族主页，让家人愿意每天来看一眼。</div>
+      </div>
+    </section>
+
+    <!-- ===== 陪伴 ===== -->
+    <section class="screen" id="s-care">
+      <div class="card">
+        <div class="card-title">今日心情打卡<span class="ln"></span></div>
+        <div class="mood-faces" id="moods">
+          <div class="mood" onclick="pickMood(this,'good')"><div class="e">😄</div><div class="l">很好</div></div>
+          <div class="mood" onclick="pickMood(this,'ok')"><div class="e">🙂</div><div class="l">还行</div></div>
+          <div class="mood" onclick="pickMood(this,'flat')"><div class="e">😐</div><div class="l">平淡</div></div>
+          <div class="mood" onclick="pickMood(this,'low')"><div class="e">😔</div><div class="l">低落</div></div>
+          <div class="mood" onclick="pickMood(this,'bad')"><div class="e">😢</div><div class="l">很糟</div></div>
+        </div>
+        <div class="hint">情绪状态关怀为非临床的情绪陪伴，不能替代专业心理诊断与治疗。</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">AI 陪伴 · 听你说<span class="ln"></span></div>
+        <div class="chat" id="chat">
+          <div class="bubble ai">我在的。今天过得怎么样？想聊聊就和我说说，不想说也没关系。🍵</div>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <input id="chatIn" placeholder="说点什么…" style="flex:1;background:var(--ink3);border:1px solid var(--line);border-radius:20px;padding:11px 15px;color:var(--txt);font-size:13px">
+          <button class="btn btn-jade" style="padding:11px 18px" onclick="sendChat()">发送</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">陪伴玩具 · 豆豆<span class="ln"></span></div>
+        <div class="toy">
+          <div class="av">🐲</div>
+          <div style="flex:1">
+            <div style="font-family:var(--serif);font-size:15px;color:var(--gold-bright);letter-spacing:1px">豆豆（属龙）</div>
+            <div class="hint" style="margin-top:4px">「主人早呀～今天你的幸运色是青色，出门往东南走会更顺哦。」</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost btn-block" style="margin-top:12px" onclick="toast('🔊 豆豆正在为你播报今日运势…')">▶ 让豆豆播报今日</button>
+      </div>
+    </section>
+
+    <!-- ===== 我的 ===== -->
+    <section class="screen" id="s-me">
+      <div class="vipcard">
+        <div class="lbl">连山易 · 家庭年卡</div>
+        <div class="price">¥365<small> /年 · 一家人</small></div>
+        <div class="desc">解锁全家深度报告 · 多日运势 · 对冲提醒 · 家族文化 · 关系网络<br>平均一天一元，全家一起用。</div>
+        <button class="btn btn-gold" onclick="toast('🎉 这是原型演示，未接入真实支付')">立即开通</button>
+      </div>
+
+      <div class="section-h">吉祥物 · 文化好物</div>
+      <div class="shop-grid">
+        <div class="shop"><div class="ic">🐉</div><div class="nm">生肖陪伴玩具</div><div class="pr">¥299</div></div>
+        <div class="shop"><div class="ic">📿</div><div class="nm">健康吉祥物</div><div class="pr">¥168</div></div>
+        <div class="shop"><div class="ic">🏯</div><div class="nm">文昌卡(学业)</div><div class="pr">¥88</div></div>
+        <div class="shop"><div class="ic">🧧</div><div class="nm">流年吉祥物</div><div class="pr">¥128</div></div>
+      </div>
+
+      <div class="section-h" style="margin-top:20px">我的</div>
+      <div class="card" style="padding:4px 14px">
+        <div class="row-item"><span class="ic">📜</span>我的报告<span class="ar">›</span></div>
+        <div class="row-item"><span class="ic">⭐</span>积分 · 1280<span class="ar">›</span></div>
+        <div class="row-item"><span class="ic">💬</span>预约解读师咨询<span class="ar">›</span></div>
+        <div class="row-item" onclick="openModal('privacy')"><span class="ic">🔒</span>隐私与数据 · 一键删除<span class="ar">›</span></div>
+        <div class="row-item" onclick="openModal('disclaimer')"><span class="ic">📖</span>文化娱乐声明<span class="ar">›</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- 报告弹层 -->
+  <div class="sheet" id="sheet">
+    <div class="sheet-bar"><span class="bk" onclick="closeReport()">‹</span><span class="ti" id="sheetTitle">报告</span></div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+
+  <!-- 底部导航 -->
+  <nav class="tabbar">
+    <div class="tab active" data-s="today" onclick="go('today',this)"><span class="ic">☀️</span><span class="l">今日</span></div>
+    <div class="tab" data-s="test" onclick="go('test',this)"><span class="ic">🔮</span><span class="l">测评</span></div>
+    <div class="tab" data-s="family" onclick="go('family',this)"><span class="ic">🌳</span><span class="l">家庭</span></div>
+    <div class="tab" data-s="care" onclick="go('care',this)"><span class="ic">🫧</span><span class="l">陪伴</span></div>
+    <div class="tab" data-s="me" onclick="go('me',this)"><span class="ic">🪷</span><span class="l">我的</span></div>
+  </nav>
+
+  <!-- 启动 / 录入 / 揭晓 -->
+  <div class="overlay" id="overlay">
+    <div class="statusbar"><span>21:30</span><span class="dots">连山易</span><span>📶 🔋</span></div>
+    <!-- 步骤1 欢迎 -->
+    <div class="onb" id="step1">
+      <div class="big">身赋奇才</div>
+      <div class="sm">知 命 · 知 己 · 知 家</div>
+      <div class="desc">用东方传统文化，<br>看懂你与家人的性格、天赋与状态，<br>陪你把每一天过得更顺一点。</div>
+      <button class="btn btn-gold btn-block" onclick="goStep(2)">免费看我的「神兽」</button>
+      <div class="hint" style="margin-top:18px">注册即同意《隐私政策》。出生信息仅用于生成报告，加密存储，可随时删除。未满 14 岁须由监护人操作。</div>
+    </div>
+    <!-- 步骤2 录入 -->
+    <div class="onb hidden" id="step2" style="justify-content:flex-start;padding-top:30px">
+      <div class="big" style="font-size:24px;letter-spacing:4px">录入生辰</div>
+      <div class="sm" style="margin-bottom:24px">仅需必要信息</div>
+      <div class="field"><label>昵称</label><input id="inName" value="小江" placeholder="怎么称呼你"></div>
+      <div class="field"><label>性别</label>
+        <select id="inSex"><option>女</option><option>男</option></select>
+      </div>
+      <div class="field"><label>出生日期</label><input id="inDate" type="date" value="1992-08-15"></div>
+      <div class="field"><label>出生时间</label>
+        <div class="two">
+          <select id="inHour"></select>
+          <select id="inCity"><option>郑州</option><option>北京</option><option>深圳</option><option>上海</option><option>其他</option></select>
+        </div>
+      </div>
+      <button class="btn btn-gold btn-block" style="margin-top:10px" onclick="startCast()">开始测算</button>
+      <div class="hint" style="margin-top:14px">本测算为传统文化自我认知参考，非命运预测、非吉凶断言。</div>
+    </div>
+    <!-- 步骤3 揭晓 -->
+    <div class="reveal-stage hidden" id="step3">
+      <div class="cast" id="cast"><div class="bg-char" id="castChar">易</div></div>
+      <div class="loadtip"><span id="loadText">星图运转中</span><span class="dots-load"></span></div>
+    </div>
+  </div>
+
+  <!-- 文档说明浮标 -->
+  <div class="fab-doc" onclick="openModal('docnote')">📘 设计说明</div>
+
+  <!-- 模态 -->
+  <div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
+
+</div>
+<script>
+function $(id){return document.getElementById(id)}
+
+// ===== 日 / 夜 主题 =====
+function applyTheme(mode){
+  var light = mode==='light';
+  document.body.classList.toggle('light', light);
+  var ti=document.querySelector('#themeToggle .ti');
+  if(ti) ti.textContent = light ? '☀️' : '🌙';
+  try{ localStorage.setItem('sfqc-theme', mode); }catch(e){}
+}
+(function initTheme(){
+  var saved='dark';
+  try{ saved=localStorage.getItem('sfqc-theme')||'dark'; }catch(e){}
+  applyTheme(saved);
+})();
+function toggleTheme(){
+  applyTheme(document.body.classList.contains('light') ? 'dark' : 'light');
+}
+
+// ===== 提醒 / 通知面板 =====
+var NOTIFS=[
+  {ic:'🌅',h:'今日状态已更新',p:'综合 88 分，宜主动。想做的那件事，上午开口最好。',t:'刚刚',unread:true},
+  {ic:'⚠️',h:'对冲提醒',p:'今日午时人际易有摩擦，重要洽谈建议错开 11–13 点。',t:'2 小时前',unread:true},
+  {ic:'👨‍👩‍👧',h:'家人动态',p:'女儿「豆豆」今日专注力指数偏高，适合安排需要静心的练习。',t:'今天 08:30',unread:true},
+  {ic:'🎁',h:'年度家庭礼包',p:'你关注的「家族文化」内容已更新一章，点击查看。',t:'昨天',unread:false}
+];
+function renderNotifs(){
+  var list=$('notifList'); if(!list) return;
+  if(!NOTIFS.length){ list.innerHTML='<div class="np-empty">暂无新消息</div>'; }
+  else{
+    var h='';
+    for(var i=0;i<NOTIFS.length;i++){var n=NOTIFS[i];
+      h+='<div class="np-item'+(n.unread?' unread':'')+'"><div class="nic">'+n.ic+'</div>'+
+         '<div class="nbd"><div class="nh">'+n.h+'</div><div class="np">'+n.p+'</div><div class="nt">'+n.t+'</div></div></div>';
+    }
+    list.innerHTML=h;
+  }
+  updateBadge();
+}
+function unreadCount(){var c=0;for(var i=0;i<NOTIFS.length;i++) if(NOTIFS[i].unread) c++; return c;}
+function updateBadge(){
+  var b=$('bellBadge'), bell=$('bellBtn'), c=unreadCount();
+  if(!b) return;
+  b.textContent=c;
+  b.classList.toggle('empty', c===0);
+  if(bell) bell.classList.toggle('ring-anim', c>0);
+}
+function openNotif(){
+  renderNotifs();
+  $('notifPanel').classList.add('open');
+  $('notifMask').classList.add('open');
+}
+function closeNotif(){
+  $('notifPanel').classList.remove('open');
+  $('notifMask').classList.remove('open');
+}
+function clearNotif(){
+  for(var i=0;i<NOTIFS.length;i++) NOTIFS[i].unread=false;
+  renderNotifs();
+}
+
+// 时钟
+function tick(){
+  var d=new Date();
+  var t=('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
+  $('clock').textContent=t;
+}
+tick(); setInterval(tick,10000);
+
+// 底部导航
+function go(s,el){
+  var screens=document.querySelectorAll('.screen');
+  for(var i=0;i<screens.length;i++) screens[i].classList.remove('active');
+  $('s-'+s).classList.add('active');
+  var tabs=document.querySelectorAll('.tab');
+  for(var j=0;j<tabs.length;j++) tabs[j].classList.remove('active');
+  el.classList.add('active');
+  $('viewport').scrollTop=0;
+}
+
+// 动态指数数据
+var indices=[
+  {nm:'财力',vl:76,tip:'今天适合谈商务、聊合作'},
+  {nm:'商务',vl:60,tip:'可推进，但留意对冲提醒'},
+  {nm:'交友',vl:84,tip:'人缘佳，宜主动联系'},
+  {nm:'亲情爱情',vl:88,tip:'家人缘分浓，多陪伴'}
+];
+function renderIdx(){
+  var h='';
+  for(var i=0;i<indices.length;i++){
+    var x=indices[i];
+    h+='<div class="idx"><div class="top"><span class="nm">'+x.nm+'</span><span class="vl">'+x.vl+'</span></div>';
+    h+='<div class="bar"><i data-w="'+x.vl+'"></i></div><div class="tip">'+x.tip+'</div></div>';
+  }
+  $('idxGrid').innerHTML=h;
+  setTimeout(function(){
+    var bars=$('idxGrid').querySelectorAll('.bar i');
+    for(var k=0;k<bars.length;k++) bars[k].style.width=bars[k].getAttribute('data-w')+'%';
+  },200);
+}
+renderIdx();
+
+// 八色运势排名
+var luckColors=[
+  {nm:'青',c:'#6fae9a',v:92,d:'人际·沟通'},
+  {nm:'碧',c:'#8fbf86',v:85,d:'学习·成长'},
+  {nm:'金',c:'#d9b46a',v:78,d:'财务·商务'},
+  {nm:'明',c:'#f0d398',v:70,d:'表达·展示'},
+  {nm:'橙',c:'#d99a52',v:62,d:'行动·执行'},
+  {nm:'朱',c:'#c1583a',v:50,d:'冲突·情绪'},
+  {nm:'黛',c:'#8a6f6a',v:40,d:'独处·休整'},
+  {nm:'苍',c:'#56788f',v:33,d:'变动·出行'}
+];
+function renderLuck(){
+  var box=$('luckList'); if(!box) return;
+  var h='';
+  for(var i=0;i<luckColors.length;i++){var x=luckColors[i];
+    h+='<div class="luck"><span class="rk">'+(i+1)+'</span>';
+    h+='<span class="sw" style="background:'+x.c+';box-shadow:0 0 8px '+x.c+'"></span>';
+    h+='<span class="nm">'+x.nm+'</span>';
+    h+='<span class="track"><i data-w="'+x.v+'" style="background:linear-gradient(90deg,'+x.c+',var(--gold-bright))"></i></span>';
+    h+='<span class="pv">'+x.v+'</span></div>';
+  }
+  box.innerHTML=h;
+  setTimeout(function(){var bs=box.querySelectorAll('.track i');for(var k=0;k<bs.length;k++)bs[k].style.width=bs[k].getAttribute('data-w')+'%';},300);
+}
+renderLuck();
+
+// 时辰下拉
+(function(){
+  var zhi=['子(23-1)','丑(1-3)','寅(3-5)','卯(5-7)','辰(7-9)','巳(9-11)','午(11-13)','未(13-15)','申(15-17)','酉(17-19)','戌(19-21)','亥(21-23)'];
+  var h='';for(var i=0;i<zhi.length;i++) h+='<option>'+zhi[i]+'时</option>';
+  $('inHour').innerHTML=h; $('inHour').selectedIndex=8;
+})();
+
+// 引导步骤
+function goStep(n){
+  $('step1').classList.toggle('hidden',n!==1);
+  $('step2').classList.toggle('hidden',n!==2);
+  $('step3').classList.toggle('hidden',n!==3);
+}
+
+// 测算动画（揭晓 = 峰值时刻）
+function startCast(){
+  goStep(3);
+  var chars=['乾','坤','震','巽','坎','离','艮','兑','易'];
+  var texts=['星图运转中','正在排布四柱','对照五运六气','生成你的神兽'];
+  var ci=0, ti=0;
+  var c1=setInterval(function(){ $('castChar').textContent=chars[ci++%chars.length]; },180);
+  var c2=setInterval(function(){ if(ti<texts.length) $('loadText').textContent=texts[ti++]; },700);
+  setTimeout(function(){
+    clearInterval(c1); clearInterval(c2);
+    $('cast').classList.add('stop');
+    $('castChar').textContent='🦌';
+    $('loadText').textContent='测算完成';
+    setTimeout(function(){
+      $('overlay').classList.add('hidden');
+      openReport('beast');   // 揭晓：直接进入神兽报告
+    },650);
+  },3200);
+}
+
+// ===== 报告数据 =====
+var REPORTS={
+  beast:{title:'神兽性格', render:renderBeast},
+  drive:{title:'奋斗愿力', render:renderDrive},
+  body:{title:'先天体质', render:renderBody},
+  marriage:{title:'婚姻测评', render:renderMarriage},
+
+  potential:{title:'潜能激发', render:mk({
+    ic:'✨', name:'潜能激发', tag:'预测评指数 · 第 2 / 4 阶段',
+    lead:'天赋分「显性」与「隐性」。显性已在外，隐性尚待点亮——找对节点，事半功倍。',
+    stats:[{nm:'显性强项',val:'表达',sub:'已显现'},{nm:'隐性潜力',val:'逻辑',sub:'待激发'},{nm:'当前阶段',val:'2/4',sub:'成长中'}],
+    barsTitle:'天赋雷达', bars:[
+      {nm:'语言表达（显性）',val:85,color:'linear-gradient(90deg,var(--gold),var(--gold-bright))'},
+      {nm:'记忆力（显性）',val:78,color:'linear-gradient(90deg,var(--gold),var(--gold-bright))'},
+      {nm:'逻辑思维（隐性）',val:72},
+      {nm:'领导力（隐性）',val:64}],
+    timelineTitle:'四阶段成长路径', timeline:[
+      ['第 1 阶段 · 启蒙(0-6)','保护好奇心，多感官体验'],
+      ['第 2 阶段 · 显现(7-13)','显性天赋外露，给舞台'],
+      ['第 3 阶段 · 跃迁(14-18)','关键期！加入策略性挑战，点亮隐性'],
+      ['第 4 阶段 · 定型(18+)','聚焦优势，对接职业']],
+    sections:[
+      ['为什么"隐性"更值钱','显性人人看得见，隐性（逻辑/领导）是稀缺的复利资产，越早识别越能针对性培养。'],
+      ['给家长的具体动作','多给表达机会与正反馈；14 岁后逐步交付"需要谋划"的小任务，观察并强化。']],
+    share:'我的天赋阶段：跃迁前夜', paywall:true })},
+
+  career:{title:'职业规划', render:mk({
+    ic:'🧭', name:'职业规划', tag:'乙 · 掌控协调型',
+    lead:'你属「乙」——擅长在已有格局中掌控与协调，宜借力而非硬拼。选对赛道，比拼命更重要。',
+    stats:[{nm:'人才类型',val:'乙',sub:'掌控协调'},{nm:'最佳赛道',val:'文教',sub:'匹配度高'},{nm:'慎选',val:'冲刺销售',sub:'易内耗'}],
+    pills:['教育','咨询','运营','文化创意','项目管理','人力'],
+    barsTitle:'能力匹配', bars:[
+      {nm:'沟通协调',val:88,color:'linear-gradient(90deg,var(--jade),var(--gold))'},
+      {nm:'项目统筹',val:82,color:'linear-gradient(90deg,var(--jade),var(--gold))'},
+      {nm:'内容策划',val:80,color:'linear-gradient(90deg,var(--jade),var(--gold))'},
+      {nm:'纯销售冲刺',val:55,color:'linear-gradient(90deg,var(--vermilion),var(--gold-dim))'}],
+    sections:[
+      ['适合的岗位','中台/协调/管理类岗位最能发挥；统筹他人资源时表现最佳。'],
+      ['天干人才类型对照','甲：开拓征战 · 乙：掌控协调 · 丙：聚集影响 · 丁：精专深耕（更多类型规则化补全中）。'],
+      ['名人同型参照','与多位"善统筹谋划"的公众人物同属一类（文化参照，非真实生辰认定）。']],
+    share:'我的职业天赋：掌控协调型', paywall:true })},
+
+  study:{title:'拜师学艺', render:mk({
+    ic:'🎓', name:'拜师学艺 · 成长方向',
+    lead:'每个学段使的劲不一样。陪孩子把力气用在对的地方。',
+    timelineTitle:'学段成长地图', timeline:[
+      ['幼儿园','重安全感与表达，多陪伴、少比较'],
+      ['小学','培养习惯与兴趣，发现显性天赋'],
+      ['初中','建立目标感，重点保护奋斗值'],
+      ['高中','聚焦方向，强化抗挫力'],
+      ['大学','对接职业规划，把天赋变能力']],
+    alerts:[{type:'warn',ic:'⚠️',h:'最该守护的东西',p:'比成绩更重要的是奋斗值——别用过度施压把内驱力"玩没了"。'}],
+    sections:[
+      ['工作方向（正向）','适合：文教、咨询、统筹类；建议从兴趣切入逐步深化。'],
+      ['工作方向（提示）','不建议长期处于高压纯冲刺岗，易消耗内驱力。']],
+    paywall:true })},
+
+  birth:{title:'生育规划', render:mk({
+    ic:'🌱', name:'生育规划 · 文化参考',
+    lead:'以下为传统文化层面的时间与特质参考，非优生医学建议。',
+    stats:[{nm:'参考时段',val:'明春',sub:'文化参考'},{nm:'特质对照',val:'谋略',sub:'可培养'},{nm:'需规避',val:'病/死符',sub:'仅参考'}],
+    sections:[
+      ['适宜时间','参考区间：明年春季前后（仅文化参考，请遵医嘱）。'],
+      ['历史人物对照','若向往"张良型"的沉稳谋略，可调出其特质画像，作为后天培养参照。'],
+      ['需规避年份','传统命理中会避开"病符/死符"年份——此处仅作文化提示。']],
+    care:'本模块为传统文化参考，不提供优生医学、性别选择等任何医疗指导；备孕请以正规产检与医生意见为准。' })},
+
+  geo:{title:'地利方向', render:mk({
+    ic:'🗺️', name:'地利方向',
+    lead:'结合你的方位喜忌，给出发展环境参考（非风水改运承诺）。',
+    stats:[{nm:'宜发展',val:'东南',sub:'首选'},{nm:'次选',val:'正南',sub:'可考虑'},{nm:'现居适配',val:'中',sub:'可借力'}],
+    barsTitle:'八方适配度', bars:[
+      {nm:'东南',val:90,color:'linear-gradient(90deg,var(--jade),var(--gold))'},
+      {nm:'正南',val:78,color:'linear-gradient(90deg,var(--jade),var(--gold))'},
+      {nm:'正东',val:66},
+      {nm:'西北',val:42,color:'linear-gradient(90deg,var(--vermilion),var(--gold-dim))'}],
+    sections:[
+      ['可考虑城市','沿海及南方城市更契合你的发展节奏。'],
+      ['现居建议','当前城市适配度中等，可主动借东南方向的资源与人脉。']],
+    paywall:true })},
+
+  timing:{title:'天时时机', render:mk({
+    ic:'⏳', name:'天时时机 + 对冲', big:'高能', bigUnit:'·下半年',
+    lead:'挑做大事的好时机，并提醒近期要放缓的事——像天气预警，错峰行事即可。',
+    barsTitle:'年度能量节律', bars:[
+      {nm:'上半年',val:58},
+      {nm:'下半年',val:84,color:'linear-gradient(90deg,var(--jade),var(--gold))'}],
+    alerts:[
+      {type:'good',ic:'🚀',h:'创业/决策窗口',p:'今年下半年为相对高能期，重大推进可安排在此区间。'},
+      {type:'warn',ic:'⚠️',h:'对冲月 · 商务宜缓',p:'本月与"午"相关合作放慢节奏，重要签约可错峰。'},
+      {type:'warn',ic:'🩺',h:'对冲日 · 顾健康',p:'逢冲日注意身体与情绪，少做高风险决策。'}],
+    sections:[['对冲系统怎么用','把对冲年/月/日当作"红绿灯"，绿灯加速、黄灯减速，而非吉凶断言。']],
+    paywall:true })},
+
+  confuse:{title:'迷茫期检测', render:mk({
+    ic:'🧭', name:'迷茫期检测', tag:'当前阶段 · 蛰伏期',
+    lead:'你不是停滞，而是处在"积累期"。看清节奏，焦虑会少一半。',
+    stats:[{nm:'当前阶段',val:'蛰伏',sub:'宜积累'},{nm:'预计回暖',val:'秋季',sub:'参考'},{nm:'建议',val:'练内功',sub:'低调'}],
+    barsTitle:'状态曲线', bars:[
+      {nm:'近三月能量',val:48,color:'linear-gradient(90deg,var(--vermilion),var(--gold-dim))'},
+      {nm:'回暖预期',val:80,color:'linear-gradient(90deg,var(--jade),var(--gold))'}],
+    alerts:[{type:'good',ic:'🌱',h:'蛰伏期策略',p:'宜学习、复盘、攒资源；不宜冒进或重大转向。'}],
+    sections:[
+      ['为什么会迷茫','低谷常与流年节律、奋斗值阶段叠加有关——是规律，不是你不行。'],
+      ['若伴随持续情绪低落','请前往"陪伴"做情绪关怀；必要时寻求专业帮助。']],
+    paywall:true })}
+};
+
+function openReport(key){
+  var r=REPORTS[key]; if(!r) return;
+  $('sheetTitle').textContent=r.title;
+  $('sheetBody').innerHTML='';
+  r.render($('sheetBody'));
+  $('sheet').classList.add('open');
+}
+function closeReport(){ $('sheet').classList.remove('open'); }
+
+// ===== 通用富报告渲染器 =====
+function richReport(box,c){
+  var h='<div class="beast"><div class="av">'+c.ic+'</div><div class="nm">'+c.name+'</div>';
+  if(c.tag) h+='<div class="tag">'+c.tag+'</div>';
+  if(c.big) h+='<div class="rscore">'+c.big+(c.bigUnit?'<span>'+c.bigUnit+'</span>':'')+'</div>';
+  if(c.lead) h+='<div class="quote">'+c.lead+'</div>';
+  h+='</div>';
+  // 数据卡片网格
+  if(c.stats&&c.stats.length){
+    h+='<div class="stat-grid">';
+    for(var s=0;s<c.stats.length;s++){var st=c.stats[s];
+      h+='<div class="stat"><div class="v">'+st.val+'</div><div class="k">'+st.nm+'</div>'+(st.sub?'<div class="sb">'+st.sub+'</div>':'')+'</div>';}
+    h+='</div>';
+  }
+  // 能力条
+  if(c.bars&&c.bars.length){
+    if(c.barsTitle) h+='<div class="card-title" style="margin-top:6px">'+c.barsTitle+'<span class="ln"></span></div>';
+    h+='<div class="card">';
+    for(var b=0;b<c.bars.length;b++){var bb=c.bars[b];
+      h+='<div class="barrow"><div class="bl"><span>'+bb.nm+'</span><span class="bv">'+bb.val+'</span></div>';
+      h+='<div class="bar"><i data-w="'+bb.val+'"'+(bb.color?' style="background:'+bb.color+'"':'')+'></i></div></div>';}
+    h+='</div>';
+  }
+  // 标签药丸
+  if(c.pills&&c.pills.length){
+    h+='<div class="pillwrap">';
+    for(var p=0;p<c.pills.length;p++) h+='<span class="pill">'+c.pills[p]+'</span>';
+    h+='</div>';
+  }
+  // 时间轴
+  if(c.timeline&&c.timeline.length){
+    if(c.timelineTitle) h+='<div class="card-title" style="margin-top:6px">'+c.timelineTitle+'<span class="ln"></span></div>';
+    h+='<div class="tline">';
+    for(var t=0;t<c.timeline.length;t++){
+      h+='<div class="tl"><div class="dot"></div><div class="tlb"><div class="tlt">'+c.timeline[t][0]+'</div><div class="tld">'+c.timeline[t][1]+'</div></div></div>';
+    }
+    h+='</div>';
+  }
+  // 提醒
+  if(c.alerts&&c.alerts.length){
+    for(var a2=0;a2<c.alerts.length;a2++){var al=c.alerts[a2];
+      h+='<div class="alert '+(al.type||'good')+'"><div class="ic">'+(al.ic||'💡')+'</div><div class="bd"><div class="h">'+al.h+'</div><div class="p">'+al.p+'</div></div></div>';}
+  }
+  // 折叠详解
+  if(c.sections&&c.sections.length){
+    for(var i=0;i<c.sections.length;i++){
+      h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>'+c.sections[i][0]+'</span><span class="ar">›</span></div>';
+      h+='<div class="bd"><div class="inner">'+c.sections[i][1]+'</div></div></div>';
+    }
+  }
+  // 分享卡
+  if(c.share){
+    h+='<div class="sharecard"><div class="seal2">身赋奇才</div>';
+    h+='<div style="font-family:var(--serif);font-size:19px;color:var(--gold-bright);letter-spacing:2px;margin:12px 0 4px">'+c.share+'</div>';
+    h+='<div class="hint">长按保存 · 分享给家人</div></div>';
+  }
+  // 付费/声明
+  if(c.paywall) h+='<button class="btn btn-gold btn-block" onclick="paywall()">解锁全家深度报告</button>';
+  if(c.care) h+='<div class="hint" style="margin-top:14px;text-align:center;color:var(--vermilion-bright)">'+c.care+'</div>';
+  h+=disclaimerHTML();
+  box.innerHTML=h;
+  // 入场动画
+  setTimeout(function(){
+    var a=box.querySelector('.acc'); if(a) a.classList.add('open');
+    var bars=box.querySelectorAll('.bar i');
+    for(var k=0;k<bars.length;k++) bars[k].style.width=bars[k].getAttribute('data-w')+'%';
+  },160);
+}
+function mk(cfg){ return function(box){ richReport(box,cfg); }; }
+function toggleAcc(el){ el.parentNode.classList.toggle('open'); }
+function disclaimerHTML(){
+  return '<div class="hint" style="margin-top:16px;text-align:center">本内容基于东方传统文化整理，仅供文化娱乐与自我参考，不构成命运预测或专业建议。</div>';
+}
+
+// 神兽性格
+function renderBeast(box){
+  var h='<div class="beast"><div class="av">🦌</div><div class="nm">温润 · 灵鹿</div>';
+  h+='<div class="tag">内向偏中 · 支持型人格</div>';
+  h+='<div class="quote">你像一只灵鹿——敏感、温和、有方向感。<br>表面安静，内里有主意；被理解时，能量最强。</div></div>';
+  h+='<div class="card-title" style="margin-top:18px">性格四维<span class="ln"></span></div>';
+  h+='<div class="radar-wrap"><canvas id="radar" width="280" height="240"></canvas></div>';
+  var accs=[
+    ['梦想维度（年柱）','理想色彩浓，向往「被认可的价值感」，需要意义驱动。'],
+    ['路途维度（月柱）','行动偏稳健，喜欢有准备再出发，临场爆发力中等。'],
+    ['脾气维度（日主）','外柔内韧，少发火但有底线，被触碰原则会坚持。'],
+    ['内心维度（时柱）','安全感来自亲密关系，独处可恢复能量。'],
+    ['名人同型参照','与多位「沉稳谋略型」公众人物同属一类（文化参照，非真实生辰认定）。'],
+    ['培养建议','多给表达舞台与正反馈；少用否定式施压，保护其内驱力。']
+  ];
+  for(var i=0;i<accs.length;i++){
+    h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>'+accs[i][0]+'</span><span class="ar">›</span></div>';
+    h+='<div class="bd"><div class="inner">'+accs[i][1]+'</div></div></div>';
+  }
+  // 分享卡 + 付费
+  h+='<div class="sharecard"><div class="seal2">身赋奇才</div>';
+  h+='<div class="nm" style="font-family:var(--serif);font-size:20px;color:var(--gold-bright);letter-spacing:2px;margin:12px 0 4px">我是「温润灵鹿」</div>';
+  h+='<div class="hint">长按保存 · 分享你的神兽</div></div>';
+  h+='<button class="btn btn-gold btn-block" onclick="paywall()">解锁全家深度报告</button>';
+  h+=disclaimerHTML();
+  box.innerHTML=h;
+  setTimeout(function(){ drawRadar(); var a=box.querySelector('.acc'); if(a) a.classList.add('open'); },150);
+}
+
+// 雷达图
+function drawRadar(){
+  var cv=$('radar'); if(!cv||!cv.getContext) return;
+  var ctx=cv.getContext('2d');
+  var cx=140, cy=120, R=86;
+  var labels=['梦想','行动','脾气','内心','社交','韧性'];
+  var vals=[0.85,0.6,0.7,0.8,0.45,0.75];
+  var n=labels.length;
+  ctx.clearRect(0,0,280,240);
+  // 网格
+  for(var g=1;g<=4;g++){
+    ctx.beginPath();
+    for(var i=0;i<=n;i++){
+      var a=-Math.PI/2 + i*2*Math.PI/n;
+      var r=R*g/4;
+      var x=cx+r*Math.cos(a), y=cy+r*Math.sin(a);
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+    }
+    ctx.strokeStyle='rgba(217,180,106,0.13)'; ctx.stroke();
+  }
+  // 轴与标签
+  ctx.fillStyle='rgba(236,228,212,0.6)'; ctx.font='11px sans-serif'; ctx.textAlign='center';
+  for(var i2=0;i2<n;i2++){
+    var a2=-Math.PI/2 + i2*2*Math.PI/n;
+    ctx.beginPath(); ctx.moveTo(cx,cy);
+    ctx.lineTo(cx+R*Math.cos(a2), cy+R*Math.sin(a2));
+    ctx.strokeStyle='rgba(217,180,106,0.1)'; ctx.stroke();
+    ctx.fillText(labels[i2], cx+(R+16)*Math.cos(a2), cy+(R+16)*Math.sin(a2)+4);
+  }
+  // 数据多边形
+  ctx.beginPath();
+  for(var k=0;k<=n;k++){
+    var idx=k%n; var a3=-Math.PI/2 + idx*2*Math.PI/n; var r3=R*vals[idx];
+    var x3=cx+r3*Math.cos(a3), y3=cy+r3*Math.sin(a3);
+    k===0?ctx.moveTo(x3,y3):ctx.lineTo(x3,y3);
+  }
+  ctx.closePath();
+  var grad=ctx.createLinearGradient(0,0,280,240);
+  grad.addColorStop(0,'rgba(111,174,154,0.45)'); grad.addColorStop(1,'rgba(217,180,106,0.45)');
+  ctx.fillStyle=grad; ctx.fill();
+  ctx.strokeStyle='#d9b46a'; ctx.lineWidth=1.5; ctx.stroke();
+}
+
+// 奋斗愿力
+function renderDrive(box){
+  var h='<div class="beast"><div class="av">🔥</div><div class="nm">奋斗愿力</div>';
+  h+='<div class="quote">文凭决定下限，<span style="color:var(--gold-bright)">奋斗值决定上限</span>。<br>这是最值得每年复看的两个数字。</div></div>';
+  h+='<div class="card"><div class="card-title">天生奋斗值<span class="ln"></span></div>';
+  h+='<div class="gauge"><div class="num">180</div><div class="meta"><div class="t">先天内驱力 · 高于多数人</div><div class="bar"><i data-w="80" style="background:linear-gradient(90deg,var(--vermilion),var(--gold))"></i></div></div></div></div>';
+  h+='<div class="card"><div class="card-title">流年奋斗值 · 丙午年<span class="ln"></span></div>';
+  h+='<div class="gauge"><div class="num" style="color:var(--jade)">152</div><div class="meta"><div class="t">今年状态在线，适合主动出击</div><div class="bar"><i data-w="68" style="background:linear-gradient(90deg,var(--jade),var(--gold))"></i></div></div></div>';
+  h+='<div class="hint">流年奋斗值每年变化——这是你明年还要再看一次的理由。</div></div>';
+  var accs=[['抗挫力解读','你属于"压不垮但会内耗"型，关键在及时回血与正反馈。'],
+    ['心力/愿力培养','设定有意义的小目标，完成即奖励，逐步抬高奋斗基线。'],
+    ['对照案例','低学历高奋斗值者（如"张雪"案例）成就常超越高分低驱者。']];
+  for(var i=0;i<accs.length;i++){
+    h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>'+accs[i][0]+'</span><span class="ar">›</span></div><div class="bd"><div class="inner">'+accs[i][1]+'</div></div></div>';
+  }
+  h+=disclaimerHTML();
+  box.innerHTML=h;
+  setTimeout(function(){
+    var bars=box.querySelectorAll('.bar i');
+    for(var k=0;k<bars.length;k++) bars[k].style.width=bars[k].getAttribute('data-w')+'%';
+  },200);
+}
+
+// 先天体质
+function renderBody(box){
+  var h='<div class="beast"><div class="av">🫀</div><div class="nm">先天体质</div>';
+  h+='<div class="quote">以《黄帝内经》五运六气为框架，<br>给你的身体一份「养生关怀」参考。</div></div>';
+  var accs=[['今年主气倾向','丙午年火气偏旺，宜清心、忌焦躁，睡眠要规律。'],
+    ['五脏关怀','心、肝偏需养护；建议早睡、少辛辣、多舒展。'],
+    ['今日提示','今日宜养肝，少熬夜，午后可小憩。'],
+    ['饮食参考','可多食清润之物；具体请遵医嘱与个人体质。']];
+  for(var i=0;i<accs.length;i++){
+    h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>'+accs[i][0]+'</span><span class="ar">›</span></div><div class="bd"><div class="inner">'+accs[i][1]+'</div></div></div>';
+  }
+  h+='<div class="hint" style="margin-top:14px;text-align:center;color:var(--vermilion-bright)">本模块为养生文化关怀，非医学诊断，身体不适请就医。</div>';
+  box.innerHTML=h;
+  setTimeout(function(){ var a=box.querySelector('.acc'); if(a) a.classList.add('open'); },150);
+}
+
+// 婚姻测评
+function renderMarriage(box){
+  var h='<div class="beast"><div class="av">💞</div><div class="nm">关系契合度</div>';
+  h+='<div class="ring-score" style="font-size:46px;margin-top:6px">90<span style="font-size:18px">%</span></div>';
+  h+='<div class="tag">梦想契合 · 相处需磨合</div></div>';
+  var rows=[['梦想匹配',90,'两人想去的方向一致，可并肩'],
+    ['工作方式',38,'做事节奏差异大，少互相指挥'],
+    ['内心理解',62,'有隔阂但可沟通，多倾听'],
+    ['奋斗值',null,'你 200 · TA 160，互补'],
+    ['孩子亲密度',null,'对孩子都很亲（114 / 94）']];
+  h+='<div class="card">';
+  for(var i=0;i<rows.length;i++){
+    var sc=rows[i][1]==null?'<div class="sc">—</div>':'<div class="sc">'+rows[i][1]+'</div>';
+    h+='<div class="match-row"><div class="who" style="font-size:13px">'+rows[i][0]+'</div><div class="ds">'+rows[i][2]+'</div>'+sc+'</div>';
+  }
+  h+='</div>';
+  h+='<div class="alert good"><div class="ic">💡</div><div class="bd"><div class="h">相处建议</div><div class="p">工作方式差异大——少谈工作、多谈家事，把"并肩的梦想"作为共同话题。</div></div></div>';
+  h+=disclaimerHTML();
+  box.innerHTML=h;
+}
+
+// 家庭邀请（点亮动效 + 裂变提示）
+var invited=0;
+function invite(el,who){
+  el.classList.remove('empty'); el.classList.add('lit');
+  el.querySelector('.c').textContent='👤';
+  el.querySelector('.nm').textContent=who;
+  el.onclick=null;
+  invited++;
+  if(invited===1){ toast('🌿 已邀请'+who+'（免费）。家族之树点亮一格！'); }
+  else { toast('继续完善家庭，关系建议会更准 · 次日深度报告需开通年卡'); }
+}
+
+// 心情打卡 —— 合规安全流程核心
+function pickMood(el,level){
+  var ms=document.querySelectorAll('.mood');
+  for(var i=0;i<ms.length;i++) ms[i].classList.remove('sel');
+  el.classList.add('sel');
+  if(level==='low'||level==='bad'){
+    openModal('care');   // 触发预警 → 强制专业求助引导
+  }else{
+    var tip=level==='good'?'真好！把这份好心情记下来，今天的幸运色很配你 🍀'
+      :level==='ok'?'平平稳稳也很好。要不要出去走走，晒晒太阳？☀️'
+      :'平淡的日子也在积蓄力量。给自己泡杯茶吧 🍵';
+    addBubble('ai',tip);
+    go('care',document.querySelector('.tab[data-s=care]'));
+    toast('已记录今日心情');
+  }
+}
+
+// AI 陪伴对话
+function addBubble(who,text){
+  var c=$('chat'); var b=document.createElement('div');
+  b.className='bubble '+who; b.textContent=text; c.appendChild(b);
+  c.scrollTop=c.scrollHeight;
+}
+function sendChat(){
+  var v=$('chatIn').value.trim(); if(!v) return;
+  addBubble('me',v); $('chatIn').value='';
+  var neg=/(难受|想哭|不想活|累|抑郁|绝望|没意思|撑不|痛苦)/;
+  setTimeout(function(){
+    if(neg.test(v)){
+      addBubble('ai','谢谢你愿意告诉我。你现在的感受很重要，我会一直在。');
+      setTimeout(function(){ openModal('care'); },700);
+    }else{
+      addBubble('ai','我听到了。慢慢说，我陪着你～要不要也看看今天给你的开运小建议？');
+    }
+  },600);
+}
+$('chatIn')&&$('chatIn').addEventListener('keydown',function(e){ if(e.key==='Enter') sendChat(); });
+
+// 付费墙
+function paywall(){ openModal('paywall'); }
+
+// ===== 模态 =====
+var MODALS={
+  care:{html:'<div class="ic">🫂</div><h3>我在你身边</h3>'+
+    '<div class="care">如果你正经历强烈的情绪困扰，请记得：你并不孤单，也值得被专业地帮助。<br><br>📞 心理援助热线（示例）：<b>400-161-9995</b><br>🏥 建议尽快联系专业心理医生或前往医院。</div>'+
+    '<p>身赋奇才的情绪陪伴属于<b>非临床的倾听与陪伴</b>，<b>不能替代专业诊断与治疗</b>。我们已为你准备好转介通道。</p>'+
+    '<button class="btn btn-gold btn-block" onclick="closeModal()">我知道了</button>'+
+    '<div style="margin-top:10px"><span class="btn btn-ghost btn-block" onclick="toast(\'已为你预约持证心理咨询师（演示）\');closeModal()">预约专业咨询师</span></div>'},
+  paywall:{html:'<div class="ic">🔓</div><h3>解锁全家深度报告</h3>'+
+    '<p>开通「连山易家庭年卡」，全家全年深度报告、多日运势、对冲提醒、家族文化，平均一天一元。</p>'+
+    '<div style="font-family:var(--serif);font-size:28px;color:var(--gold-bright);margin-bottom:14px">¥365 <small style="font-size:13px;color:var(--txt-dim)">/年·一家人</small></div>'+
+    '<button class="btn btn-gold btn-block" onclick="toast(\'原型演示，未接入支付\');closeModal()">立即开通</button>'+
+    '<div class="hint" style="margin-top:10px">先免费邀请爸妈体验，也能解锁更多哦</div>'},
+  privacy:{html:'<div class="ic">🔒</div><h3>隐私与数据</h3>'+
+    '<p>你的出生信息仅用于生成报告，<b>加密存储于境内</b>，不对外泄露。解读师仅在你授权时、最小范围内查看，且全程留痕审计。<br><br>未满 14 岁用户须由监护人操作。你可随时一键删除全部数据。</p>'+
+    '<button class="btn btn-gold btn-block" onclick="toast(\'演示：数据删除入口\');closeModal()">一键删除我的数据</button>'},
+  disclaimer:{html:'<div class="ic">📖</div><h3>文化娱乐声明</h3>'+
+    '<p>本产品内容基于《黄帝内经》《易经》等东方传统文化整理，<b>仅供文化娱乐与自我参考</b>，不构成命运预测、医疗、投资或任何专业建议。<br><br>请理性看待，把它当作认识自己与陪伴家人的一种方式。</p>'+
+    '<button class="btn btn-gold btn-block" onclick="closeModal()">已了解</button>'},
+  docnote:{html:'<div class="ic">📘</div><h3>原型设计说明</h3>'+
+    '<p style="text-align:left">这是「连山易·身赋奇才」的移动端可交互原型，配套 6 份设计文档：<br><br>'+
+    '· 01 产品需求(PRD)<br>· 02 商业模式<br>· 03 合规与风险（必读）<br>· 04 信息架构与用户旅程<br>· 05 技术架构<br>· 06 MVP与路线图<br><br>'+
+    '原型已落地：峰终（揭晓时刻）、渐进式披露（报告折叠）、每日双引擎（运势+对冲）、家庭裂变、<b>情绪关怀合规安全流程</b>。</p>'+
+    '<button class="btn btn-gold btn-block" onclick="closeModal()">开始体验</button>'}
+};
+function openModal(k){ var m=MODALS[k]; if(!m)return; $('modalBox').innerHTML=m.html; $('modal').classList.add('open'); }
+function closeModal(){ $('modal').classList.remove('open'); }
+$('modal').addEventListener('click',function(e){ if(e.target===this) closeModal(); });
+
+// 主题 / 通知事件绑定
+$('themeToggle')&&$('themeToggle').addEventListener('click',toggleTheme);
+$('bellBtn')&&$('bellBtn').addEventListener('click',function(){
+  $('notifPanel').classList.contains('open') ? closeNotif() : openNotif();
+});
+$('notifMask')&&$('notifMask').addEventListener('click',closeNotif);
+$('notifClear')&&$('notifClear').addEventListener('click',clearNotif);
+updateBadge();
+
+// Toast
+var tT;
+function toast(msg){
+  var t=$('toast');
+  if(!t){ t=document.createElement('div'); t.id='toast';
+    t.style.cssText='position:absolute;left:50%;bottom:96px;transform:translateX(-50%);z-index:90;background:rgba(20,26,34,.96);border:1px solid var(--line);color:var(--txt);padding:11px 18px;border-radius:22px;font-size:12.5px;letter-spacing:.5px;max-width:80%;text-align:center;opacity:0;transition:.3s;box-shadow:0 6px 20px rgba(0,0,0,.4)';
+    document.querySelector('.phone').appendChild(t);
+  }
+  t.textContent=msg; t.style.opacity='1';
+  clearTimeout(tT); tT=setTimeout(function(){ t.style.opacity='0'; },2400);
+}
+/* ===JS_END=== */
+</script>
+</body>
+</html>
