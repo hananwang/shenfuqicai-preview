@@ -236,8 +236,7 @@ body{
 .sheet-body{flex:1;overflow-y:auto;padding:18px}
 .sheet-body::-webkit-scrollbar{width:0}
 
-/* 雷达图 */
-.radar-wrap{text-align:center;margin:6px 0 4px}
+/* 图表画布 */
 canvas{max-width:100%}
 
 /* 神兽展示 */
@@ -305,6 +304,23 @@ body.light .seal{color:#fff}
 /* 分享卡 */
 .sharecard{background:linear-gradient(160deg,#1a2330,#11161e);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center;margin-bottom:14px}
 .sharecard .seal2{display:inline-block;font-family:var(--serif);color:var(--vermilion-bright);border:2px solid var(--vermilion);border-radius:8px;padding:4px 8px;font-size:13px;letter-spacing:2px}
+.sharekit{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025);padding:13px;margin-bottom:14px}
+.share-preview{min-height:142px;border-radius:16px;border:1px solid rgba(217,180,106,.22);background:linear-gradient(145deg,rgba(217,180,106,.13),rgba(111,174,154,.08) 48%,rgba(193,88,58,.08));padding:16px;text-align:left;position:relative;overflow:hidden}
+.share-preview::after{content:"身赋奇才";position:absolute;right:-8px;bottom:-12px;font-family:var(--serif);font-size:42px;color:rgba(217,180,106,.08);letter-spacing:4px}
+.share-preview .meta{font-size:10px;color:var(--gold);letter-spacing:2px}
+.share-preview .headline{font-family:var(--serif);font-size:20px;color:var(--gold-bright);letter-spacing:1px;line-height:1.35;margin-top:8px;max-width:74%}
+.share-preview .copy{font-size:11px;color:var(--txt-dim);line-height:1.65;margin-top:8px;max-width:78%}
+.share-preview .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;max-width:78%}
+.share-preview .tags span{font-size:10px;color:var(--jade);border:1px solid var(--jade-dim);border-radius:999px;padding:3px 8px;background:rgba(111,174,154,.08)}
+.mini-code{position:absolute;right:14px;top:16px;width:48px;height:48px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--serif);font-size:18px;color:var(--gold-bright);background:rgba(5,8,12,.48);z-index:1}
+.share-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.share-actions .fbbtn{min-height:36px;font-size:10.5px}
+.share-actions .fbbtn.sel{border-color:var(--gold);color:var(--gold-bright);background:rgba(217,180,106,.1)}
+.growth-flow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.flow-card{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:12px;min-height:96px}
+.flow-card .k{font-family:var(--serif);font-size:14px;color:var(--gold-bright);letter-spacing:1px}
+.flow-card .p{font-size:11px;color:var(--txt-dim);line-height:1.6;margin-top:6px}
+.flow-card .n{font-family:var(--serif);font-size:20px;color:var(--jade);line-height:1;margin-bottom:6px}
 
 /* ===== 家庭 ===== */
 .tree{position:relative;padding:10px 0 4px;text-align:center}
@@ -321,6 +337,47 @@ body.light .seal{color:#fff}
 .match-row .who{font-family:var(--serif);font-size:14px;color:var(--gold-bright);min-width:62px}
 .match-row .sc{font-family:var(--serif);font-size:18px;color:var(--jade);min-width:44px;text-align:right}
 .match-row .ds{flex:1;font-size:11px;color:var(--txt-dim);line-height:1.5}
+.dim-grid{display:grid;gap:10px;margin:0 0 16px}
+.dim-card{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:14px}
+.dim-card .top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.dim-card .name{font-family:var(--serif);font-size:16px;color:var(--gold-bright);letter-spacing:1px;line-height:1.3}
+.dim-card .chip{font-size:10.5px;color:var(--jade);border:1px solid var(--jade-dim);border-radius:999px;padding:3px 8px;background:rgba(111,174,154,.07);white-space:nowrap}
+.dim-card .main{font-size:13px;color:var(--txt);line-height:1.65;margin-top:8px}
+.dim-card .sub{font-size:11.5px;color:var(--txt-dim);line-height:1.7;margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}
+.dim-card .sub b{color:var(--gold-bright);font-weight:500}
+.deep-badge{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold-dim);border-radius:999px;background:rgba(217,180,106,.08);color:var(--gold-bright);font-size:11px;padding:5px 10px;margin-bottom:10px}
+.deep-compare{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px}
+.deep-compare .box{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:13px}
+.deep-compare .k{font-family:var(--serif);font-size:14px;color:var(--gold-bright);letter-spacing:1px}
+.deep-compare .p{font-size:11.5px;color:var(--txt-dim);line-height:1.7;margin-top:7px}
+.script-line{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:13px;margin-bottom:10px}
+.script-line .role{font-family:var(--serif);font-size:14px;color:var(--gold-bright);letter-spacing:1px}
+.script-line .say{font-size:12.5px;color:var(--txt);line-height:1.7;margin-top:8px}
+.script-line .avoid{font-size:11px;color:var(--txt-faint);line-height:1.6;margin-top:8px}
+.scope-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.scope-card{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:13px;min-height:134px}
+.scope-card .k{font-family:var(--serif);font-size:14px;color:var(--gold-bright);letter-spacing:1px}
+.scope-card .p{font-size:11px;color:var(--txt-dim);line-height:1.65;margin-top:7px}
+.scope-card .tag{display:inline-block;margin-top:8px;font-size:10px;color:var(--jade);border:1px solid var(--jade-dim);border-radius:999px;padding:3px 8px}
+.family-switch{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;margin-bottom:10px}
+.family-switch::-webkit-scrollbar{width:0;height:0}
+.switch-chip{white-space:nowrap;border:1px solid var(--line);border-radius:18px;background:var(--card2);color:var(--txt-dim);font-size:11px;padding:7px 11px;cursor:pointer}
+.switch-chip.sel,.switch-chip:active{border-color:var(--gold);color:var(--gold-bright);background:rgba(217,180,106,.1)}
+.relative-palette{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.rel-chip{border:1px solid var(--line);border-radius:16px;background:var(--card2);color:var(--txt-dim);font-size:10.5px;padding:6px 9px;cursor:pointer}
+.rel-chip:active,.rel-chip.sel{border-color:var(--jade);color:var(--jade);background:rgba(111,174,154,.08)}
+.watch-list{display:grid;gap:8px}
+.watch{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:13px;background:var(--card2);padding:11px}
+.watch .av{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:rgba(111,174,154,.1);border:1px solid rgba(111,174,154,.2);font-size:17px;flex-shrink:0}
+.watch .h{font-size:12px;color:var(--txt);letter-spacing:.5px}
+.watch .p{font-size:10.5px;color:var(--txt-dim);line-height:1.6;margin-top:3px}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
+.metric{border:1px solid var(--line);border-radius:13px;background:var(--card2);padding:10px;text-align:center;min-height:74px}
+.metric .v{font-family:var(--serif);font-size:19px;color:var(--gold-bright)}
+.metric .k{font-size:10px;color:var(--txt-dim);line-height:1.4;margin-top:4px}
+.consent-box{border:1px solid rgba(111,174,154,.22);border-radius:13px;background:rgba(111,174,154,.08);padding:11px;margin-top:12px;text-align:left}
+.consent-box .h{font-size:11.5px;color:var(--jade);letter-spacing:.5px}
+.consent-box .p{font-size:10.5px;color:var(--txt-dim);line-height:1.65;margin-top:4px}
 
 /* ===== 陪伴 ===== */
 .mood-faces{display:flex;justify-content:space-between;gap:8px;margin:6px 0 4px}
@@ -343,6 +400,11 @@ body.light .seal{color:#fff}
 .vipcard .price{font-family:var(--serif);font-size:30px;color:var(--gold-bright);margin:8px 0 2px}
 .vipcard .price small{font-size:13px;color:var(--txt-dim)}
 .vipcard .desc{font-size:11px;color:var(--txt-dim);line-height:1.7;margin:8px 0 14px}
+.value-ladder{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tier{border:1px solid var(--line);border-radius:14px;background:var(--card2);padding:13px;min-height:112px}
+.tier .k{font-family:var(--serif);font-size:13.5px;color:var(--gold-bright);letter-spacing:1px}
+.tier .p{font-size:10.5px;color:var(--txt-dim);line-height:1.65;margin-top:7px}
+.tier .price2{font-family:var(--serif);font-size:18px;color:var(--jade);margin-top:8px}
 .shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .shop{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
 .shop .ic{font-size:30px}.shop .nm{font-size:12px;color:var(--txt);margin-top:8px;letter-spacing:1px}.shop .pr{font-size:12px;color:var(--gold-bright);font-family:var(--serif);margin-top:4px}
@@ -449,7 +511,12 @@ body.light .seal{color:#fff}
 .screen.active>*:nth-child(5){animation-delay:.22s}
 .screen.active>*:nth-child(6){animation-delay:.27s}
 .screen.active>*:nth-child(n+7){animation-delay:.3s}
-.sheet-body .acc,.sheet-body .card,.sheet-body .stat-grid,.sheet-body .pillwrap,.sheet-body .tline,.sheet-body .alert,.sheet-body .sharecard{animation:rise .45s both}
+.sheet-body .acc,.sheet-body .card,.sheet-body .stat-grid,.sheet-body .pillwrap,.sheet-body .tline,.sheet-body .alert,.sheet-body .sharecard,.sheet-body .sharekit{animation:rise .45s both}
+@media(max-width:360px){
+  .share-actions,.growth-flow,.scope-grid,.value-ladder,.metric-grid,.stat-grid,.deep-compare{grid-template-columns:1fr}
+  .share-preview .headline,.share-preview .copy,.share-preview .tags{max-width:100%;padding-right:54px}
+  .node .c{width:52px;height:52px}
+}
 </style>
 </head>
 <body>
@@ -476,7 +543,7 @@ body.light .seal{color:#fff}
       <button class="iconbtn bell" id="bellBtn" aria-label="提醒">🔔<span class="badge" id="bellBadge">3</span></button>
     </div>
   </div>
-  <div class="compliance">参考《黄帝内经》与五运六气等东方传统文化 · 仅供自我认知与养生文化参考</div>
+  <div class="compliance">东方传统文化自我认知参考 · 不替代医疗、心理或其他专业建议</div>
 
   <!-- 通知面板 -->
   <div class="notif-mask" id="notifMask"></div>
@@ -510,19 +577,34 @@ body.light .seal{color:#fff}
         <div class="oneword">今日心宽气顺，<span class="em">宜主动</span>。<br>想做的那件事，<span class="em">上午开口</span>最好。</div>
       </div>
 
+      <div class="section-h">今日可分享</div>
+      <div class="card">
+        <div class="card-title">今日状态卡<span class="ln"></span><span class="sub">发给朋友</span></div>
+        <div class="sharekit">
+          <div class="share-preview" id="todaySharePreview"></div>
+          <div class="share-actions">
+            <button class="fbbtn sel" onclick="pickShareStyle('today','low',this)">低调版</button>
+            <button class="fbbtn" onclick="pickShareStyle('today','fun',this)">好玩版</button>
+            <button class="fbbtn" onclick="pickShareStyle('today','deep',this)">深度版</button>
+          </div>
+          <div class="hint">只分享正向身份、今日状态和轻行动建议；不分享体质细节、情绪风险、家庭矛盾或未成年人敏感信息。</div>
+        </div>
+        <button class="btn btn-ghost btn-block" onclick="openShareLab('today')">生成分享卡</button>
+      </div>
+
       <div class="section-h">今日动态指数</div>
       <div class="card">
         <div class="idx-grid" id="idxGrid"></div>
         <div class="hint">指数每日变化，是你与外界关系的"状态参考"，并非吉凶预言。</div>
       </div>
 
-      <div class="section-h">八色运势 · 今日排名</div>
+      <div class="section-h">八色状态 · 今日参考</div>
       <div class="card">
         <div class="luck-list" id="luckList"></div>
-        <div class="hint">八色由高到低代表今日不同领域的顺畅度，今日主色为「青」。</div>
+        <div class="hint">八色由高到低代表今日不同领域的顺畅度，今天主色为「青」。</div>
       </div>
 
-      <div class="section-h">今日提醒 · 对冲系统</div>
+      <div class="section-h">今日提醒 · 错峰建议</div>
       <div class="alert good">
         <div class="ic">🍃</div>
         <div class="bd"><div class="h">交友 · 亲情指数偏高</div><div class="p">适合陪家人、约老友；想谈的心里话，今天容易说得出口。</div></div>
@@ -545,26 +627,47 @@ body.light .seal{color:#fff}
 
     <!-- ===== 测评 ===== -->
     <section class="screen" id="s-test">
-      <div class="section-h">P0 核心六项 · 先看体质</div>
+      <div class="section-h">从体质开始了解自己</div>
       <div class="mod-grid">
         <div class="mod wide" onclick="openReport('body')">
           <div class="ic">🫀</div>
-          <div><div class="nm">先天体质首报告</div><div class="ds">《黄帝内经》五运六气 · 五类状态排序 · 今日养护建议</div></div>
-          <span class="core">核心</span>
+          <div><div class="nm">先天体质首报告</div><div class="ds">体质底色 · 今日养护 · 家庭沟通</div></div>
+          <span class="core">推荐</span>
         </div>
         <div class="mod wide" onclick="openReport('drive')">
           <div class="ic">🔥</div>
           <div><div class="nm">奋斗愿力</div><div class="ds">内驱/外驱 · 家庭环境 · 每年更新</div></div>
-          <span class="core">核心</span>
+          <span class="core">推荐</span>
         </div>
       </div>
 
-      <div class="section-h">互动测评 · 结果会随反馈校正</div>
+      <div class="section-h">朋友也想测一测</div>
+      <div class="card">
+        <div class="growth-flow">
+          <div class="flow-card"><div class="n">01</div><div class="k">朋友看到卡</div><div class="p">神兽身份、今日状态或同频对比，3 秒看懂，愿意点进来。</div></div>
+          <div class="flow-card"><div class="n">02</div><div class="k">快速轻测</div><div class="p">先看神兽身份，不强制注册、付费或填写长问卷。</div></div>
+          <div class="flow-card"><div class="n">03</div><div class="k">生成自己的卡</div><div class="p">低调版、好玩版、深度版三种表达，适配不同朋友圈人设。</div></div>
+          <div class="flow-card"><div class="n">04</div><div class="k">同频与家庭</div><div class="p">好友测完看相似点、互补点，再回到今日状态、家庭单元或深度报告。</div></div>
+        </div>
+        <div class="metric-grid">
+          <div class="metric"><div class="v">30秒</div><div class="k">朋友先看神兽身份</div></div>
+          <div class="metric"><div class="v">3版</div><div class="k">低调 / 好玩 / 深度卡</div></div>
+          <div class="metric"><div class="v">同频</div><div class="k">看相似点和互补点</div></div>
+        </div>
+        <div class="feedback" style="grid-template-columns:1fr 1fr 1fr">
+          <button class="fbbtn" onclick="startLightTest()">朋友轻测</button>
+          <button class="fbbtn" onclick="openShareLab('compare')">看同频对比卡</button>
+          <button class="fbbtn" onclick="openShareLab('family')">家庭沟通卡</button>
+        </div>
+        <div class="hint">分享先满足自我表达和关系互动：别人看得懂、愿意测、测完还能生成自己的卡。不靠返佣或收益承诺刺激转发。</div>
+      </div>
+
+      <div class="section-h">继续了解自己和家人</div>
       <div class="mod-grid">
         <div class="mod" onclick="openReport('beast')"><div class="ic">🦌</div><div class="nm">神兽性格</div><div class="ds">梦想/路途/脾气/内心</div></div>
         <div class="mod" onclick="openReport('study')"><div class="ic">🎓</div><div class="nm">拜师学艺</div><div class="ds">学段 · 兴趣 · 技能</div></div>
         <div class="mod" onclick="openReport('potential')"><div class="ic">✨</div><div class="nm">潜能激发</div><div class="ds">显性/隐性天赋</div></div>
-        <div class="mod" onclick="openReport('emotion')"><div class="ic">🫧</div><div class="nm">情绪风险测评</div><div class="ds">运动/手机/动力/方向</div></div>
+        <div class="mod" onclick="openReport('emotion')"><div class="ic">🫧</div><div class="nm">情绪状态关怀</div><div class="ds">运动/手机/动力/方向</div></div>
         <div class="mod" onclick="openReport('confuse')"><div class="ic">🌫️</div><div class="nm">迷茫期检测</div><div class="ds">迷茫/动荡/动力/空窗</div></div>
         <div class="mod" onclick="openReport('career')"><div class="ic">🧭</div><div class="nm">职业规划</div><div class="ds">行业·技能·岗位</div></div>
       </div>
@@ -581,11 +684,30 @@ body.light .seal{color:#fff}
     <!-- ===== 家庭 ===== -->
     <section class="screen" id="s-family">
       <div class="card">
-        <div class="card-title">家族之树<span class="ln"></span><span class="sub">已连接 2 人</span></div>
+        <div class="card-title">家庭单元 / 家族网络<span class="ln"></span></div>
+        <div class="scope-grid">
+          <div class="scope-card">
+            <div class="k">365 家庭单元</div>
+            <div class="p">本人、配偶、孩子、父母、爷爷奶奶、姥姥姥爷等家庭内成员免费进入。兄弟姐妹可作为原生家庭成员进入；其配偶和孩子形成新家庭时另开家庭单元。</div>
+            <span class="tag">一家人共用</span>
+          </div>
+          <div class="scope-card">
+            <div class="k">家族网络</div>
+            <div class="p">姑姑、姑父、伯伯、伯母、叔叔、婶婶、舅舅、舅妈、姨、姨夫等可进入家族图谱；深度使用需另开自己的 365 家庭单元。</div>
+            <span class="tag">亲戚轻量加入</span>
+          </div>
+        </div>
+        <div class="hint">365 不是全部深度测评通票。家庭单元负责长期陪伴和关系留存，深度报告、人工咨询、玩具和课程按需解锁或购买。</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">家族之树<span class="ln"></span><span class="sub">已连接 4 人</span></div>
         <div class="tree" id="tree">
           <div class="row">
             <div class="node lit"><div class="c">👵</div><div class="nm">奶奶</div></div>
             <div class="node lit"><div class="c">👴</div><div class="nm">爷爷</div></div>
+            <div class="node lit"><div class="c">👵</div><div class="nm">姥姥</div></div>
+            <div class="node lit"><div class="c">👴</div><div class="nm">姥爷</div></div>
           </div>
           <div class="row">
             <div class="node empty" onclick="invite(this,'爸爸')"><div class="c">＋</div><div class="nm">邀请爸爸</div></div>
@@ -596,8 +718,46 @@ body.light .seal{color:#fff}
             <div class="node empty" onclick="invite(this,'伴侣')"><div class="c">＋</div><div class="nm">邀请伴侣</div></div>
             <div class="node empty" onclick="invite(this,'孩子')"><div class="c">＋</div><div class="nm">添加孩子</div></div>
           </div>
+          <div class="row">
+            <div class="node empty" onclick="inviteClan(this,'姑姑')"><div class="c">＋</div><div class="nm">邀请姑姑</div></div>
+            <div class="node empty" onclick="inviteClan(this,'舅舅')"><div class="c">＋</div><div class="nm">邀请舅舅</div></div>
+            <div class="node empty" onclick="inviteClan(this,'姨')"><div class="c">＋</div><div class="nm">邀请姨</div></div>
+          </div>
         </div>
-        <div class="hint">首次可免费邀请父母体验；每位成员拥有独立的家族文化，无法互相替代。被邀请者不可再次邀请他人。</div>
+        <div class="relative-palette">
+          <button class="rel-chip" onclick="touchClanRole(this,'姑姑')">姑姑</button>
+          <button class="rel-chip" onclick="touchClanRole(this,'姑父')">姑父</button>
+          <button class="rel-chip" onclick="touchClanRole(this,'伯伯')">伯伯</button>
+          <button class="rel-chip" onclick="touchClanRole(this,'伯母')">伯母</button>
+          <button class="rel-chip" onclick="touchClanRole(this,'叔叔')">叔叔</button>
+          <button class="rel-chip" onclick="touchClanRole(this,'婶婶')">婶婶</button>
+          <button class="rel-chip" onclick="touchClanRole(this,'舅舅')">舅舅</button>
+          <button class="rel-chip" onclick="touchClanRole(this,'舅妈')">舅妈</button>
+          <button class="rel-chip" onclick="touchClanRole(this,'姨')">姨</button>
+          <button class="rel-chip" onclick="touchClanRole(this,'姨夫')">姨夫</button>
+        </div>
+        <div class="hint">家庭内成员进入免费；家族亲戚可先轻量查看或加入图谱。监护人先创建孩子页后，孩子或资料主体后续可被邀请进入并认领自己的页面。</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">视角切换 · 关注动态<span class="ln"></span><span class="sub" id="familyViewCaption">我的页面</span></div>
+        <div class="family-switch">
+          <button class="switch-chip sel" onclick="switchFamilyView(this,'我的页面')">我的页面</button>
+          <button class="switch-chip" onclick="switchFamilyView(this,'孩子页面')">孩子页面</button>
+          <button class="switch-chip" onclick="switchFamilyView(this,'亲属页面')">亲属页面</button>
+          <button class="switch-chip" onclick="switchFamilyView(this,'家族总览')">家族总览</button>
+        </div>
+        <div class="watch-list" id="familyWatchList">
+          <div class="watch"><div class="av">🌿</div><div><div class="h">孩子 · 今日专注力偏高</div><div class="p">适合安排安静练习。仅展示状态提示，不展示隐私细节。</div></div></div>
+          <div class="watch"><div class="av">🫂</div><div><div class="h">妈妈 · 适合谈学习节奏</div><div class="p">先肯定，再给选择题；避免命令式表达。</div></div></div>
+          <div class="watch"><div class="av">🏡</div><div><div class="h">姥姥 · 今日适合关心身体节律</div><div class="p">用问候和陪伴替代诊断式判断，身体不适仍建议就医。</div></div></div>
+          <div class="watch"><div class="av">🌳</div><div><div class="h">姑姑 · 家族轻量入口</div><div class="p">可查看家族文化与基础状态；要管理自己的家庭单元需独立开通。</div></div></div>
+        </div>
+        <div class="feedback" style="grid-template-columns:1fr 1fr">
+          <button class="fbbtn" onclick="openShareLab('family')">生成家庭沟通卡</button>
+          <button class="fbbtn" onclick="paywall()">查看家庭深度关系</button>
+        </div>
+        <div class="hint">关注动态只展示已授权、低敏的状态与沟通建议，不展示情绪风险细节、健康风险或家庭冲突。</div>
       </div>
 
       <div class="card">
@@ -610,11 +770,11 @@ body.light .seal{color:#fff}
       </div>
 
       <div class="card">
-        <div class="card-title">成长案例库<span class="ln"></span><span class="sub">原型占位</span></div>
+        <div class="card-title">成长案例库<span class="ln"></span><span class="sub">沟通参考</span></div>
         <div class="match-row"><div class="who">教育</div><div class="ds">兴趣班不是越多越好，先看体质节奏和显性潜能</div><div class="sc">01</div></div>
         <div class="match-row"><div class="who">语言</div><div class="ds">对支持型孩子，多用选择题，少用命令句</div><div class="sc">02</div></div>
         <div class="match-row"><div class="who">事件</div><div class="ds">考试失利后先稳情绪，再复盘方法</div><div class="sc">03</div></div>
-        <div class="hint">案例库是后续咨询与课程的重要资产。当前仅展示结构，不输出真实个案。</div>
+        <div class="hint">这里沉淀可复用的沟通方法和成长经验；真实个案必须脱敏、授权后才能使用。</div>
       </div>
 
       <div class="card">
@@ -660,10 +820,11 @@ body.light .seal{color:#fff}
       </div>
 
       <div class="card">
-        <div class="card-title">AI 陪伴 · 听你说<span class="ln"></span></div>
+        <div class="card-title">陪伴小助手 · 听你说<span class="ln"></span></div>
         <div class="chat" id="chat">
           <div class="bubble ai">我在的。今天过得怎么样？想聊聊就和我说说，不想说也没关系。🍵</div>
         </div>
+        <div class="hint">这里提供非临床的陪伴话术，不能替代专业咨询；出现强烈困扰时会引导专业求助。</div>
         <div style="display:flex;gap:8px;margin-top:12px">
           <input id="chatIn" placeholder="说点什么…" style="flex:1;background:var(--ink3);border:1px solid var(--line);border-radius:20px;padding:11px 15px;color:var(--txt);font-size:13px">
           <button class="btn btn-jade" style="padding:11px 18px" onclick="sendChat()">发送</button>
@@ -683,7 +844,8 @@ body.light .seal{color:#fff}
           <button class="fbbtn" onclick="openReport('body')">听体质</button>
           <button class="fbbtn" onclick="openReport('beast')">听神兽</button>
           <button class="fbbtn" onclick="openReport('drive')">听奋斗值</button>
-          <button class="fbbtn" onclick="toast('正在播报今日方向与时辰（演示）')">听今日</button>
+          <button class="fbbtn" onclick="toast('正在播报今日方向与时辰')">听今日</button>
+          <button class="fbbtn" onclick="toast('正在播报家庭沟通建议')">听家庭建议</button>
         </div>
       </div>
     </section>
@@ -691,10 +853,21 @@ body.light .seal{color:#fff}
     <!-- ===== 我的 ===== -->
     <section class="screen" id="s-me">
       <div class="vipcard">
-        <div class="lbl">连山易 · 家庭年卡</div>
-        <div class="price">¥365<small> /年 · 一家人</small></div>
-        <div class="desc">解锁全家深度报告 · 多日运势 · 对冲提醒 · 家族文化 · 关系网络<br>平均一天一元，全家一起用。</div>
-        <button class="btn btn-gold" onclick="toast('🎉 这是原型演示，未接入真实支付')">立即开通</button>
+        <div class="lbl">连山易 · 家庭单元基础陪伴</div>
+        <div class="price">¥365<small> /年 · 家庭单元</small></div>
+        <div class="desc">家庭内成员免费进入 · 主要测评基础版 · 今日状态 · 基础提醒 · 家庭沟通 · 关注动态<br>深度报告、人工咨询、玩具和课程按需解锁或购买。</div>
+        <button class="btn btn-gold" onclick="toast('当前仅展示开通流程，暂未接入支付')">立即开通</button>
+      </div>
+
+      <div class="section-h">开通后能得到什么</div>
+      <div class="card">
+        <div class="value-ladder">
+          <div class="tier"><div class="k">免费体验</div><div class="p">首个峰值结果、核心图、一句话建议、分享卡和反馈入口。</div><div class="price2">0 元</div></div>
+          <div class="tier"><div class="k">365 家庭单元</div><div class="p">家庭成员进入、主要测评基础版、今日状态、家庭沟通、关注动态。</div><div class="price2">365/年</div></div>
+          <div class="tier"><div class="k">单项深度报告</div><div class="p">职业、升学、婚恋、潜能、地利天时等完整报告和行动方案。</div><div class="price2">按需解锁</div></div>
+          <div class="tier"><div class="k">人工/玩具/课程</div><div class="p">复杂问题由真人服务承接，日常陪伴可延展到玩具和课程。</div><div class="price2">增购</div></div>
+        </div>
+        <div class="hint">免费先看准不准；365 负责一家人的长期陪伴；关键问题再按需看深度报告或预约真人服务。</div>
       </div>
 
       <div class="section-h">吉祥物 · 文化好物</div>
@@ -709,7 +882,7 @@ body.light .seal{color:#fff}
       <div class="card" style="padding:4px 14px">
         <div class="row-item"><span class="ic">📜</span>我的报告<span class="ar">›</span></div>
         <div class="row-item"><span class="ic">⭐</span>积分 · 1280<span class="ar">›</span></div>
-        <div class="row-item"><span class="ic">💬</span>预约解读师咨询<span class="ar">›</span></div>
+        <div class="row-item" onclick="openModal('consult')"><span class="ic">💬</span>预约解读师咨询<span class="ar">›</span></div>
         <div class="row-item" onclick="openModal('privacy')"><span class="ic">🔒</span>隐私与数据 · 一键删除<span class="ar">›</span></div>
         <div class="row-item" onclick="openModal('disclaimer')"><span class="ic">📖</span>文化娱乐声明<span class="ar">›</span></div>
       </div>
@@ -743,7 +916,7 @@ body.light .seal{color:#fff}
     <div class="onb" id="step1">
       <div class="big">身赋奇才</div>
       <div class="sm">知 己 · 知 家 · 知 行</div>
-      <div class="desc">参考《黄帝内经》与五运六气，<br>先看你或孩子的先天体质底色，<br>再看性格、天赋、奋斗与家庭沟通。</div>
+      <div class="desc">先看你或孩子的体质底色，<br>今天怎么养、怎么学、怎么沟通，<br>再看性格、天赋和奋斗力。</div>
       <button class="btn btn-gold btn-block" onclick="goStep(2)">免费看先天体质</button>
       <div class="hint" style="margin-top:18px">注册即同意《隐私政策》。出生信息仅用于生成报告，加密存储，可随时删除。未满 14 岁须由监护人操作。</div>
     </div>
@@ -765,18 +938,22 @@ body.light .seal{color:#fff}
           <select id="inCity"><option>郑州</option><option>北京</option><option>深圳</option><option>上海</option><option>其他</option></select>
         </div>
       </div>
+      <div class="consent-box">
+        <div class="h">敏感信息单独同意</div>
+        <div class="p">出生时间、出生地、家庭关系和情绪状态属于敏感信息。系统仅在授权范围内使用，支持撤回和删除；未成年人由监护人代为操作。</div>
+      </div>
       <button class="btn btn-gold btn-block" style="margin-top:10px" onclick="startCast()">生成首报告</button>
       <div class="hint" style="margin-top:14px">本内容为传统文化自我认知与养生文化参考，非命运预测、非吉凶断言、非医学诊断。未满 14 岁须由监护人操作。</div>
     </div>
     <!-- 步骤3 揭晓 -->
     <div class="reveal-stage hidden" id="step3">
       <div class="cast" id="cast"><div class="bg-char" id="castChar">素</div></div>
-      <div class="loadtip"><span id="loadText">校准出生节律</span><span class="dots-load"></span></div>
+      <div class="loadtip"><span id="loadText">读取基础信息</span><span class="dots-load"></span></div>
     </div>
   </div>
 
   <!-- 文档说明浮标 -->
-  <div class="fab-doc" onclick="openModal('docnote')">📘 设计说明</div>
+  <div class="fab-doc" onclick="openModal('docnote')">📘 评审说明</div>
 
   <!-- 模态 -->
   <div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
@@ -785,8 +962,8 @@ body.light .seal{color:#fff}
 <script>
 function $(id){return document.getElementById(id)}
 
-// ===== P0 Mock API Contract =====
-// 原型只使用本地 mock。字段命名模拟未来 API 契约，便于后续从 HTML 原型平滑拆到真实前后端。
+// ===== Local demo data contract =====
+// 单文件评审版只使用本地数据。字段命名模拟未来接口，便于后续从 HTML 平滑拆到真实前后端。
 var MOCK_API_CONTRACT={
   birthProfile:{
     displayName:'小江',
@@ -830,8 +1007,26 @@ var MOCK_API_CONTRACT={
   feedback:{enabled:true,fields:['moduleKey','fitLevel','comment','phoneOptional']},
   caseLibrary:{enabled:true,categories:['教育','语言','事件','为人处事'],realCases:false},
   schoolPilotHypothesis:{enabled:true,scene:'430课后服务',publicClaimAllowed:false},
-  familyGraph:{invitableRoles:['爸爸','妈妈','伴侣','孩子'],freeInviteRoles:['爸爸','妈妈']},
-  compliance:{mode:'culture_reference',medicalAdvice:false,fortuneGuarantee:false,realPayment:false}
+  familyGraph:{
+    paidUnit:'365_family_unit',
+    freeHouseholdRoles:['本人','配偶','孩子','爸爸','妈妈','爷爷','奶奶','姥姥','姥爷','兄弟姐妹'],
+    clanRoles:['姑姑','姑父','伯伯','伯母','叔叔','婶婶','舅舅','舅妈','姨','姨夫'],
+    clanDeepUseRequiresOwnFamilyUnit:true,
+    viewModes:['我的页面','孩子页面','亲属页面','家族总览'],
+    sensitiveSharing:false
+  },
+  entitlement:{
+    free:['首个峰值结果','核心图','1-3条行动建议','分享卡','反馈入口'],
+    family365:['基础陪伴','主要测评基础版','今日状态','基础提醒','家庭沟通','关注动态','会员价入口'],
+    deepUnlock:['完整报告','长期趋势','行动方案','多成员深度关系'],
+    excludesFrom365:['全部深度测评','人工咨询','课程','玩具','B端授权']
+  },
+  sharing:{
+    assets:['神兽身份卡','今日状态卡','同频对比卡','家庭沟通卡','家族树点亮卡'],
+    styles:['低调版','好玩版','深度版'],
+    targetPath:['30秒轻测','结果卡','同频对比','今日状态','365家庭单元','单项深度报告']
+  },
+  compliance:{mode:'culture_reference',medicalAdvice:false,fortuneGuarantee:false,realPayment:false,levelRebate:false}
 };
 
 // ===== 日 / 夜 主题 =====
@@ -856,7 +1051,7 @@ var NOTIFS=[
   {ic:'🌅',h:'今日状态已更新',p:'综合 88 分，宜主动。想做的那件事，上午开口最好。',t:'刚刚',unread:true},
   {ic:'⚠️',h:'对冲提醒',p:'今日午时人际易有摩擦，重要洽谈建议错开 11–13 点。',t:'2 小时前',unread:true},
   {ic:'👨‍👩‍👧',h:'家人动态',p:'女儿「豆豆」今日专注力指数偏高，适合安排需要静心的练习。',t:'今天 08:30',unread:true},
-  {ic:'🎁',h:'年度家庭礼包',p:'你关注的「家族文化」内容已更新一章，点击查看。',t:'昨天',unread:false}
+  {ic:'🌳',h:'家族轻量入口',p:'姑姑已查看家族文化页，若要管理她自己的家庭单元，可独立开通 365。',t:'昨天',unread:false}
 ];
 function renderNotifs(){
   var list=$('notifList'); if(!list) return;
@@ -985,7 +1180,7 @@ function startCast(){
   MOCK_API_CONTRACT.birthProfile.birthCity=$('inCity').value;
   goStep(3);
   var chars=['素','灵','木','火','土','金','水','气'];
-  var texts=['校准出生节律','对照《黄帝内经》','梳理五运六气','生成先天体质首报告'];
+  var texts=['读取基础信息','整理体质底色','生成今日建议','准备家庭沟通提示'];
   var ci=0, ti=0;
   var c1=setInterval(function(){ $('castChar').textContent=chars[ci++%chars.length]; },180);
   var c2=setInterval(function(){ if(ti<texts.length) $('loadText').textContent=texts[ti++]; },700);
@@ -1055,9 +1250,9 @@ var REPORTS={
     sections:[
       ['为什么"隐性"更值钱','显性人人看得见，隐性（逻辑/领导）是稀缺的复利资产，越早识别越能针对性培养。'],
       ['给家长的具体动作','多给表达机会与正反馈；14 岁后逐步交付"需要谋划"的小任务，观察并强化。']],
-    share:'我的天赋阶段：跃迁前夜', feedbackKey:'potential', paywall:true })},
+    share:'潜能分享卡', shareType:'potential', feedbackKey:'potential', paywall:true })},
 
-  emotion:{title:'情绪风险测评', render:renderEmotion},
+  emotion:{title:'情绪状态关怀', render:renderEmotion},
 
   career:{title:'职业规划', render:mk({
     ic:'🧭', name:'职业规划', tag:'乙 · 掌控协调型',
@@ -1074,7 +1269,7 @@ var REPORTS={
       ['适合的岗位','中台/协调/管理类岗位最能发挥；统筹他人资源时表现最佳。'],
       ['天干人才类型对照','甲：开拓征战 · 乙：掌控协调 · 丙：聚集影响 · 丁：精专深耕（更多类型规则化补全中）。'],
       ['名人同型参照','与多位"善统筹谋划"的公众人物同属一类（文化参照，非真实生辰认定）。']],
-    share:'我的职业天赋：掌控协调型', feedbackKey:'career', paywall:true })},
+    share:'职业分享卡', shareType:'career', feedbackKey:'career', paywall:true })},
 
   study:{title:'拜师学艺', render:mk({
     ic:'🎓', name:'拜师学艺 · 成长方向',
@@ -1148,8 +1343,8 @@ var MODULE_QUESTIONNAIRES={
     ]
   },
   emotion:{
-    title:'情绪风险 · 测评前问卷',
-    intro:'先填现象，再看风险。运动、手机、空窗、方向感和动力会影响情绪风险权重。',
+    title:'情绪状态 · 测评前问卷',
+    intro:'先填现象，再看近期需要关注的状态。运动、手机、空窗、方向感和动力都会影响结果参考。',
     fields:[
       {key:'exercise',label:'近7天运动频率',options:[['regular','每周3次以上'],['some','偶尔运动'],['rare','长期不运动']]},
       {key:'phone',label:'手机沉浸程度',options:[['low','可控制'],['mid','有点多'],['high','停不下来']]},
@@ -1207,7 +1402,7 @@ function renderModuleQuestionnaire(key){
     }
     h+='</select></div>';
   }
-  h+='<div class="hint">这些选项会进入本模块 mock 权重。提交后先展示测评报告，报告底部仍可反馈校正。</div>';
+  h+='<div class="hint">这些选项会影响本次结果参考。提交后先展示测评报告，报告底部仍可补充真实情况。</div>';
   h+='<button class="btn btn-gold btn-block" style="margin-top:12px" onclick="submitModuleQuestionnaire(\''+key+'\')">查看测评报告</button></div>';
   h+='<div class="report-exit"><div class="hint">暂时不测也可以回首页或测评目录。</div><div class="report-actions"><button class="fbbtn" onclick="goReportHome()">回首页</button><button class="fbbtn" onclick="goReportList()">测评目录</button><button class="fbbtn" onclick="reportBack()">上一份</button></div></div>';
   $('sheetBody').innerHTML=h;
@@ -1228,7 +1423,7 @@ function submitModuleQuestionnaire(key){
   }
   p.completed[key]=true;
   recalcPreAssessment();
-  toast('问卷已进入本模块权重');
+  toast('已根据你的选择更新结果');
   openReport(key,{force:true,push:false});
 }
 function closeReport(){
@@ -1273,6 +1468,194 @@ function reportExitHTML(key){
     '<button class="fbbtn" onclick="goReportList()">测评目录</button>'+
     '<button class="fbbtn" onclick="continueReport(\''+key+'\')">继续看</button>'+
     '</div></div>';
+}
+function deepReportExitHTML(key){
+  return '<div class="report-exit"><div class="hint">深度报告用于把结论变成可执行计划。仍可补充真实情况，不作为命运定论。</div>'+
+    '<div class="report-actions">'+
+    '<button class="fbbtn" onclick="openReport(\''+key+'\',{force:true,push:false})">返回基础版</button>'+
+    '<button class="fbbtn" onclick="openModal(\'consult\')">预约解读</button>'+
+    '<button class="fbbtn" onclick="goReportList()">测评目录</button>'+
+    '</div></div>';
+}
+function openDeepReportFromPaywall(){
+  var key=currentReportKey||'beast';
+  closeModal();
+  renderDeepReport(key);
+  toast('已进入本项深度报告页');
+}
+function renderDeepReport(key){
+  var r=REPORTS[key]||REPORTS.beast;
+  currentReportKey=key;
+  $('sheetTitle').textContent=(r.title||'本项')+' · 深度报告';
+  $('sheetBody').innerHTML=key==='beast'?beastDeepReportHTML():key==='body'?bodyDeepReportHTML():genericDeepReportHTML(key,r);
+  $('sheetBody').insertAdjacentHTML('beforeend',deepReportExitHTML(key));
+  $('sheet').classList.add('open');
+  $('sheetBody').scrollTop=0;
+  updateSheetNav();
+}
+function beastDeepReportHTML(){
+  var h='<div class="beast"><div class="deep-badge">已解锁 · 本项深度报告</div><div class="av">🦌</div><div class="nm">神兽性格深度报告</div>';
+  h+='<div class="quote">基础版回答“你大概是什么样”。<br>深度版回答“为什么会这样、家人怎么说、接下来怎么培养”。</div></div>';
+  h+='<div class="deep-compare"><div class="box"><div class="k">基础版</div><div class="p">看见性格底色、四维倾向、基础沟通建议，适合第一次快速理解。</div></div>';
+  h+='<div class="box"><div class="k">深度版</div><div class="p">补齐误解点、触发场景、家庭话术、7 天行动和 30 天培养实验，适合真正拿来用。</div></div></div>';
+  h+='<div class="alert good"><div class="ic">✨</div><div class="bd"><div class="h">深度结论</div><div class="p">这个画像不是“慢”或“不主动”，而是需要先确认意义、路径和安全感。入口给对了，表达和行动都会更稳。</div></div></div>';
+  h+='<div class="card-title" style="margin-top:6px">四维深解<span class="ln"></span></div><div class="dim-grid">';
+  var dims=[
+    ['梦想','容易被误解为想太多','真正需要的是意义感和被看见。','先问愿望，再拆小目标；用“你想把它做成什么样”代替“这有什么用”。'],
+    ['路途/工作','容易被误解为启动慢','真正需要的是路径、节奏和资源感。','给两个方案、一个时间点和一个可完成的小任务，不要只催速度。'],
+    ['脾气','容易被误解为没脾气','真正状态是外柔内韧，底线被碰到会收回表达。','冲突时先私下谈，先降温再复盘；避免当众批评。'],
+    ['内心/思考','容易被误解为不愿说','真正需要的是安全感和表达空间。','先听完，再回应；允许暂停，但约好什么时候回来继续谈。']
+  ];
+  for(var i=0;i<dims.length;i++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+dims[i][0]+'</div><div class="chip">'+dims[i][1]+'</div></div>';
+    h+='<div class="main">'+dims[i][2]+'</div><div class="sub"><b>建议动作：</b>'+dims[i][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">标签与培养路径<span class="ln"></span></div><div class="dim-grid">';
+  var paths=[
+    ['当前主标签','支持/辅助型','适合在稳定关系和清晰任务里发挥，不适合一开始就被推到高压竞争场。','先培养表达、逻辑、复盘和协作，不急着贴“外向/内向好坏”标签。'],
+    ['兴趣班方向','表达 + 逻辑','写作、设计、自然观察、音乐表达、逻辑训练、项目复盘。','先看持续投入，不只看一次成绩。'],
+    ['岗位线索','稳定输出型','内容策划、研究整理、产品/运营、咨询助理、教育服务。','从兴趣到能力，再从能力到岗位，不直接定终身职业。'],
+    ['职业延展','教育/文化/研究支持','偏教育、文化创意、用户研究、非临床陪伴支持等方向可作为长期观察线索。','只做参考，不做职业定论或成功承诺。']
+  ];
+  for(var p=0;p<paths.length;p++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+paths[p][0]+'</div><div class="chip">'+paths[p][1]+'</div></div>';
+    h+='<div class="main">'+paths[p][2]+'</div><div class="sub"><b>判断方式：</b>'+paths[p][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">家庭沟通脚本<span class="ln"></span></div>';
+  var scripts=[
+    ['支持型家人','“我先听你想做什么，不急着判断。我们一起把它拆成今天能做的一步。”','少说：你别想那么多。'],
+    ['资源型家人','“我可以给你两个选择，你先挑一个试。需要资源我来帮你找。”','少说：你怎么还没开始。'],
+    ['稳定型家人','“你可以先不回答，我在这里。等你想说了，我们再慢慢讲。”','少说：你怎么什么都不说。'],
+    ['冲突场景','“刚才那句话可能让你不舒服。我们先停一下，晚点只谈下一步，不谈对错。”','少说：你就是玻璃心。']
+  ];
+  for(var s=0;s<scripts.length;s++){
+    h+='<div class="script-line"><div class="role">'+scripts[s][0]+'</div><div class="say">'+scripts[s][1]+'</div><div class="avoid">'+scripts[s][2]+'</div></div>';
+  }
+  h+='<div class="card-title" style="margin-top:6px">7 天行动计划<span class="ln"></span></div><div class="tline">';
+  var days=[
+    ['第 1 天','只观察一次：TA 在什么场景更愿意表达。'],
+    ['第 2 天','问一个梦想问题：你最近最想把哪件事做好。'],
+    ['第 3 天','一起拆一个小目标：今天只完成一步。'],
+    ['第 4 天','给一次具体正反馈：指出做得好的动作，而不是笼统夸。'],
+    ['第 5 天','允许一次独处恢复，不追问、不贴标签。'],
+    ['第 6 天','用家庭脚本谈一次学习/工作或兴趣。'],
+    ['第 7 天','复盘：哪句话有效、哪句话让对方收回去了。']
+  ];
+  for(var d=0;d<days.length;d++){
+    h+='<div class="tl"><div class="dot"></div><div class="tlb"><div class="tlt">'+days[d][0]+'</div><div class="tld">'+days[d][1]+'</div></div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">30 天培养实验<span class="ln"></span></div><div class="dim-grid">';
+  var experiments=[
+    ['表达实验','每周一次安静表达','写 200 字、讲 3 分钟、做一张图，任选一种。','看是否愿意主动持续，而不是看一次表现好坏。'],
+    ['逻辑实验','每周一次复盘','用“目标、过程、卡点、下一步”四句式复盘。','看是否能把想法整理成结构。'],
+    ['协作实验','每周一次小项目','参与内容整理、家庭计划、兴趣作品等小协作。','看是否能稳定承诺并完成分工。']
+  ];
+  for(var e=0;e<experiments.length;e++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+experiments[e][0]+'</div><div class="chip">'+experiments[e][1]+'</div></div>';
+    h+='<div class="main">'+experiments[e][2]+'</div><div class="sub"><b>观察重点：</b>'+experiments[e][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">案例库与人工校正<span class="ln"></span></div><div class="dim-grid">';
+  var caseRows=[
+    ['相似案例对照','找可复用动作','后续可对照同类家庭或人物案例，提炼“妈妈怎么说、爸爸怎么做、用什么事件训练”。','案例只用于行动参考，不做命运类比。'],
+    ['语言与事件沉淀','家庭资产','记录哪句话有效、哪件事能激发表达、哪种评价会让 TA 收回去。','把一次报告变成可复用的家庭教育经验。'],
+    ['半 AI 半人工','复杂问题再解释','性格电子化不能只靠自由 AI；复杂家庭沟通、标签冲突、重要选择应由解读师辅助校正。','不承诺绝对准确，不替代专业心理或医疗服务。']
+  ];
+  for(var cr=0;cr<caseRows.length;cr++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+caseRows[cr][0]+'</div><div class="chip">'+caseRows[cr][1]+'</div></div>';
+    h+='<div class="main">'+caseRows[cr][2]+'</div><div class="sub"><b>边界：</b>'+caseRows[cr][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="alert warn"><div class="ic">⚠️</div><div class="bd"><div class="h">深度报告边界</div><div class="p">不做正负命运定性，不承诺未来职业结果。它只提供家庭沟通和成长观察的行动参考。</div></div></div>';
+  h+=shareKitHTML('beast','生成低敏分享卡');
+  h+='<div class="hint" style="margin-top:-6px">分享卡只保留正向身份和轻建议，不分享家庭脚本、情绪风险或未成年人敏感信息。</div>';
+  h+=feedbackHTML('beastDeep');
+  h+=disclaimerHTML();
+  return h;
+}
+function bodyDeepReportHTML(){
+  var h='<div class="beast"><div class="deep-badge">已解锁 · 本项深度报告</div><div class="av">🫀</div><div class="nm">先天体质深度报告</div>';
+  h+='<div class="quote">基础版告诉你今天怎么做。<br>深度版帮你把 7 天习惯和家庭配合安排好。</div></div>';
+  h+='<div class="deep-compare"><div class="box"><div class="k">基础版</div><div class="p">体质底色、五类状态、今日三件小事、下一步入口。</div></div>';
+  h+='<div class="box"><div class="k">深度版</div><div class="p">五类状态细看、7 天养护计划、学习/工作安排、家庭配合和复看提醒。</div></div></div>';
+  h+='<div class="alert good"><div class="ic">🌿</div><div class="bd"><div class="h">深度结论</div><div class="p">当前最该先稳的是睡眠、饮食和舒展。状态稳了，学习、工作和家庭沟通的阻力都会下降。</div></div></div>';
+  h+='<div class="card-title" style="margin-top:6px">五类状态细看<span class="ln"></span></div><div class="dim-grid">';
+  var organs=[
+    ['活力和胆量','适合先启动','优势是热情、反应快、敢表达，可用于活动推进、表达展示、竞赛类小任务。','晚间提前收尾，重要沟通放在情绪更稳的时候；少熬夜、少刺激。'],
+    ['方向和舒展','适合先打开','优势是行动感、方向感和推动力，可用于策划、户外活动、创作表达和项目开头。','每天安排轻运动或拉伸，把目标写成可执行路径；少憋着。'],
+    ['稳定和消化','适合先规律','优势是持续执行、照顾细节、组织资源，可用于运营、项目管理、教育服务和后勤协调。','固定吃饭和复盘时间，先保规律再谈效率。'],
+    ['呼吸和节奏','适合慢下来','优势是节奏感、声音表达和边界感，可用于游泳、朗读、声乐、规则型训练和流程管理。','工作学习中留出短休息，练习规律呼吸，减少连续高压。'],
+    ['恢复和耐力','适合长期做','优势是耐心、恢复和长期积累，可用于阅读、研究、长期技能和知识整理。','把目标做成长期计划，不靠熬夜冲刺。']
+  ];
+  for(var o=0;o<organs.length;o++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+organs[o][0]+'</div><div class="chip">'+organs[o][1]+'</div></div>';
+    h+='<div class="main">'+organs[o][2]+'</div><div class="sub"><b>养护动作：</b>'+organs[o][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">7 天养护计划<span class="ln"></span></div><div class="tline">';
+  var days=[
+    ['第 1 天','记录昨晚睡眠、今天胃口、运动和情绪，不做判断。'],
+    ['第 2 天','晚间提前 30 分钟收尾，观察第二天专注变化。'],
+    ['第 3 天','午后散步或拉伸 10 分钟，让身体先动起来。'],
+    ['第 4 天','晚餐清淡一点，减少辛辣油炸，观察胃口和睡眠。'],
+    ['第 5 天','学习/工作采用 25 分钟专注 + 5 分钟舒展。'],
+    ['第 6 天','家庭沟通先问身体状态，再谈目标和要求。'],
+    ['第 7 天','复盘哪一个动作最有效，把它固定到下周。']
+  ];
+  for(var d=0;d<days.length;d++){
+    h+='<div class="tl"><div class="dot"></div><div class="tlb"><div class="tlt">'+days[d][0]+'</div><div class="tld">'+days[d][1]+'</div></div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">什么时候再看<span class="ln"></span></div><div class="dim-grid">';
+  var longView=[
+    ['每天看','今天做什么','早上看一眼，知道今天先稳睡眠、饮食、运动还是沟通。','解决“今天怎么照顾自己/孩子”。'],
+    ['阶段看','最近怎么调整','每隔一段时间看一次，观察睡眠、饮食、运动和情绪有没有变化。','帮助家庭把建议变成习惯。'],
+    ['全家看','家人怎么配合','孩子、父母、伴侣状态不同，提醒方式、饮食运动和沟通节奏也不同。','帮助家庭少误解，多用适合对方的方式沟通。']
+  ];
+  for(var lv=0;lv<longView.length;lv++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+longView[lv][0]+'</div><div class="chip">'+longView[lv][1]+'</div></div>';
+    h+='<div class="main">'+longView[lv][2]+'</div><div class="sub"><b>有什么用：</b>'+longView[lv][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">学习 / 工作 / 家庭配合<span class="ln"></span></div><div class="dim-grid">';
+  var scenes=[
+    ['学习','先稳状态再提要求','睡晚、久坐、胃口乱时，先调状态，再谈成绩。','减少把疲惫误判成不努力。'],
+    ['工作','用短周期保护精力','把任务拆成上午推进、午后舒展、晚上收尾。','让高能时段做关键事，低能时段做整理。'],
+    ['家庭','先照顾身体感受','先问“今天累不累、吃得怎么样”，再谈目标。','关系先稳，建议才进得去。']
+  ];
+  for(var s=0;s<scenes.length;s++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+scenes[s][0]+'</div><div class="chip">'+scenes[s][1]+'</div></div>';
+    h+='<div class="main">'+scenes[s][2]+'</div><div class="sub"><b>有什么用：</b>'+scenes[s][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="alert warn"><div class="ic">⚠️</div><div class="bd"><div class="h">深度报告边界</div><div class="p">本报告是养生文化与生活状态参考，不提供医学诊断、临床判断、用药建议或效果承诺。身体不适请及时就医。</div></div></div>';
+  h+=feedbackHTML('bodyDeep');
+  h+=disclaimerHTML();
+  return h;
+}
+function genericDeepReportHTML(key,r){
+  var title=(r&&r.title)||'本项';
+  var h='<div class="beast"><div class="deep-badge">已解锁 · 本项深度报告</div><div class="av">📘</div><div class="nm">'+title+'深度报告</div>';
+  h+='<div class="quote">深度版不只展示结论，还要给出原因、场景、行动计划和补充入口。</div></div>';
+  h+='<div class="deep-compare"><div class="box"><div class="k">基础版</div><div class="p">快速看核心结果、基础建议和下一步入口。</div></div>';
+  h+='<div class="box"><div class="k">深度版</div><div class="p">补充关键原因、风险边界、7 天行动计划、可复盘指标和人工解读入口。</div></div></div>';
+  h+='<div class="card-title" style="margin-top:6px">深度内容结构<span class="ln"></span></div><div class="dim-grid">';
+  var rows=[
+    ['为什么是这个结果','原因拆解','把基础结论拆成可理解的几个变量，避免只看一句判断。','用户知道依据，才愿意相信并继续用。'],
+    ['现在该怎么做','行动建议','给出今天、本周和本月的建议，不承诺改变命运。','用户买的不是解释，而是下一步。'],
+    ['怎么验证准不准','补充反馈','允许用户标注像、不像、需要补充什么。','报告越用越贴近真实场景。']
+  ];
+  for(var i=0;i<rows.length;i++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+rows[i][0]+'</div><div class="chip">'+rows[i][1]+'</div></div>';
+    h+='<div class="main">'+rows[i][2]+'</div><div class="sub"><b>价值：</b>'+rows[i][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+=feedbackHTML(key+'Deep');
+  h+=disclaimerHTML();
+  return h;
 }
 
 // ===== 通用富报告渲染器 =====
@@ -1328,13 +1711,11 @@ function richReport(box,c){
   }
   // 分享卡
   if(c.share){
-    h+='<div class="sharecard"><div class="seal2">身赋奇才</div>';
-    h+='<div style="font-family:var(--serif);font-size:19px;color:var(--gold-bright);letter-spacing:2px;margin:12px 0 4px">'+c.share+'</div>';
-    h+='<div class="hint">长按保存 · 分享给家人</div></div>';
+    h+=shareKitHTML(c.shareType||'beast',c.share);
   }
   // 付费/声明
   if(c.feedbackKey) h+=feedbackHTML(c.feedbackKey);
-  if(c.paywall) h+='<button class="btn btn-gold btn-block" onclick="paywall()">解锁全家深度报告</button>';
+  if(c.paywall) h+='<button class="btn btn-gold btn-block" onclick="paywall()">查看深度解锁方式</button><div class="hint" style="text-align:center">365 含家庭基础陪伴和基础版测评；完整深度报告按单项、组合或会员价解锁。</div>';
   if(c.care) h+='<div class="hint" style="margin-top:14px;text-align:center;color:var(--vermilion-bright)">'+c.care+'</div>';
   h+=disclaimerHTML();
   box.innerHTML=h;
@@ -1360,14 +1741,96 @@ function flowHTML(c){
   h+='</div>';
   return h;
 }
+function shareCardData(type,style){
+  var all={
+    today:{
+      low:{meta:'今日状态卡',headline:'今日综合状态 88',copy:'青色高能，宜主动。上午适合把想说的话说出口。',tags:['青色高能','宜主动','轻行动']},
+      fun:{meta:'今天的我',headline:'青色 buff 已上线',copy:'适合开口、见朋友、把拖了很久的小事往前推一步。',tags:['今日上分','适合主动','好运气质']},
+      deep:{meta:'今日状态参考',headline:'主动沟通日',copy:'交友与亲情指数偏高，适合用温和但明确的方式推动关系。',tags:['交友 88','亲情 92','非预测']}
+    },
+    beast:{
+      low:{meta:'神兽身份卡',headline:'我是温润灵鹿',copy:'外在温和，内里有主意；被理解时，能量最强。',tags:['支持型','外柔内韧','有方向感']},
+      fun:{meta:'我的神兽出没',headline:'灵鹿型人格认证',copy:'不抢话，但心里有地图。给我一点信任，我会自己走很远。',tags:['慢热','会观察','不爱被催']},
+      deep:{meta:'四维性格摘要',headline:'梦想清楚 · 路途偏稳',copy:'适合先被看见，再进入任务；家人沟通宜先肯定感受。',tags:['梦想','路途/工作','脾气','内心']}
+    },
+    potential:{
+      low:{meta:'潜能阶段卡',headline:'我的天赋阶段：跃迁前夜',copy:'显性表达已被看见，隐性逻辑和领导力正在等待被点亮。',tags:['显性表达','隐性逻辑','分阶段']},
+      fun:{meta:'隐藏技能雷达',headline:'我可能不是没天赋，是还没被点亮',copy:'给我一个舞台，再给我一个小任务，隐藏能力会慢慢冒出来。',tags:['待激发','成长型','别急着定性']},
+      deep:{meta:'潜能摘要',headline:'先给舞台，再给挑战',copy:'显性能力负责建立信心，隐性能力需要通过规划、复盘和协作触发。',tags:['表达 85','逻辑 72','领导力 64']}
+    },
+    career:{
+      low:{meta:'职业天赋卡',headline:'我的职业天赋：掌控协调型',copy:'适合在已有资源里做整合、运营、教育、咨询或项目管理。',tags:['协调','统筹','文教']},
+      fun:{meta:'工作人格',headline:'我不是硬冲型，我是会排兵布阵型',copy:'别只看谁跑得快，能把资源组织起来也是一种能力。',tags:['借力','整合','少内耗']},
+      deep:{meta:'职业摘要',headline:'先看长期精力消耗',copy:'适合文教、咨询、运营与项目统筹；纯冲刺销售可能更容易内耗。',tags:['沟通 88','统筹 82','内容 80']}
+    },
+    compare:{
+      low:{meta:'同频对比卡',headline:'我和 TA 72% 同频',copy:'相似点：都需要意义感。互补点：我稳节奏，TA 点燃行动。',tags:['相似 72%','互补','沟通建议']},
+      fun:{meta:'好友同测',headline:'我们是灵鹿 × 火雀组合',copy:'一个负责想清楚，一个负责先动起来。适合一起完成小项目。',tags:['CP感','互补型','一起测']},
+      deep:{meta:'关系沟通摘要',headline:'同频在价值，差异在节奏',copy:'建议先谈目标，再分工；避免在情绪上头时互相评价。',tags:['价值同频','节奏互补','非定论']}
+    },
+    family:{
+      low:{meta:'家族树点亮卡',headline:'我的家族之树点亮 4 人',copy:'每天看一眼关心的人：状态、提醒和一句更好说的话。',tags:['家庭陪伴','关注动态','家风']},
+      fun:{meta:'今天谁最懂我',headline:'找妈妈谈学习，找奶奶谈内心',copy:'家人不是都用同一种方式爱你，换个话题可能就顺了。',tags:['家庭默契','沟通卡','关系润滑']},
+      deep:{meta:'家庭单元摘要',headline:'365 家庭基础陪伴',copy:'家庭内成员免费进入；家族亲戚可轻量触达，深度使用另开家庭单元。',tags:['基础版','关注动态','深度另解锁']}
+    }
+  };
+  var group=all[type]||all.beast;
+  return group[style]||group.low;
+}
+function sharePreviewHTML(type,style){
+  var d=shareCardData(type,style), h='<div class="mini-code">测</div>';
+  h+='<div class="meta">'+d.meta+'</div><div class="headline">'+d.headline+'</div><div class="copy">'+d.copy+'</div><div class="tags">';
+  for(var i=0;i<d.tags.length;i++) h+='<span>'+d.tags[i]+'</span>';
+  h+='</div>';
+  return h;
+}
+function shareKitHTML(type,title){
+  return '<div class="sharekit"><div class="card-title" style="margin-bottom:10px">'+(title||'分享卡生成器')+'<span class="ln"></span></div>'+
+    '<div class="share-preview">'+sharePreviewHTML(type,'low')+'</div>'+
+    '<div class="share-actions">'+
+    '<button class="fbbtn sel" onclick="pickShareStyle(\''+type+'\',\'low\',this)">低调版</button>'+
+    '<button class="fbbtn" onclick="pickShareStyle(\''+type+'\',\'fun\',this)">好玩版</button>'+
+    '<button class="fbbtn" onclick="pickShareStyle(\''+type+'\',\'deep\',this)">深度版</button>'+
+    '</div><div class="hint">分享卡只展示正向标签、状态参考和轻行动入口，不展示敏感隐私。</div></div>';
+}
+function pickShareStyle(type,style,btn){
+  var kit=btn&&btn.closest?btn.closest('.sharekit'):null;
+  var preview=kit?kit.querySelector('.share-preview'):$('todaySharePreview');
+  if(preview) preview.innerHTML=sharePreviewHTML(type,style);
+  if(kit){
+    var bs=kit.querySelectorAll('.share-actions .fbbtn');
+    for(var i=0;i<bs.length;i++) bs[i].classList.remove('sel');
+    btn.classList.add('sel');
+  }
+  toast((style==='low'?'低调版':style==='fun'?'好玩版':'深度版')+'分享卡已生成');
+}
+function openShareLab(type){
+  var title=type==='today'?'今日状态卡':type==='compare'?'同频对比卡':type==='family'?'家庭沟通卡':'神兽身份卡';
+  $('modalBox').innerHTML='<div class="ic">✨</div><h3>生成分享卡</h3>'+
+    '<p>选择一种表达方式，生成适合朋友圈、微信群或家人私聊的轻量分享卡。被分享者进入后先做 30 秒轻测。</p>'+
+    shareKitHTML(type,title)+
+    '<div class="feedback" style="grid-template-columns:1fr 1fr">'+
+    '<button class="fbbtn" onclick="toast(\'分享卡已保存到相册\')">保存卡片</button>'+
+    '<button class="fbbtn" onclick="startLightTest()">好友轻测</button></div>';
+  $('modal').classList.add('open');
+}
+function initSharePreview(){
+  var el=$('todaySharePreview');
+  if(el) el.innerHTML=sharePreviewHTML('today','low');
+}
+function startLightTest(){
+  closeModal();
+  toast('进入 30 秒轻测：先看神兽身份卡');
+  openReport('beast');
+}
 function feedbackHTML(moduleKey){
-  return '<div class="card"><div class="card-title">反馈校正<span class="ln"></span></div>'+
-    '<div class="hint" style="margin-top:0">这一步用于校正解读，不做绝对承诺。你觉得哪里不符合，可以留下补充。</div>'+
+  return '<div class="card"><div class="card-title">这像你吗<span class="ln"></span></div>'+
+    '<div class="hint" style="margin-top:0">觉得哪里不像，或者想补充现在的真实状态，可以直接写下来。</div>'+
     '<div class="feedback">'+
     '<button class="fbbtn" onclick="markFeedback(\''+moduleKey+'\',\'fit\')">基本符合</button>'+
     '<button class="fbbtn" onclick="markFeedback(\''+moduleKey+'\',\'partial\')">部分不符</button>'+
     '<button class="fbbtn" onclick="markFeedback(\''+moduleKey+'\',\'talk\')">想补充</button></div>'+
-    '<div class="mini-form"><input id="fb-'+moduleKey+'" placeholder="哪里不对或想补充什么"><button class="btn btn-ghost" style="height:38px;padding:0 14px" onclick="submitFeedback(\''+moduleKey+'\')">提交</button></div></div>';
+    '<div class="mini-form"><input id="fb-'+moduleKey+'" placeholder="哪里不像，或想补充什么"><button class="btn btn-ghost" style="height:38px;padding:0 14px" onclick="submitFeedback(\''+moduleKey+'\')">提交</button></div></div>';
 }
 function toggleChip(el){ el.classList.toggle('sel'); }
 function markFeedback(moduleKey,level){
@@ -1377,82 +1840,105 @@ function markFeedback(moduleKey,level){
 function submitFeedback(moduleKey){
   var input=$('fb-'+moduleKey);
   MOCK_API_CONTRACT.feedback.last={moduleKey:moduleKey,fitLevel:'comment',comment:input?input.value:'',phoneOptional:''};
-  toast('已提交补充，后续可用于校正报告（演示）');
+  toast('已提交补充，后续可用于校正报告');
   if(input) input.value='';
 }
 
 // 神兽性格
 function renderBeast(box){
   var h='<div class="beast"><div class="av">🦌</div><div class="nm">温润 · 灵鹿</div>';
-  h+='<div class="tag">内向偏中 · 支持型人格</div>';
-  h+='<div class="quote">你像一只灵鹿——敏感、温和、有方向感。<br>表面安静，内里有主意；被理解时，能量最强。</div></div>';
-  h+=flowHTML({questions:['更喜欢先观察','被否定会收回表达','熟人面前更放松','需要意义感才行动'],result:'当前画像更接近支持型人格：外在温和，内在有底线，被理解时更容易主动。',advice:'家人沟通时先肯定感受，再给选择；少用“你怎么又”这类否定句。'});
-  h+='<div class="card-title" style="margin-top:18px">性格四维<span class="ln"></span></div>';
-  h+='<div class="radar-wrap"><canvas id="radar" width="280" height="240"></canvas></div>';
-  var accs=[
-    ['梦想维度（年柱）','理想色彩浓，向往「被认可的价值感」，需要意义驱动。'],
-    ['路途维度（月柱）','行动偏稳健，喜欢有准备再出发，临场爆发力中等。'],
-    ['脾气维度（日主）','外柔内韧，少发火但有底线，被触碰原则会坚持。'],
-    ['内心维度（时柱）','安全感来自亲密关系，独处可恢复能量。'],
-    ['名人同型参照','与多位「沉稳谋略型」公众人物同属一类（文化参照，非真实生辰认定）。'],
-    ['培养建议','多给表达舞台与正反馈；少用否定式施压，保护其内驱力。']
+  h+='<div class="tag">复合偏内向 · 支持/辅助型</div>';
+  h+='<div class="quote">外在温和，内里有主意；<br>被理解时，表达和行动都会变强。</div></div>';
+  h+='<div class="alert good"><div class="ic">✨</div><div class="bd"><div class="h">一眼结果</div><div class="p">这不是“慢”或“不主动”，而是需要先确认意义、路径和安全感。沟通入口给对了，TA 会更愿意说，也更愿意动。</div></div></div>';
+  h+='<div class="stat-grid"><div class="stat"><div class="v">复合偏内向</div><div class="k">性格底色</div><div class="sb">慢热但有主意</div></div><div class="stat"><div class="v">先看见</div><div class="k">沟通入口</div><div class="sb">再谈任务</div></div><div class="stat"><div class="v">表达/逻辑</div><div class="k">培养主线</div><div class="sb">从兴趣到能力</div></div></div>';
+  h+='<div class="card-title" style="margin-top:6px">报告依据<span class="ln"></span></div>';
+  h+='<div class="dim-grid">';
+  var basis=[
+    ['出生节律已用','首屏已填','出生年月日时和身份已经用于生成四维画像。','普通用户不用看底层规则，直接看结果和建议。'],
+    ['状态反馈可校正','越用越准','当前年龄阶段、家庭关系、兴趣投入和真实反馈，可用于后续校正。','性格不是一次定死，必须回到真实沟通和行动里验证。']
   ];
-  for(var i=0;i<accs.length;i++){
-    h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>'+accs[i][0]+'</span><span class="ar">›</span></div>';
-    h+='<div class="bd"><div class="inner">'+accs[i][1]+'</div></div></div>';
+  for(var ba=0;ba<basis.length;ba++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+basis[ba][0]+'</div><div class="chip">'+basis[ba][1]+'</div></div><div class="main">'+basis[ba][2]+'</div><div class="sub"><b>用户价值：</b>'+basis[ba][3]+'</div></div>';
   }
-  // 分享卡 + 付费
-  h+='<div class="sharecard"><div class="seal2">身赋奇才</div>';
-  h+='<div class="nm" style="font-family:var(--serif);font-size:20px;color:var(--gold-bright);letter-spacing:2px;margin:12px 0 4px">我是「温润灵鹿」</div>';
-  h+='<div class="hint">长按保存 · 分享你的神兽</div></div>';
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">今天就这样沟通<span class="ln"></span></div>';
+  h+='<div class="script-line"><div class="role">一句话入口</div><div class="say">“我先听你想做什么，不急着评价。我们一起把它拆成今天能做的一步。”</div><div class="avoid">少说：你别想太多、你怎么还不开始、你就是不主动。</div></div>';
+  h+=shareKitHTML('beast','神兽身份卡');
+  h+='<div class="feedback" style="grid-template-columns:1fr 1fr 1fr"><button class="fbbtn" onclick="openShareLab(\'compare\')">看同频对比</button><button class="fbbtn" onclick="openShareLab(\'family\')">生成家庭沟通卡</button><button class="fbbtn" onclick="startLightTest()">朋友轻测</button></div>';
+  h+='<div class="card-title" style="margin-top:6px">四维画像<span class="ln"></span></div>';
+  h+='<div class="hint" style="margin:-6px 0 12px">四维只表达性格倾向和沟通建议，不做分数排名。复杂规则放后台，前端先回答“看见什么、怎么回应、怎么培养”。</div>';
+  h+='<div class="dim-grid">';
+  var dims=[
+    ['梦想','需要意义感','想被看见和认可，需要做一件自己觉得有意义的事。','先问“你想把这件事做成什么样”，再一起拆成今天能完成的一步。'],
+    ['路途/工作','先看路再行动','不适合突然被催着冲，适合先看清路径、资源和节奏，再稳定推进。','给时间表和两个选择，不要只说“快点”。'],
+    ['脾气','外柔内韧','平时温和，不一定马上反驳；被否定、比较或触碰底线时会收回表达。','冲突时先降温，不当众评价，等情绪下来后再谈规则。'],
+    ['内心/思考','安全感很重要','内心想得多，独处能恢复能量；被理解时更愿意主动说。','先听完，不急着讲道理；给安静空间，再约时间回来谈。']
+  ];
+  for(var i=0;i<dims.length;i++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+dims[i][0]+'</div><div class="chip">'+dims[i][1]+'</div></div>';
+    h+='<div class="main">'+dims[i][2]+'</div><div class="sub"><b>家人怎么做：</b>'+dims[i][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>想看四维怎么来的</span><span class="ar">›</span></div><div class="bd"><div class="inner">后台会把出生节律转成梦想、路途/工作、脾气、内心/思考四个维度。前端不展示规则术语，也不把四维做成分数排名。</div></div></div>';
+  h+='<div class="card-title" style="margin-top:6px">家庭沟通匹配<span class="ln"></span></div>';
+  h+='<div class="hint" style="margin:-6px 0 12px">未邀请家人时先给角色建议；家庭成员进入后，再具体到妈妈、爸爸、奶奶或其他亲属。这里不是给家人排名，而是看哪个话题更适合谁来承接。</div>';
+  h+='<div class="dim-grid">';
+  var whos=[
+    ['谈梦想','支持型家人','适合先给肯定、看见方向的人来谈；家庭完善后可具体显示最合适的人。','先问愿望，再一起拆目标；不要一上来评价现实不现实。'],
+    ['谈学习/工作','资源型家人','适合能给方法、资源和选择的人来谈；不一定是最亲近的人。','给两个可选方案和必要资源，不急着催促。'],
+    ['谈内心','稳定型家人','适合情绪稳定、愿意听完的人来谈；先保护安全感。','先听感受，再回应；少讲大道理，少急着纠正。'],
+    ['谈不出来的话题','先换人换时间','公开比较、当众评价、连续追问，容易让表达和行动都收回去。','必要时换人、换时间、换成一对一沟通。']
+  ];
+  for(var w=0;w<whos.length;w++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+whos[w][0]+'</div><div class="chip">'+whos[w][1]+'</div></div>';
+    h+='<div class="main">'+whos[w][2]+'</div><div class="sub"><b>建议说法：</b>'+whos[w][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">沟通方式<span class="ln"></span></div>';
+  h+='<div class="dim-grid">';
+  var ways=[
+    ['先看见','先让对方感到被理解','先复述感受和优点，再讨论问题。','因为这个画像对否定比较敏感，先被看见，后面才听得进建议。'],
+    ['给选择','保留自主感','用两个可选方案替代命令句。','比“你必须”更容易启动，也更能保护内驱力。'],
+    ['小步走','降低启动压力','把期待拆成今天能完成的一件事。','大目标容易变成压力，小动作更容易完成并形成正反馈。'],
+    ['留余地','给安全感','需要安静时先允许暂停，约好再回来谈。','被逼着马上回答，容易防御；有余地反而更愿意回来沟通。']
+  ];
+  for(var y=0;y<ways.length;y++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+ways[y][0]+'</div><div class="chip">'+ways[y][1]+'</div></div>';
+    h+='<div class="main">'+ways[y][2]+'</div><div class="sub"><b>为什么：</b>'+ways[y][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">培养路径<span class="ln"></span></div>';
+  h+='<div class="hint" style="margin:-6px 0 12px">从兴趣班到能力，再到岗位和职业线索。这里不是直接定职业，而是先找更容易建立正反馈的方向。</div>';
+  h+='<div class="dim-grid">';
+  var grows=[
+    ['兴趣班','先从安静表达开始','写作、设计、自然观察、音乐表达、安静型创作。','观察是否愿意主动投入，而不是只看短期成绩。'],
+    ['能力','把想法说清楚','表达、逻辑、复盘、稳定协作。','这些能力能把内在想法转成外部成果。'],
+    ['岗位线索','稳定输出和研究整理','内容策划、研究分析、产品/运营、咨询助理。','先看长期精力是否可持续，再看是否有成长空间。'],
+    ['职业方向','教育和文化创意','教育、文化创意、用户研究、非临床陪伴支持。','只作为探索方向，后续要结合兴趣、能力和现实反馈校正。']
+  ];
+  for(var g=0;g<grows.length;g++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+grows[g][0]+'</div><div class="chip">'+grows[g][1]+'</div></div>';
+    h+='<div class="main">'+grows[g][2]+'</div><div class="sub"><b>怎么判断：</b>'+grows[g][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">性格标签<span class="ln"></span></div>';
+  h+='<div class="card"><div class="hint" style="margin-bottom:10px">当前更明显的标签</div><div class="pillwrap"><span class="pill">支持/辅助型</span><span class="pill">逻辑型</span><span class="pill">借力型</span><span class="pill">稳健型</span></div>';
+  h+='<div class="hint" style="margin-bottom:10px">完整标签库会继续观察，不一次性给孩子定性</div><div class="pillwrap"><span class="pill">创造型</span><span class="pill">创新型</span><span class="pill">研发型</span><span class="pill">开拓型</span><span class="pill">领导型</span></div></div>';
+  h+='<div class="card-title" style="margin-top:6px">案例库对照<span class="ln"></span></div>';
+  h+='<div class="dim-grid">';
+  var cases=[
+    ['相似人物参考','只取可学习动作','后续可用名人或真实案例做参照，但只提炼“怎么表达、怎么训练、怎么沟通”。','不说“你就是某某”，也不做命运类类比。'],
+    ['家庭训练事件','用小事验证','每周一次表达、复盘或协作小任务，看哪种语言和事件最有效。','把性格建议变成可观察的家庭教育动作。']
+  ];
+  for(var c=0;c<cases.length;c++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+cases[c][0]+'</div><div class="chip">'+cases[c][1]+'</div></div><div class="main">'+cases[c][2]+'</div><div class="sub"><b>边界：</b>'+cases[c][3]+'</div></div>';
+  }
+  h+='</div>';
   h+=feedbackHTML('beast');
-  h+='<button class="btn btn-gold btn-block" onclick="paywall()">解锁全家深度报告</button>';
+  h+='<button class="btn btn-gold btn-block" onclick="paywall()">查看深度解锁方式</button>';
+  h+='<div class="hint" style="text-align:center">365 含基础版和家庭陪伴；完整四维深度报告可单项或会员价解锁。</div>';
   h+=disclaimerHTML();
   box.innerHTML=h;
-  setTimeout(function(){ drawRadar(); var a=box.querySelector('.acc'); if(a) a.classList.add('open'); },150);
-}
-
-// 雷达图
-function drawRadar(){
-  var cv=$('radar'); if(!cv||!cv.getContext) return;
-  var ctx=cv.getContext('2d');
-  var cx=140, cy=120, R=86;
-  var labels=['梦想','行动','脾气','内心','社交','韧性'];
-  var vals=[0.85,0.6,0.7,0.8,0.45,0.75];
-  var n=labels.length;
-  ctx.clearRect(0,0,280,240);
-  // 网格
-  for(var g=1;g<=4;g++){
-    ctx.beginPath();
-    for(var i=0;i<=n;i++){
-      var a=-Math.PI/2 + i*2*Math.PI/n;
-      var r=R*g/4;
-      var x=cx+r*Math.cos(a), y=cy+r*Math.sin(a);
-      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
-    }
-    ctx.strokeStyle='rgba(217,180,106,0.13)'; ctx.stroke();
-  }
-  // 轴与标签
-  ctx.fillStyle='rgba(236,228,212,0.6)'; ctx.font='11px sans-serif'; ctx.textAlign='center';
-  for(var i2=0;i2<n;i2++){
-    var a2=-Math.PI/2 + i2*2*Math.PI/n;
-    ctx.beginPath(); ctx.moveTo(cx,cy);
-    ctx.lineTo(cx+R*Math.cos(a2), cy+R*Math.sin(a2));
-    ctx.strokeStyle='rgba(217,180,106,0.1)'; ctx.stroke();
-    ctx.fillText(labels[i2], cx+(R+16)*Math.cos(a2), cy+(R+16)*Math.sin(a2)+4);
-  }
-  // 数据多边形
-  ctx.beginPath();
-  for(var k=0;k<=n;k++){
-    var idx=k%n; var a3=-Math.PI/2 + idx*2*Math.PI/n; var r3=R*vals[idx];
-    var x3=cx+r3*Math.cos(a3), y3=cy+r3*Math.sin(a3);
-    k===0?ctx.moveTo(x3,y3):ctx.lineTo(x3,y3);
-  }
-  ctx.closePath();
-  var grad=ctx.createLinearGradient(0,0,280,240);
-  grad.addColorStop(0,'rgba(111,174,154,0.45)'); grad.addColorStop(1,'rgba(217,180,106,0.45)');
-  ctx.fillStyle=grad; ctx.fill();
-  ctx.strokeStyle='#d9b46a'; ctx.lineWidth=1.5; ctx.stroke();
 }
 
 // 奋斗愿力
@@ -1484,21 +1970,21 @@ function renderDrive(box){
   },200);
 }
 
-// 情绪风险测评
+// 情绪状态关怀
 function renderEmotion(box){
   recalcPreAssessment();
   var p=MOCK_API_CONTRACT.preAssessment, w=p.weights||calcPreAssessmentWeights(p);
   var score=p.emotionRiskScore||0, label=riskLabel(score);
   var role=MOCK_API_CONTRACT.birthProfile.role==='guardian_for_minor'?'儿童/青少年版本':'成人版本';
-  var h='<div class="beast"><div class="av">🫧</div><div class="nm">情绪风险测评</div>';
+  var h='<div class="beast"><div class="av">🫧</div><div class="nm">情绪状态关怀</div>';
   h+='<div class="tag">'+role+' · 非临床筛查</div>';
-  h+='<div class="quote">先看现象，再看风险。<br>运动、手机、空窗、方向感和动力都会影响当前结果。</div></div>';
-  h+='<div class="stat-grid"><div class="stat"><div class="v">'+score+'</div><div class="k">风险指数</div><div class="sb">'+label+'</div></div><div class="stat"><div class="v">'+p.confuseStage+'</div><div class="k">阶段</div><div class="sb">来自前置问卷</div></div><div class="stat"><div class="v">'+(p.phone==='high'?'高':'可控')+'</div><div class="k">手机沉浸</div><div class="sb">行为权重</div></div></div>';
+  h+='<div class="quote">先看现象，再看近期需要关注的状态。<br>运动、手机、空窗、方向感和动力都会影响当前结果。</div></div>';
+  h+='<div class="stat-grid"><div class="stat"><div class="v">'+score+'</div><div class="k">关注指数</div><div class="sb">'+label+'</div></div><div class="stat"><div class="v">'+p.confuseStage+'</div><div class="k">阶段</div><div class="sb">来自前置问卷</div></div><div class="stat"><div class="v">'+(p.phone==='high'?'高':'可控')+'</div><div class="k">手机沉浸</div><div class="sb">行为权重</div></div></div>';
   h+='<div class="card-title" style="margin-top:6px">权重来源<span class="ln"></span></div><div class="card">';
   var rows=[
     ['长期不运动',w.exercise,'录音示例：不爱运动可先增加 20% 风险'],
     ['手机沉浸',w.phone,'影响注意力、睡眠和空窗感'],
-    ['空窗状态',w.window,'空窗期更容易叠加情绪风险'],
+    ['空窗状态',w.window,'空窗期更需要稳定支持和生活节律'],
     ['迷茫感',w.confuse,'与方向和阶段判断联动'],
     ['方向感弱',w.direction,'没有方向会放大无力感'],
     ['动力不足',w.drive,'影响行动恢复速度']
@@ -1515,7 +2001,7 @@ function renderEmotion(box){
   }
   h+='<button class="btn btn-ghost btn-block" onclick="openModal(\'care\')">查看专业求助入口</button>';
   h+=feedbackHTML('emotion');
-  h+='<div class="hint" style="margin-top:14px;text-align:center;color:var(--vermilion-bright)">本模块为情绪风险筛查与陪伴建议，不能替代专业心理诊断与治疗。</div>';
+  h+='<div class="hint" style="margin-top:14px;text-align:center;color:var(--vermilion-bright)">本模块为情绪状态筛查与陪伴建议，不能替代专业心理诊断与治疗。</div>';
   box.innerHTML=h;
   setTimeout(function(){var bs=box.querySelectorAll('.bar i');for(var k=0;k<bs.length;k++)bs[k].style.width=bs[k].getAttribute('data-w')+'%';},150);
 }
@@ -1552,34 +2038,86 @@ function renderConfuse(box){
 function renderBody(box){
   var h='<div class="beast"><div class="av">🫀</div><div class="nm">先天体质</div>';
   h+='<div class="tag">首报告 · 先看底子</div>';
-  h+='<div class="quote">参考《黄帝内经》与五运六气，<br>先看体质节奏，再决定今天怎么养、怎么学、怎么用力。</div></div>';
-  h+=flowHTML({questions:['最近睡得晚','容易上火急躁','久坐少动','胃口不稳','眼睛容易累'],result:'当前示例显示「心火偏旺、肝木需舒、脾土要稳」。这是养生文化参考，不是医学诊断。',advice:'今天先做三件小事：早一点睡、少辛辣、午后舒展 10 分钟。'});
-  h+='<div class="card-title" style="margin-top:6px">五类状态排序<span class="ln"></span></div>';
+  h+='<div class="quote">先看你今天适合怎么养，<br>再看学习、工作和家人沟通怎么安排。</div></div>';
+  h+='<div class="alert good"><div class="ic">🌿</div><div class="bd"><div class="h">一眼结果</div><div class="p">你今天更像“偏热偏急”的状态：反应快、有热情，但也容易急、睡晚、上头。先把睡眠、饮食和舒展稳住。</div></div></div>';
+  h+='<div class="stat-grid"><div class="stat"><div class="v">偏热偏急</div><div class="k">体质底色</div><div class="sb">先稳下来</div></div><div class="stat"><div class="v">三件小事</div><div class="k">今天先做</div><div class="sb">早收尾 / 清淡 / 舒展</div></div><div class="stat"><div class="v">先问累不累</div><div class="k">家人提醒</div><div class="sb">再谈要求</div></div></div>';
+  h+='<div class="card-title" style="margin-top:6px">五类状态<span class="ln"></span></div>';
+  h+='<div class="hint" style="margin:-6px 0 12px">这是今天的状态排序，不是好坏排名。靠前的可以拿来发挥，靠后的更需要温和照顾。</div>';
   h+='<div class="card">';
   var bars=[
-    ['心火状态',82,'linear-gradient(90deg,var(--vermilion),var(--gold))'],
-    ['肝木舒展',76,'linear-gradient(90deg,var(--jade),var(--gold))'],
-    ['脾土承载',68,'linear-gradient(90deg,#c9b06a,var(--gold))'],
-    ['肺金节律',60,'linear-gradient(90deg,#d9b46a,#f0d398)'],
-    ['肾水蓄力',54,'linear-gradient(90deg,#56788f,var(--jade))']
+    ['01 活力和胆量',82,'较明显','反应快、有热情，适合先启动；同时注意急躁或睡晚。','linear-gradient(90deg,var(--vermilion),var(--gold))'],
+    ['02 方向和舒展',76,'需要打开','有想法时行动更顺，适合活动、表达、伸展，不适合一直憋着。','linear-gradient(90deg,var(--jade),var(--gold))'],
+    ['03 稳定和消化',68,'先稳住','饭点和作息稳下来，持续力会更好。','linear-gradient(90deg,#c9b06a,var(--gold))'],
+    ['04 呼吸和节奏',60,'慢下来','需要短休息、深呼吸和清楚边界，不宜一直紧绷。','linear-gradient(90deg,#d9b46a,#f0d398)'],
+    ['05 恢复和耐力',54,'慢慢蓄力','耐力靠长期积累，不适合长期熬夜和透支。','linear-gradient(90deg,#56788f,var(--jade))']
   ];
   for(var b=0;b<bars.length;b++){
-    h+='<div class="barrow"><div class="bl"><span>'+bars[b][0]+'</span><span class="bv">'+bars[b][1]+'</span></div><div class="bar"><i data-w="'+bars[b][1]+'" style="background:'+bars[b][2]+'"></i></div></div>';
+    h+='<div class="barrow"><div class="bl"><span>'+bars[b][0]+'</span><span class="bv">'+bars[b][2]+'</span></div><div class="bar"><i data-w="'+bars[b][1]+'" style="background:'+bars[b][4]+'"></i></div><div class="hint" style="margin-top:4px">'+bars[b][3]+'</div></div>';
   }
   h+='</div>';
-  var accs=[['为什么首报告先看体质','用户最先需要的是确定感：我/孩子的底子是什么、今天该怎么照顾、什么节奏更省力。体质比性格更容易转成当天行动。'],
-    ['今年主气倾向','丙午年火气偏旺，宜清心、忌焦躁，睡眠要规律。'],
-    ['学习与工作参考','体质节奏偏急时，不宜长时间硬扛；适合短周期闭环、适度运动后再进入深度任务。'],
-    ['家庭沟通参考','如果是孩子，先处理睡眠、饮食、运动节律，再谈成绩与目标，避免把身体疲惫误判成不努力。'],
-    ['饮食参考','可多食清润之物；具体请遵医嘱与个人体质。']];
-  for(var i=0;i<accs.length;i++){
-    h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>'+accs[i][0]+'</span><span class="ar">›</span></div><div class="bd"><div class="inner">'+accs[i][1]+'</div></div></div>';
+  h+='<div class="card-title" style="margin-top:6px">强项怎么用<span class="ln"></span></div>';
+  h+='<div class="hint" style="margin:-6px 0 12px">先把明显的状态用到合适的地方，再把容易累的地方照顾好。</div>';
+  h+='<div class="dim-grid">';
+  var traitUse=[
+    ['胆量与启动','敢开口 / 反应快','适合用在需要主动开口、带动气氛、快速开始的事情上。','可以先试：球类、竞赛、舞台表达、演讲主持、活动推进。','注意：容易急、睡晚、上头。先从提前收尾、减少刺激、运动后放松开始。'],
+    ['方向与行动','有想法 / 能推动','适合用在定方向、做计划、开新局、把想法推动出去的事情上。','可以先试：户外、拉伸、舞蹈、创作表达、策划、小项目推进。','注意：长期憋闷和久坐会影响状态。重点是舒展、表达、少压抑。'],
+    ['稳定与承载','能落地 / 能持续','适合用在稳定执行、照顾细节、组织资源、把事情做完的场景。','可以先试：烹饪、手作、整理、长期练习、项目管理、服务协作。','注意：饮食和作息乱时容易拖慢节奏。重点是规律吃饭、规律复盘。'],
+    ['节奏与表达','会听节奏 / 有边界','适合用在声音表达、规则感、边界感和稳定输出的事情上。','可以先试：游泳、跑步、朗读、声乐、规则型训练、流程整理。','注意：长期紧绷会累。重点是规律呼吸、短休息和减少连续高压。'],
+    ['恢复与耐力','慢慢积累 / 长期做','适合用在耐心、长期学习、研究整理和持续守住节奏的事情上。','可以先试：阅读、研究、长期技能、低强度耐力运动、资料整理。','注意：不适合长期熬夜透支。重点是稳定睡眠和长期计划。']
+  ];
+  for(var u=0;u<traitUse.length;u++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+traitUse[u][0]+'</div><div class="chip">'+traitUse[u][1]+'</div></div>';
+    h+='<div class="main">'+traitUse[u][2]+'<br>'+traitUse[u][3]+'</div><div class="sub"><b>注意与保养：</b>'+traitUse[u][4]+'</div></div>';
   }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">今天怎么养<span class="ln"></span></div><div class="dim-grid">';
+  var today=[
+    ['睡眠','提前 30 分钟收尾','先把入睡时间往前挪一点，别直接要求“必须早睡”。','睡眠先稳，情绪、专注和动力才更容易稳。'],
+    ['饮食','少辛辣油炸','今天先清淡一点，多喝水，晚餐别太撑。','这是养生文化建议，不替代医生或营养师意见。'],
+    ['舒展','午后 10 分钟','散步、拉伸肩颈、舒展眼睛都可以。','让身体先舒展开，比硬坐着扛更省力。']
+  ];
+  for(var t=0;t<today.length;t++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+today[t][0]+'</div><div class="chip">'+today[t][1]+'</div></div><div class="main">'+today[t][2]+'</div><div class="sub"><b>为什么：</b>'+today[t][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">学习 / 工作节奏<span class="ln"></span></div><div class="dim-grid">';
+  var rhythm=[
+    ['任务节奏','短周期闭环','先做 25 分钟，再休息 5 分钟；重要任务放在精神更清醒的时段。','状态偏急时，长时间硬扛容易反弹。'],
+    ['用力方式','先舒展再专注','运动或拉伸后，再进入需要专注的学习/工作。','先把身体状态带顺，心力更容易接上。'],
+    ['复盘方式','看状态不贴标签','如果状态差，先看睡眠、饮食、运动，再复盘方法。','不要把身体疲惫直接解释成懒或不努力。']
+  ];
+  for(var r=0;r<rhythm.length;r++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+rhythm[r][0]+'</div><div class="chip">'+rhythm[r][1]+'</div></div><div class="main">'+rhythm[r][2]+'</div><div class="sub"><b>有什么用：</b>'+rhythm[r][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">家人怎么帮<span class="ln"></span></div><div class="script-line"><div class="role">先问状态，再谈要求</div><div class="say">建议说法：“我先问问你今天累不累、睡得怎么样。我们把状态稳一下，再一起看学习/工作。”</div><div class="avoid">少说：你就是不努力、你怎么又这样。状态差时，直接讲道理往往效果更差。</div></div>';
+  h+='<div class="card-title" style="margin-top:6px">适合先试什么<span class="ln"></span></div><div class="dim-grid">';
+  var directions=[
+    ['兴趣','动静结合','表达、自然观察、音乐节奏、轻运动类兴趣可先试。','看是否能带来稳定投入，而不是一次表现。'],
+    ['运动','轻汗和舒展','散步、拉伸、八段锦、轻球类，比突然高强度更适合起步。','先建立连续性，再谈强度。'],
+    ['职业线索','短周期 + 有反馈','适合有节奏、有反馈、可阶段性产出的方向，如内容、教育、运营、协调类任务。','这里只是方向参考，不是职业定论。']
+  ];
+  for(var d=0;d<directions.length;d++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+directions[d][0]+'</div><div class="chip">'+directions[d][1]+'</div></div><div class="main">'+directions[d][2]+'</div><div class="sub"><b>怎么判断：</b>'+directions[d][3]+'</div></div>';
+  }
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">什么时候再看<span class="ln"></span></div><div class="dim-grid">';
+  var revisit=[
+    ['每天看','今天怎么做','每天给一条能马上做的小建议。','解决“今天怎么照顾自己/孩子”。'],
+    ['阶段看','最近怎么调','过一段时间再看睡眠、饮食、运动和情绪有没有变化。','把建议变成习惯，而不是看完就忘。'],
+    ['全家看','每个人不一样','同一句话、同一种要求，对不同家人的效果不一样。','帮助家人少误解，多用适合对方的方式沟通。']
+  ];
+  for(var rv=0;rv<revisit.length;rv++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+revisit[rv][0]+'</div><div class="chip">'+revisit[rv][1]+'</div></div><div class="main">'+revisit[rv][2]+'</div><div class="sub"><b>有什么用：</b>'+revisit[rv][3]+'</div></div>';
+  }
+  h+='</div>';
   h+='<div class="feedback" style="grid-template-columns:1fr 1fr"><button class="fbbtn" onclick="openReport(\'beast\')">下一步看神兽性格</button><button class="fbbtn" onclick="openReport(\'drive\')">下一步看奋斗愿力</button></div>';
+  h+='<button class="btn btn-gold btn-block" onclick="paywall()">查看深度解锁方式</button>';
+  h+='<div class="hint" style="text-align:center">基础版先给今天能用的建议；深度版会给 7 天养护计划、家庭配合和复看提醒。</div>';
   h+=feedbackHTML('body');
   h+='<div class="hint" style="margin-top:14px;text-align:center;color:var(--vermilion-bright)">本模块为养生文化关怀，非医学诊断，身体不适请就医。</div>';
   box.innerHTML=h;
-  setTimeout(function(){ var a=box.querySelector('.acc'); if(a) a.classList.add('open'); var bs=box.querySelectorAll('.bar i'); for(var k=0;k<bs.length;k++) bs[k].style.width=bs[k].getAttribute('data-w')+'%'; },150);
+  setTimeout(function(){ var bs=box.querySelectorAll('.bar i'); for(var k=0;k<bs.length;k++) bs[k].style.width=bs[k].getAttribute('data-w')+'%'; },150);
 }
 
 // 婚姻测评
@@ -1611,8 +2149,58 @@ function invite(el,who){
   el.querySelector('.nm').textContent=who;
   el.onclick=null;
   invited++;
-  if(invited===1){ toast('🌿 已邀请'+who+'（免费）。家族之树点亮一格！'); }
-  else { toast('继续完善家庭，关系建议会更准 · 次日深度报告需开通年卡'); }
+  if(invited===1){ toast('🌿 已邀请'+who+'：家庭内成员免费进入基础版'); }
+  else { toast('继续完善家庭，关注动态和沟通建议会更准'); }
+}
+function inviteClan(el,who){
+  el.classList.remove('empty'); el.classList.add('lit');
+  el.querySelector('.c').textContent='🌿';
+  el.querySelector('.nm').textContent=who;
+  el.onclick=null;
+  toast(who+'已进入家族轻量入口；深度使用需开通自己的 365 家庭单元');
+}
+function touchClanRole(btn,who){
+  btn.classList.toggle('sel');
+  toast('已选择'+who+'：可先发送家族轻量入口，深度使用另开家庭单元');
+}
+var FAMILY_VIEW_DATA={
+  '我的页面':[
+    ['🌿','孩子 · 今日专注力偏高','适合安排安静练习。仅展示状态提示，不展示隐私细节。'],
+    ['🫂','妈妈 · 适合谈学习节奏','先肯定，再给选择题；避免命令式表达。'],
+    ['🏡','姥姥 · 今日适合关心身体节律','用问候和陪伴替代诊断式判断，身体不适仍建议就医。'],
+    ['🌳','姑姑 · 家族轻量入口','可查看家族文化与基础状态；要管理自己的家庭单元需独立开通。']
+  ],
+  '孩子页面':[
+    ['📚','今日学习节奏','先做 25 分钟安静任务，再给 5 分钟反馈。'],
+    ['🔥','奋斗愿力提醒','更适合小目标闭环，不适合用比较刺激。'],
+    ['🫂','谁来沟通','学习节奏找妈妈，情绪安抚找奶奶，资源支持找爸爸。']
+  ],
+  '亲属页面':[
+    ['🌳','姑姑 · 轻量已触达','可看家族文化和基础状态，深度报告需她自己的家庭单元授权。'],
+    ['🏡','舅舅 · 待邀请','适合先发送家风卡，不直接推付费。'],
+    ['🔒','授权边界','成人亲属只展示其授权后的低敏状态和沟通建议。']
+  ],
+  '家族总览':[
+    ['🌳','家族树点亮 4/12','家庭单元负责留存，家族网络负责关系连接。'],
+    ['💬','今日适合谈的话题','学习找妈妈，工作找爷爷，内心找奶奶。'],
+    ['✨','可传播资产','家族树点亮卡、家庭沟通卡、今日状态卡可用于轻量分享。']
+  ]
+};
+function renderFamilyView(name){
+  var list=$('familyWatchList'); if(!list) return;
+  var rows=FAMILY_VIEW_DATA[name]||FAMILY_VIEW_DATA['我的页面'], h='';
+  for(var i=0;i<rows.length;i++){
+    h+='<div class="watch"><div class="av">'+rows[i][0]+'</div><div><div class="h">'+rows[i][1]+'</div><div class="p">'+rows[i][2]+'</div></div></div>';
+  }
+  list.innerHTML=h;
+  var cap=$('familyViewCaption'); if(cap) cap.textContent=name;
+}
+function switchFamilyView(btn,name){
+  var chips=btn.parentNode.querySelectorAll('.switch-chip');
+  for(var i=0;i<chips.length;i++) chips[i].classList.remove('sel');
+  btn.classList.add('sel');
+  renderFamilyView(name);
+  toast('已切换到：'+name);
 }
 
 // 心情打卡 —— 合规安全流程核心
@@ -1662,23 +2250,30 @@ var MODALS={
     '<div class="care">如果你正经历强烈的情绪困扰，请记得：你并不孤单，也值得被专业地帮助。<br><br>📞 心理援助热线（示例）：<b>400-161-9995</b><br>🏥 建议尽快联系专业心理医生或前往医院。</div>'+
     '<p>身赋奇才的情绪陪伴属于<b>非临床的倾听与陪伴</b>，<b>不能替代专业诊断与治疗</b>。我们已为你准备好转介通道。</p>'+
     '<button class="btn btn-gold btn-block" onclick="closeModal()">我知道了</button>'+
-    '<div style="margin-top:10px"><span class="btn btn-ghost btn-block" onclick="toast(\'已为你预约持证心理咨询师（演示）\');closeModal()">预约专业咨询师</span></div>'},
-  paywall:{html:'<div class="ic">🔓</div><h3>解锁全家深度报告</h3>'+
-    '<p>开通「连山易家庭年卡」，全家全年深度报告、多日运势、对冲提醒、家族文化，平均一天一元。</p>'+
-    '<div style="font-family:var(--serif);font-size:28px;color:var(--gold-bright);margin-bottom:14px">¥365 <small style="font-size:13px;color:var(--txt-dim)">/年·一家人</small></div>'+
-    '<button class="btn btn-gold btn-block" onclick="toast(\'原型演示，未接入支付\');closeModal()">立即开通</button>'+
-    '<div class="hint" style="margin-top:10px">先免费邀请爸妈体验，也能解锁更多哦</div>'},
+    '<div style="margin-top:10px"><span class="btn btn-ghost btn-block" onclick="toast(\'已提交专业咨询预约\');closeModal()">预约专业咨询师</span></div>'},
+  paywall:{html:'<div class="ic">🔓</div><h3>选择解锁方式</h3>'+
+    '<p>365 是家庭单元基础陪伴，不是全部深度报告通票。你可以先开通家庭基础陪伴，也可以只解锁当前这份深度报告。</p>'+
+    '<div class="value-ladder" style="margin-bottom:14px;text-align:left">'+
+    '<div class="tier"><div class="k">365 家庭单元</div><div class="p">家庭内成员进入、基础版测评、今日状态、家庭沟通、关注动态。</div><div class="price2">365/年</div></div>'+
+    '<div class="tier"><div class="k">本项深度报告</div><div class="p">完整维度、长期趋势、行动方案和更细的关系/成长建议。</div><div class="price2">单项/会员价</div></div></div>'+
+    '<button class="btn btn-gold btn-block" onclick="toast(\'当前仅展示开通流程，暂未接入支付\');closeModal()">开通家庭基础陪伴</button>'+
+    '<div style="margin-top:10px"><button class="btn btn-ghost btn-block" onclick="openDeepReportFromPaywall()">只解锁本项深度报告</button></div>'+
+    '<div style="margin-top:10px"><button class="btn btn-ghost btn-block" onclick="closeModal()">暂不解锁，继续看基础版</button></div>'},
   privacy:{html:'<div class="ic">🔒</div><h3>隐私与数据</h3>'+
     '<p>你的出生信息仅用于生成报告，<b>加密存储于境内</b>，不对外泄露。解读师仅在你授权时、最小范围内查看，且全程留痕审计。<br><br>未满 14 岁用户须由监护人操作。你可随时一键删除全部数据。</p>'+
-    '<button class="btn btn-gold btn-block" onclick="toast(\'演示：数据删除入口\');closeModal()">一键删除我的数据</button>'},
+    '<button class="btn btn-gold btn-block" onclick="toast(\'已收到删除申请\');closeModal()">一键删除我的数据</button>'},
   disclaimer:{html:'<div class="ic">📖</div><h3>文化娱乐声明</h3>'+
     '<p>本产品内容基于《黄帝内经》《易经》等东方传统文化整理，<b>仅供文化娱乐与自我参考</b>，不构成命运预测、医疗、投资或任何专业建议。<br><br>请理性看待，把它当作认识自己与陪伴家人的一种方式。</p>'+
     '<button class="btn btn-gold btn-block" onclick="closeModal()">已了解</button>'},
-  docnote:{html:'<div class="ic">📘</div><h3>原型设计说明</h3>'+
-    '<p style="text-align:left">这是「连山易·身赋奇才」的移动端可交互原型，配套 6 份设计文档：<br><br>'+
-    '· 01 产品需求(PRD)<br>· 02 商业模式<br>· 03 合规与风险（必读）<br>· 04 信息架构与用户旅程<br>· 05 技术架构<br>· 06 MVP与路线图<br><br>'+
-    '原型已落地：先天体质首报告、核心六项、检测-结果-建议-反馈闭环、峰终（首报告+神兽分享）、渐进式披露、每日双引擎、家庭沟通、案例库占位、<b>情绪关怀合规安全流程</b>。<br><br>'+
-    '430/四点半课后服务仅作为渠道试点假设，不在用户端做渠道背书或效果承诺。当前原型受 <b>spec/planned/prototype-v2-interactive-core.md</b> 与 <b>test/prototype/prototype-v2-checklist.md</b> 约束，属于 P0 验证材料，未接入真实后端、支付、AI 自由对话或真实算法。</p>'+
+  consult:{html:'<div class="ic">💬</div><h3>解读师咨询</h3>'+
+    '<p>用于承接复杂家庭沟通、职业/升学选择、深度报告解释等场景。正式产品必须先获得用户授权，解读师只看最小必要信息，并保留操作审计。</p>'+
+    '<div class="care">情绪危机场景不由普通解读师处理，应转介持证心理咨询师或医疗机构。</div>'+
+    '<button class="btn btn-gold btn-block" onclick="toast(\'已提交咨询预约\');closeModal()">预约一次解读</button>'+
+    '<div style="margin-top:10px"><button class="btn btn-ghost btn-block" onclick="closeModal()">暂不预约</button></div>'},
+  docnote:{html:'<div class="ic">📘</div><h3>评审说明</h3>'+
+    '<p style="text-align:left">这是「连山易·身赋奇才」的移动端交互评审版，用来判断主路径、家庭网络、分享传播、365 权益和合规边界是否成立。<br><br>'+
+    '已覆盖：先天体质首报告、主要测评、检测-结果-建议-反馈闭环、神兽/今日/同频分享、家庭/家族单元、365 权益分层、隐私授权、案例库、咨询入口和<b>情绪关怀安全流程</b>。<br><br>'+
+    '430/四点半课后服务仅作为渠道试点假设，不在用户端做渠道背书或效果承诺。当前评审版不接真实后端、真实支付、自由对话服务或真实算法计算。</p>'+
     '<button class="btn btn-gold btn-block" onclick="closeModal()">开始体验</button>'}
 };
 function openModal(k){ var m=MODALS[k]; if(!m)return; $('modalBox').innerHTML=m.html; $('modal').classList.add('open'); }
@@ -1693,6 +2288,8 @@ $('bellBtn')&&$('bellBtn').addEventListener('click',function(){
 $('notifMask')&&$('notifMask').addEventListener('click',closeNotif);
 $('notifClear')&&$('notifClear').addEventListener('click',clearNotif);
 updateBadge();
+initSharePreview();
+renderFamilyView('我的页面');
 
 // Toast
 var tT;
