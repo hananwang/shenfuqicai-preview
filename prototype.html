@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0f1419">
 <title>连山易 · 身赋奇才</title>
 <style>
@@ -20,6 +20,11 @@
   --bar-bg:rgba(15,20,25,.94);
   --scrim:rgba(5,8,12,.78);
   --star:1;
+  --sharecard-bg:linear-gradient(160deg,#1a2330,#11161e);
+  --vipcard-bg:linear-gradient(135deg,#2a2113,#15171d);
+  --code-bg:rgba(5,8,12,.48);
+  --bubble-ai:#bcd6cc;
+  --bubble-me:#e8d6ac;
   --serif:"Songti SC","STSong","SimSun",serif;
   --sans:"PingFang SC","Heiti SC","Microsoft YaHei",sans-serif;
   --caret:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23d9b46a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
@@ -40,6 +45,11 @@ body.light{
   --scrim:rgba(60,52,40,.45);
   --star:.35;
   --cal-filter:none;
+  --sharecard-bg:linear-gradient(160deg,#fbf6ec,#f1e8d4);
+  --vipcard-bg:linear-gradient(135deg,#fbf1d6,#f2e6c8);
+  --code-bg:rgba(255,253,248,.8);
+  --bubble-ai:#2f5d50;
+  --bubble-me:#6a5320;
   --caret:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23a47a28' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/></svg>");
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -208,6 +218,18 @@ body{
 .travel .t{flex:1;text-align:center;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 6px}
 .travel .t .ic{font-size:20px} .travel .t .v{font-family:var(--serif);font-size:15px;color:var(--gold-bright);margin-top:5px} .travel .t .l{font-size:10px;color:var(--txt-faint);margin-top:3px}
 
+/* 连续打卡 */
+.streak-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.streak-n{font-family:var(--serif);font-size:16px;color:var(--gold-bright);letter-spacing:1px}
+.streak-n b{font-size:20px}
+.streak-sub{font-size:11px;color:var(--txt-dim);margin-top:4px}
+.streak-week{display:flex;gap:6px;margin-top:14px}
+.sd{flex:1;height:30px;border-radius:9px;display:grid;place-items:center;font-size:12px;color:var(--txt-faint);background:var(--card2);border:1px solid var(--line)}
+.sd.on{color:var(--jade);border-color:var(--jade-dim);background:rgba(111,174,154,.1)}
+.sd.today{color:var(--gold-bright);border-color:var(--gold-dim);border-style:dashed}
+/* 暖收尾 */
+.warm-end{text-align:center;font-family:var(--serif);font-size:14px;color:var(--gold-bright);letter-spacing:1px;line-height:1.9;padding:18px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,rgba(217,180,106,.08),rgba(111,174,154,.05));margin-bottom:14px}
+
 /* ===== 测评列表 ===== */
 .mod-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .mod{
@@ -271,7 +293,7 @@ canvas{max-width:100%}
 .paywall .p{font-size:12px;color:var(--txt-dim);margin-bottom:12px;line-height:1.7}
 
 /* 互动检测 / 反馈闭环 */
-.flow{border:1px solid var(--line);border-radius:15px;overflow:hidden;margin-bottom:14px;background:rgba(255,255,255,.025)}
+.flow{border:1px solid var(--line);border-radius:15px;overflow:hidden;margin-bottom:14px;background:var(--card2)}
 .flow-step{padding:13px 14px;border-bottom:1px solid var(--line)}
 .flow-step:last-child{border-bottom:none}
 .flow-step .ft{font-size:11px;color:var(--gold);letter-spacing:2px;margin-bottom:8px}
@@ -279,6 +301,20 @@ canvas{max-width:100%}
 .qchips{display:flex;flex-wrap:wrap;gap:8px}
 .qchip{font-size:11px;color:var(--txt);border:1px solid var(--line);background:var(--card2);border-radius:18px;padding:7px 11px;cursor:pointer}
 .qchip.sel,.qchip:active{border-color:var(--gold);color:var(--gold-bright);background:rgba(217,180,106,.10)}
+/* 录入步骤指示 */
+.stepper{display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:20px;width:100%}
+.stepper .st{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--txt-faint)}
+.stepper .st .no{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;border:1px solid var(--line);background:var(--card2);color:var(--txt-faint)}
+.stepper .st.on .no{border-color:var(--gold);background:rgba(217,180,106,.14);color:var(--gold-bright)}
+.stepper .st.on{color:var(--gold-bright)}
+.stepper .line{width:16px;height:1px;background:var(--line)}
+/* 给谁看 前置选择 */
+.who-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;width:100%;margin-bottom:6px}
+.who{border:1px solid var(--line);background:var(--card2);border-radius:14px;padding:12px 6px;text-align:center;cursor:pointer;transition:.2s}
+.who .wi{font-size:22px}
+.who .wn{font-size:12px;color:var(--txt);margin-top:5px}
+.who.sel{border-color:var(--gold);background:rgba(217,180,106,.12)}
+.who.sel .wn{color:var(--gold-bright)}
 .feedback{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}
 .fbbtn{min-height:38px;border:1px solid var(--line);background:var(--card2);border-radius:12px;color:var(--txt-dim);font-size:11px;letter-spacing:.5px;cursor:pointer}
 .fbbtn:active{transform:scale(.97);border-color:var(--gold);color:var(--gold-bright)}
@@ -302,9 +338,9 @@ body.light .btn-jade{background:linear-gradient(135deg,#3f9a82,#2f7d68);color:#f
 body.light .seal{color:#fff}
 
 /* 分享卡 */
-.sharecard{background:linear-gradient(160deg,#1a2330,#11161e);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center;margin-bottom:14px}
+.sharecard{background:var(--sharecard-bg);border:1px solid var(--line);border-radius:18px;padding:22px;text-align:center;margin-bottom:14px}
 .sharecard .seal2{display:inline-block;font-family:var(--serif);color:var(--vermilion-bright);border:2px solid var(--vermilion);border-radius:8px;padding:4px 8px;font-size:13px;letter-spacing:2px}
-.sharekit{border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.025);padding:13px;margin-bottom:14px}
+.sharekit{border:1px solid var(--line);border-radius:16px;background:var(--card2);padding:13px;margin-bottom:14px}
 .share-preview{min-height:142px;border-radius:16px;border:1px solid rgba(217,180,106,.22);background:linear-gradient(145deg,rgba(217,180,106,.13),rgba(111,174,154,.08) 48%,rgba(193,88,58,.08));padding:16px;text-align:left;position:relative;overflow:hidden}
 .share-preview::after{content:"身赋奇才";position:absolute;right:-8px;bottom:-12px;font-family:var(--serif);font-size:42px;color:rgba(217,180,106,.08);letter-spacing:4px}
 .share-preview .meta{font-size:10px;color:var(--gold);letter-spacing:2px}
@@ -312,7 +348,7 @@ body.light .seal{color:#fff}
 .share-preview .copy{font-size:11px;color:var(--txt-dim);line-height:1.65;margin-top:8px;max-width:78%}
 .share-preview .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;max-width:78%}
 .share-preview .tags span{font-size:10px;color:var(--jade);border:1px solid var(--jade-dim);border-radius:999px;padding:3px 8px;background:rgba(111,174,154,.08)}
-.mini-code{position:absolute;right:14px;top:16px;width:48px;height:48px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--serif);font-size:18px;color:var(--gold-bright);background:rgba(5,8,12,.48);z-index:1}
+.mini-code{position:absolute;right:14px;top:16px;width:48px;height:48px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;font-family:var(--serif);font-size:18px;color:var(--gold-bright);background:var(--code-bg);z-index:1}
 .share-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
 .share-actions .fbbtn{min-height:36px;font-size:10.5px}
 .share-actions .fbbtn.sel{border-color:var(--gold);color:var(--gold-bright);background:rgba(217,180,106,.1)}
@@ -388,13 +424,13 @@ body.light .seal{color:#fff}
 
 .chat{display:flex;flex-direction:column;gap:10px;margin-top:6px}
 .bubble{max-width:80%;padding:11px 14px;border-radius:15px;font-size:13px;line-height:1.7;letter-spacing:.5px}
-.bubble.ai{align-self:flex-start;background:rgba(111,174,154,.12);border:1px solid rgba(111,174,154,.2);color:#bcd6cc;border-bottom-left-radius:4px}
-.bubble.me{align-self:flex-end;background:rgba(217,180,106,.14);border:1px solid rgba(217,180,106,.22);color:#e8d6ac;border-bottom-right-radius:4px}
+.bubble.ai{align-self:flex-start;background:rgba(111,174,154,.12);border:1px solid rgba(111,174,154,.2);color:var(--bubble-ai);border-bottom-left-radius:4px}
+.bubble.me{align-self:flex-end;background:rgba(217,180,106,.14);border:1px solid rgba(217,180,106,.22);color:var(--bubble-me);border-bottom-right-radius:4px}
 .toy{display:flex;align-items:center;gap:14px;padding:4px}
 .toy .av{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-size:32px;background:radial-gradient(circle at 40% 35%,rgba(217,180,106,.25),rgba(111,174,154,.12));border:1px solid var(--line)}
 
 /* ===== 我的 ===== */
-.vipcard{background:linear-gradient(135deg,#2a2113,#15171d);border:1px solid var(--gold-dim);border-radius:18px;padding:20px;position:relative;overflow:hidden;margin-bottom:14px}
+.vipcard{background:var(--vipcard-bg);border:1px solid var(--gold-dim);border-radius:18px;padding:20px;position:relative;overflow:hidden;margin-bottom:14px}
 .vipcard::after{content:"連山易";position:absolute;right:-10px;bottom:-18px;font-family:var(--serif);font-size:70px;color:rgba(217,180,106,.06);letter-spacing:4px}
 .vipcard .lbl{font-size:11px;color:var(--gold);letter-spacing:3px}
 .vipcard .price{font-family:var(--serif);font-size:30px;color:var(--gold-bright);margin:8px 0 2px}
@@ -501,7 +537,7 @@ body.light .seal{color:#fff}
 
 /* ===== 入场交错动画 ===== */
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.screen.active>.card,.screen.active>.section-h,.screen.active>.alert,.screen.active>.mod-grid,.screen.active>.today-hero{
+.screen.active>.card,.screen.active>.section-h,.screen.active>.alert,.screen.active>.mod-grid,.screen.active>.today-hero,.screen.active>.warm-end{
   animation:rise .5s both;
 }
 .screen.active>*:nth-child(1){animation-delay:.02s}
@@ -547,7 +583,7 @@ body.light .seal{color:#fff}
 
   <!-- 通知面板 -->
   <div class="notif-mask" id="notifMask"></div>
-  <div class="notif-panel" id="notifPanel">
+  <div class="notif-panel" id="notifPanel" role="dialog" aria-label="消息提醒">
     <div class="np-head">
       <span>消息提醒</span>
       <button class="np-clear" id="notifClear">全部已读</button>
@@ -577,19 +613,15 @@ body.light .seal{color:#fff}
         <div class="oneword">今日心宽气顺，<span class="em">宜主动</span>。<br>想做的那件事，<span class="em">上午开口</span>最好。</div>
       </div>
 
-      <div class="section-h">今日可分享</div>
       <div class="card">
-        <div class="card-title">今日状态卡<span class="ln"></span><span class="sub">发给朋友</span></div>
-        <div class="sharekit">
-          <div class="share-preview" id="todaySharePreview"></div>
-          <div class="share-actions">
-            <button class="fbbtn sel" onclick="pickShareStyle('today','low',this)">低调版</button>
-            <button class="fbbtn" onclick="pickShareStyle('today','fun',this)">好玩版</button>
-            <button class="fbbtn" onclick="pickShareStyle('today','deep',this)">深度版</button>
+        <div class="streak-top">
+          <div>
+            <div class="streak-n">🔥 连续 <b id="streakDays">6</b> 天</div>
+            <div class="streak-sub">每天看一眼，把今天的状态用起来</div>
           </div>
-          <div class="hint">只分享正向身份、今日状态和轻行动建议；不分享体质细节、情绪风险、家庭矛盾或未成年人敏感信息。</div>
+          <button class="btn btn-gold" id="checkinBtn" style="padding:9px 16px;font-size:12px" onclick="doCheckin()">今日签到</button>
         </div>
-        <button class="btn btn-ghost btn-block" onclick="openShareLab('today')">生成分享卡</button>
+        <div class="streak-week" id="streakWeek"></div>
       </div>
 
       <div class="section-h">今日动态指数</div>
@@ -623,6 +655,29 @@ body.light .seal{color:#fff}
           <div class="t"><div class="ic">☂️</div><div class="v">无需</div><div class="l">带伞</div></div>
         </div>
       </div>
+
+      <div class="section-h">看顺了，也分享给朋友</div>
+      <div class="card">
+        <div class="card-title">今日状态卡<span class="ln"></span><span class="sub">发给朋友</span></div>
+        <div class="sharekit">
+          <div class="share-preview" id="todaySharePreview"></div>
+          <div class="share-actions">
+            <button class="fbbtn sel" onclick="pickShareStyle('today','low',this)">低调版</button>
+            <button class="fbbtn" onclick="pickShareStyle('today','fun',this)">好玩版</button>
+            <button class="fbbtn" onclick="pickShareStyle('today','deep',this)">深度版</button>
+          </div>
+          <div class="hint">只分享正向身份、今日状态和轻行动建议；不分享体质细节、情绪风险、家庭矛盾或未成年人敏感信息。</div>
+        </div>
+        <button class="btn btn-ghost btn-block" onclick="openShareLab('today')">生成分享卡</button>
+      </div>
+
+      <div class="section-h">明日预告</div>
+      <div class="card">
+        <div class="oneword" style="font-size:14px">明天预计 <span class="em">金色高能</span>，<br>适合<span class="em">谈钱、谈合作</span>；今晚早点休息，把状态留给明天。</div>
+        <div class="hint">这是明日状态的提前参考，明早会根据当天更新，非吉凶预言。</div>
+      </div>
+
+      <div class="warm-end">今天也辛苦了。<br>愿你和家人，今晚都被好好对待。🌙</div>
     </section>
 
     <!-- ===== 测评 ===== -->
@@ -891,7 +946,7 @@ body.light .seal{color:#fff}
   </div>
 
   <!-- 报告弹层 -->
-  <div class="sheet" id="sheet">
+  <div class="sheet" id="sheet" role="dialog" aria-label="报告详情">
     <div class="sheet-bar">
       <button class="sheet-navbtn" id="sheetBack" onclick="reportBack()">‹ 首页</button>
       <span class="ti" id="sheetTitle">报告</span>
@@ -901,7 +956,7 @@ body.light .seal{color:#fff}
   </div>
 
   <!-- 底部导航 -->
-  <nav class="tabbar">
+  <nav class="tabbar" role="tablist" aria-label="主导航">
     <div class="tab active" data-s="today" onclick="go('today',this)"><span class="ic">☀️</span><span class="l">今日</span></div>
     <div class="tab" data-s="test" onclick="go('test',this)"><span class="ic">🔮</span><span class="l">测评</span></div>
     <div class="tab" data-s="family" onclick="go('family',this)"><span class="ic">🌳</span><span class="l">家庭</span></div>
@@ -921,10 +976,23 @@ body.light .seal{color:#fff}
       <div class="hint" style="margin-top:18px">注册即同意《隐私政策》。出生信息仅用于生成报告，加密存储，可随时删除。未满 14 岁须由监护人操作。</div>
     </div>
     <!-- 步骤2 录入 -->
-    <div class="onb hidden" id="step2" style="justify-content:flex-start;padding-top:30px">
-      <div class="big" style="font-size:24px;letter-spacing:4px">录入生辰</div>
-      <div class="sm" style="margin-bottom:24px">仅需必要信息</div>
-      <div class="field"><label>昵称</label><input id="inName" value="小江" placeholder="怎么称呼你"></div>
+    <div class="onb hidden" id="step2" style="justify-content:flex-start;padding-top:26px">
+      <div class="stepper">
+        <div class="st"><span class="no">1</span>选对象</div>
+        <div class="line"></div>
+        <div class="st on"><span class="no">2</span>填生辰</div>
+        <div class="line"></div>
+        <div class="st"><span class="no">3</span>看报告</div>
+      </div>
+      <div class="big" style="font-size:22px;letter-spacing:3px">先看谁的？</div>
+      <div class="sm" style="margin-bottom:16px">选对象，我们给对应的解读语气</div>
+      <div class="who-grid">
+        <div class="who sel" id="who-self" onclick="pickWho('self')"><div class="wi">🙋‍♀️</div><div class="wn">我自己</div></div>
+        <div class="who" id="who-child" onclick="pickWho('child')"><div class="wi">🧒</div><div class="wn">我的孩子</div></div>
+        <div class="who" id="who-family" onclick="pickWho('family')"><div class="wi">👨‍👩‍👧</div><div class="wn">家人</div></div>
+      </div>
+      <div class="hint" id="whoHint" style="margin:0 0 16px;text-align:center">给自己看：用成人自我认知与养生语气。</div>
+      <div class="field"><label>昵称</label><input id="inName" value="小江" placeholder="怎么称呼 TA"></div>
       <div class="field"><label>性别</label>
         <select id="inSex"><option>女</option><option>男</option></select>
       </div>
@@ -956,7 +1024,7 @@ body.light .seal{color:#fff}
   <div class="fab-doc" onclick="openModal('docnote')">📘 评审说明</div>
 
   <!-- 模态 -->
-  <div class="modal" id="modal"><div class="box" id="modalBox"></div></div>
+  <div class="modal" id="modal" role="dialog" aria-modal="true"><div class="box" id="modalBox"></div></div>
 
 </div>
 <script>
@@ -1169,6 +1237,28 @@ function goStep(n){
   $('step3').classList.toggle('hidden',n!==3);
 }
 
+// 给谁看（JTBD 前置：先定对象，再给对应语气）
+var onbWho='self';
+function pickWho(who){
+  onbWho=who;
+  var ids={self:'who-self',child:'who-child',family:'who-family'};
+  for(var k in ids){ var el=$(ids[k]); if(el) el.classList.toggle('sel',k===who); }
+  var role=$('inRole'), name=$('inName'), hint=$('whoHint');
+  if(who==='child'){
+    if(role) role.selectedIndex=1;
+    if(name && (name.value==='小江'||!name.value)) name.value='孩子';
+    if(hint) hint.textContent='给孩子看：切换到儿童/青少年成长视角，需监护人操作与同意。';
+  }else if(who==='family'){
+    if(role) role.selectedIndex=0;
+    if(name && (name.value==='小江'||name.value==='孩子')) name.value='家人';
+    if(hint) hint.textContent='给家人看：用成人语气，可加入家庭沟通建议。';
+  }else{
+    if(role) role.selectedIndex=0;
+    if(name && (name.value==='孩子'||name.value==='家人')) name.value='小江';
+    if(hint) hint.textContent='给自己看：用成人自我认知与养生语气。';
+  }
+}
+
 // 测算动画（揭晓 = 峰值时刻）
 function startCast(){
   MOCK_API_CONTRACT.birthProfile.displayName=$('inName').value||'小江';
@@ -1232,25 +1322,7 @@ var REPORTS={
   body:{title:'先天体质', render:renderBody},
   marriage:{title:'婚姻测评', render:renderMarriage},
 
-  potential:{title:'潜能激发', render:mk({
-    ic:'✨', name:'潜能激发', tag:'预测评指数 · 第 2 / 4 阶段',
-    lead:'天赋分「显性」与「隐性」。显性已在外，隐性尚待点亮——找对节点，事半功倍。',
-    flow:{questions:['记忆力突出','表达欲强','耐力不错','喜欢带头','声音/形体条件好'],result:'显性强项先由你自填，隐性潜能由系统给出参考排序。当前示例：表达已显现，逻辑与领导力待激发。',advice:'先给显性能力舞台，再安排需要规划、复盘、协作的小任务，观察隐性潜能是否被点亮。'},
-    stats:[{nm:'显性强项',val:'表达',sub:'已显现'},{nm:'隐性潜力',val:'逻辑',sub:'待激发'},{nm:'当前阶段',val:'2/4',sub:'成长中'}],
-    barsTitle:'天赋雷达', bars:[
-      {nm:'语言表达（显性）',val:85,color:'linear-gradient(90deg,var(--gold),var(--gold-bright))'},
-      {nm:'记忆力（显性）',val:78,color:'linear-gradient(90deg,var(--gold),var(--gold-bright))'},
-      {nm:'逻辑思维（隐性）',val:72},
-      {nm:'领导力（隐性）',val:64}],
-    timelineTitle:'四阶段成长路径', timeline:[
-      ['第 1 阶段 · 启蒙(0-6)','保护好奇心，多感官体验'],
-      ['第 2 阶段 · 显现(7-13)','显性天赋外露，给舞台'],
-      ['第 3 阶段 · 跃迁(14-18)','关键期！加入策略性挑战，点亮隐性'],
-      ['第 4 阶段 · 定型(18+)','聚焦优势，对接职业']],
-    sections:[
-      ['为什么"隐性"更值钱','显性人人看得见，隐性（逻辑/领导）是稀缺的复利资产，越早识别越能针对性培养。'],
-      ['给家长的具体动作','多给表达机会与正反馈；14 岁后逐步交付"需要谋划"的小任务，观察并强化。']],
-    share:'潜能分享卡', shareType:'potential', feedbackKey:'potential', paywall:true })},
+  potential:{title:'潜能激发', render:renderPotential},
 
   emotion:{title:'情绪状态关怀', render:renderEmotion},
 
@@ -1295,7 +1367,8 @@ var REPORTS={
       ['适宜时间','参考区间：明年春季前后（仅文化参考，请遵医嘱）。'],
       ['历史人物对照','若向往"张良型"的沉稳谋略，可调出其特质画像，作为后天培养参照。'],
       ['边界说明','本模块只做文化层面的时间感与养育期待讨论，不做医学、性别、结果承诺。']],
-    care:'本模块为传统文化参考，不提供优生医学、性别选择等任何医疗指导；备孕请以正规产检与医生意见为准。' })},
+    care:'本模块为传统文化参考，不提供优生医学、性别选择等任何医疗指导；备孕请以正规产检与医生意见为准。',
+    share:'生育参考卡', shareType:'birth', feedbackKey:'birth' })},
 
   geo:{title:'地利方向', render:mk({
     ic:'🗺️', name:'地利方向',
@@ -1309,7 +1382,7 @@ var REPORTS={
     sections:[
       ['可考虑城市','沿海及南方城市更契合你的发展节奏。'],
       ['现居建议','当前城市适配度中等，可主动借东南方向的资源与人脉。']],
-    paywall:true })},
+    share:'地利参考卡', shareType:'geo', feedbackKey:'geo', paywall:true })},
 
   timing:{title:'天时时机', render:mk({
     ic:'⏳', name:'天时时机 + 对冲', big:'高能', bigUnit:'·下半年',
@@ -1322,7 +1395,7 @@ var REPORTS={
       {type:'warn',ic:'⚠️',h:'对冲月 · 商务宜缓',p:'本月与"午"相关合作放慢节奏，重要签约可错峰。'},
       {type:'warn',ic:'🩺',h:'对冲日 · 顾健康',p:'逢冲日注意身体与情绪，少做高风险决策。'}],
     sections:[['对冲系统怎么用','把对冲年/月/日当作"红绿灯"，绿灯加速、黄灯减速，而非吉凶断言。']],
-    paywall:true })},
+    share:'天时参考卡', shareType:'timing', feedbackKey:'timing', paywall:true })},
 
   confuse:{title:'迷茫期检测', render:renderConfuse}
 };
@@ -1772,6 +1845,21 @@ function shareCardData(type,style){
       low:{meta:'家族树点亮卡',headline:'我的家族之树点亮 4 人',copy:'每天看一眼关心的人：状态、提醒和一句更好说的话。',tags:['家庭陪伴','关注动态','家风']},
       fun:{meta:'今天谁最懂我',headline:'找妈妈谈学习，找奶奶谈内心',copy:'家人不是都用同一种方式爱你，换个话题可能就顺了。',tags:['家庭默契','沟通卡','关系润滑']},
       deep:{meta:'家庭单元摘要',headline:'365 家庭基础陪伴',copy:'家庭内成员免费进入；家族亲戚可轻量触达，深度使用另开家庭单元。',tags:['基础版','关注动态','深度另解锁']}
+    },
+    birth:{
+      low:{meta:'生育参考卡',headline:'文化层面的时间感参考',copy:'一份关于时段与养育期待的文化参考，医学问题仍以产检和医生为准。',tags:['文化参考','非医学','遵医嘱']},
+      fun:{meta:'未来家庭小设想',headline:'先聊聊我们期待的养育风格',copy:'不是算结果，而是提前想清楚：想养出什么气质的小朋友。',tags:['养育期待','特质对照','非承诺']},
+      deep:{meta:'生育规划摘要',headline:'时段参考 + 特质对照',copy:'把文化参考当作讨论起点，真正的决定请结合身体状况与医生建议。',tags:['时段参考','特质培养','医学优先']}
+    },
+    geo:{
+      low:{meta:'地利参考卡',headline:'我的发展方向：东南更顺',copy:'结合方位喜忌看发展环境，作为选择城市和资源的参考。',tags:['宜东南','发展环境','非风水承诺']},
+      fun:{meta:'我该往哪发展',headline:'东南方向像是给我开了加成',copy:'不是玄学搬家，而是看哪种环境更适合你的节奏和人脉。',tags:['方向参考','借力','换个环境']},
+      deep:{meta:'地利方向摘要',headline:'首选东南 · 现居可借力',copy:'当前城市适配中等，可主动对接东南方向的资源与人脉。',tags:['东南 90','正南 78','非效果承诺']}
+    },
+    timing:{
+      low:{meta:'天时参考卡',headline:'下半年是我的相对高能期',copy:'把年月日当红绿灯：绿灯加速、黄灯减速，错峰行事更稳。',tags:['下半年高能','错峰','非吉凶']},
+      fun:{meta:'我的行动天气预报',headline:'近期宜冲刺，也有几天要放缓',copy:'像看天气一样看时机：好天气多干，坏天气少做高风险决策。',tags:['时机','对冲提醒','红绿灯']},
+      deep:{meta:'天时时机摘要',headline:'下半年窗口 + 对冲提醒',copy:'重大推进安排在高能期，逢对冲月/日放慢节奏、顾好身体情绪。',tags:['下半年 84','对冲月','非预测']}
     }
   };
   var group=all[type]||all.beast;
@@ -1955,6 +2043,20 @@ function renderDrive(box){
   h+='<div class="card"><div class="card-title">流年奋斗值 · 丙午年<span class="ln"></span></div>';
   h+='<div class="gauge"><div class="num" style="color:var(--jade)">152</div><div class="meta"><div class="t">今年状态在线，适合主动出击</div><div class="bar"><i data-w="68" style="background:linear-gradient(90deg,var(--jade),var(--gold))"></i></div></div></div>';
   h+='<div class="hint">流年奋斗值每年变化——这是你明年还要再看一次的理由。</div></div>';
+  h+='<div class="card-title" style="margin-top:6px">用力方式 · 外驱 / 内驱<span class="ln"></span></div>';
+  h+='<div class="hint" style="margin:-6px 0 12px">同样是奋斗，有人靠向外争取推进，有人靠借力与内在坚持。看清你更偏哪一种，用对了更省力。</div>';
+  h+='<div class="dim-grid">';
+  var outNote=p.driveSupport==='enough'?'当前外部支持较好，适合主动争取机会、对外表达和推进。':'当前外部推动一般，先建立稳定反馈，再逐步加大对外争取。';
+  var inNote=p.drive==='low'?'当前内在动力偏弱，先靠小目标闭环与借力回血，别硬扛。':'内在坚持是你的底盘，遇阻时靠复盘和借力，而非一味硬冲。';
+  var drivePair=[
+    ['外奋斗 · 向外争取','偏高','擅长主动出击、对外表达、争取资源和机会，推进力强。',outNote],
+    ['内奋斗 · 借力内驱','稳健','擅长借助环境与他人力量、靠内在坚持长期积累，耐得住。',inNote]
+  ];
+  for(var dp=0;dp<drivePair.length;dp++){
+    h+='<div class="dim-card"><div class="top"><div class="name">'+drivePair[dp][0]+'</div><div class="chip">'+drivePair[dp][1]+'</div></div>';
+    h+='<div class="main">'+drivePair[dp][2]+'</div><div class="sub"><b>今年怎么用：</b>'+drivePair[dp][3]+'</div></div>';
+  }
+  h+='</div>';
   var accs=[['抗挫力解读','你属于"压不垮但会内耗"型，关键在及时回血与正反馈。'],
     ['心力/愿力培养','设定有意义的小目标，完成即奖励，逐步抬高奋斗基线。'],
     ['对照案例','低学历高奋斗值者（如"张雪"案例）成就常超越高分低驱者。']];
@@ -2026,7 +2128,7 @@ function renderConfuse(box){
   h+='<div class="card-title" style="margin-top:6px">五年前 vs 现在<span class="ln"></span></div>';
   h+='<div class="card"><div class="barrow"><div class="bl"><span>五年前行动感</span><span class="bv">72</span></div><div class="bar"><i data-w="72"></i></div></div><div class="barrow"><div class="bl"><span>当前行动感</span><span class="bv">'+(p.drive==='low'?42:p.drive==='mid'?58:76)+'</span></div><div class="bar"><i data-w="'+(p.drive==='low'?42:p.drive==='mid'?58:76)+'" style="background:linear-gradient(90deg,var(--vermilion),var(--gold-dim))"></i></div></div></div>';
   h+='<div class="alert good"><div class="ic">🌱</div><div class="bd"><div class="h">'+stage+'策略</div><div class="p">'+stageTip+'</div></div></div>';
-  h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>为什么先问现象</span><span class="ar">›</span></div><div class="bd"><div class="inner">`0703` 的定义是用户先填现象，系统再计算。运动、手机、空窗、方向感和动力不是附加信息，而是判断迷茫/情绪风险的重要权重。</div></div></div>';
+  h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>为什么先问现象</span><span class="ar">›</span></div><div class="bd"><div class="inner">我们先请你填写最近的真实现象，再据此给出参考。运动、手机、空窗、方向感和动力不是附加信息，而是判断迷茫/情绪状态的重要依据。</div></div></div>';
   h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>若伴随持续低落</span><span class="ar">›</span></div><div class="bd"><div class="inner">请前往情绪风险测评或陪伴页查看专业求助入口；必要时联系专业人士。</div></div></div>';
   h+=feedbackHTML('confuse');
   h+=disclaimerHTML();
@@ -2118,6 +2220,95 @@ function renderBody(box){
   h+='<div class="hint" style="margin-top:14px;text-align:center;color:var(--vermilion-bright)">本模块为养生文化关怀，非医学诊断，身体不适请就医。</div>';
   box.innerHTML=h;
   setTimeout(function(){ var bs=box.querySelectorAll('.bar i'); for(var k=0;k<bs.length;k++) bs[k].style.width=bs[k].getAttribute('data-w')+'%'; },150);
+}
+
+// 潜能激发（显性自填 → 影响隐性排序）
+var POTENTIAL_EXPLICIT=[
+  {key:'express',label:'表达欲强 / 口才好'},
+  {key:'memory',label:'记忆力突出'},
+  {key:'stamina',label:'耐力好 / 坐得住'},
+  {key:'lead',label:'喜欢带头'},
+  {key:'voice',label:'声音 / 形体条件好'}
+];
+var potentialState={explicit:{express:true},done:false};
+function togglePotential(el,key){
+  potentialState.explicit[key]=!potentialState.explicit[key];
+  el.classList.toggle('sel');
+}
+function submitPotential(){
+  var any=false; for(var k in potentialState.explicit){ if(potentialState.explicit[k]){ any=true; break; } }
+  if(!any){ toast('先勾选至少一项显性强项'); return; }
+  potentialState.done=true;
+  openReport('potential',{force:true,push:false});
+  toast('已根据你的显性强项生成隐性潜能排序');
+}
+function computePotential(){
+  var e=potentialState.explicit;
+  var expMap={express:'语言表达',memory:'记忆力',stamina:'耐力',lead:'领导意愿',voice:'声音/形体'};
+  var order=['express','memory','stamina','lead','voice'], explicitBars=[], base=80;
+  for(var i=0;i<order.length;i++){ if(e[order[i]]){ explicitBars.push({nm:expMap[order[i]]+'（显性）',val:base,color:'linear-gradient(90deg,var(--gold),var(--gold-bright))'}); base=Math.max(70,base-3); } }
+  // 隐性潜能：与已确认的显性强项相关联，越相关越"待激发靠前"
+  var hidden=[
+    {nm:'逻辑思维（隐性）',val:(e.memory?78:64)},
+    {nm:'结构化表达（隐性）',val:(e.express?82:60)},
+    {nm:'战略规划（隐性）',val:(e.stamina?74:58)},
+    {nm:'隐性领导力',val:(e.lead?76:56)},
+    {nm:'舞台表现力（隐性）',val:(e.voice?75:57)}
+  ];
+  hidden.sort(function(a,b){return b.val-a.val;});
+  return {explicitBars:explicitBars,hidden:hidden.slice(0,4)};
+}
+function renderPotential(box){
+  var s=potentialState;
+  var h='<div class="beast"><div class="av">✨</div><div class="nm">潜能激发</div>';
+  h+='<div class="tag">预测评指数 · 第 2 / 4 阶段</div>';
+  h+='<div class="quote">天赋分「显性」与「隐性」。<br>显性由你自己确认，隐性由系统给出待激发排序。</div></div>';
+  // 第一步：自填显性
+  h+='<div class="card"><div class="card-title">第一步 · 自填显性强项<span class="ln"></span></div>';
+  h+='<div class="hint" style="margin:-6px 0 10px">勾选你（或孩子）目前已经明显具备的能力，可多选。它会影响下面「隐性潜能」的排序。</div>';
+  h+='<div class="qchips">';
+  for(var i=0;i<POTENTIAL_EXPLICIT.length;i++){var it=POTENTIAL_EXPLICIT[i];
+    h+='<span class="qchip'+(s.explicit[it.key]?' sel':'')+'" onclick="togglePotential(this,\''+it.key+'\')">'+it.label+'</span>';}
+  h+='</div>';
+  h+='<button class="btn btn-gold btn-block" style="margin-top:12px" onclick="submitPotential()">生成潜能排序</button></div>';
+  if(!s.done){
+    h+='<div class="hint" style="text-align:center">勾选显性强项并生成后，这里会给出隐性潜能排序、成长路径和培养建议。</div>';
+    h+=disclaimerHTML();
+    box.innerHTML=h; return;
+  }
+  var pot=computePotential();
+  var topExp=pot.explicitBars.length?pot.explicitBars[0].nm.replace('（显性）',''):'表达';
+  var topHid=pot.hidden.length?pot.hidden[0].nm.replace('（隐性）','').replace('隐性',''):'逻辑';
+  h+='<div class="stat-grid"><div class="stat"><div class="v">'+topExp+'</div><div class="k">显性强项</div><div class="sb">已显现</div></div><div class="stat"><div class="v">'+topHid+'</div><div class="k">隐性潜力</div><div class="sb">待激发</div></div><div class="stat"><div class="v">2/4</div><div class="k">当前阶段</div><div class="sb">成长中</div></div></div>';
+  // 显性能力条
+  h+='<div class="card-title" style="margin-top:6px">你确认的显性强项<span class="ln"></span></div><div class="card">';
+  for(var a=0;a<pot.explicitBars.length;a++){var bb=pot.explicitBars[a];
+    h+='<div class="barrow"><div class="bl"><span>'+bb.nm+'</span><span class="bv">'+bb.val+'</span></div><div class="bar"><i data-w="'+bb.val+'" style="background:'+bb.color+'"></i></div></div>';}
+  h+='</div>';
+  // 隐性潜能排序
+  h+='<div class="card-title" style="margin-top:6px">隐性潜能 · 待激发排序<span class="ln"></span></div>';
+  h+='<div class="hint" style="margin:-6px 0 12px">排序会随你确认的显性强项变化——和显性越相关的隐性能力，越值得优先培养。</div><div class="card">';
+  for(var b=0;b<pot.hidden.length;b++){var hb=pot.hidden[b];
+    h+='<div class="barrow"><div class="bl"><span>'+hb.nm+'</span><span class="bv">'+hb.val+'</span></div><div class="bar"><i data-w="'+hb.val+'"></i></div></div>';}
+  h+='</div>';
+  h+='<div class="card-title" style="margin-top:6px">四阶段成长路径<span class="ln"></span></div><div class="tline">';
+  var tl=[
+    ['第 1 阶段 · 启蒙(0-6)','保护好奇心，多感官体验'],
+    ['第 2 阶段 · 显现(7-13)','显性天赋外露，给舞台'],
+    ['第 3 阶段 · 跃迁(14-18)','关键期！加入策略性挑战，点亮隐性'],
+    ['第 4 阶段 · 定型(18+)','聚焦优势，对接职业']
+  ];
+  for(var t=0;t<tl.length;t++) h+='<div class="tl"><div class="dot"></div><div class="tlb"><div class="tlt">'+tl[t][0]+'</div><div class="tld">'+tl[t][1]+'</div></div></div>';
+  h+='</div>';
+  h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>为什么"隐性"更值钱</span><span class="ar">›</span></div><div class="bd"><div class="inner">显性人人看得见，隐性（逻辑/战略/隐性领导力）是稀缺的复利资产，越早识别越能针对性培养。</div></div></div>';
+  h+='<div class="acc"><div class="hd" onclick="toggleAcc(this)"><span>给家长的具体动作</span><span class="ar">›</span></div><div class="bd"><div class="inner">先给显性能力舞台与正反馈；14 岁后逐步交付"需要谋划"的小任务，观察隐性潜能是否被点亮。</div></div></div>';
+  h+=shareKitHTML('potential','潜能分享卡');
+  h+=feedbackHTML('potential');
+  h+='<button class="btn btn-gold btn-block" onclick="paywall()">查看深度解锁方式</button>';
+  h+='<div class="hint" style="text-align:center">365 含基础版；完整潜能报告（含隐性激发计划）可单项或会员价解锁。</div>';
+  h+=disclaimerHTML();
+  box.innerHTML=h;
+  setTimeout(function(){var a=box.querySelector('.acc'); if(a) a.classList.add('open'); var bs=box.querySelectorAll('.bar i');for(var k=0;k<bs.length;k++)bs[k].style.width=bs[k].getAttribute('data-w')+'%';},150);
 }
 
 // 婚姻测评
@@ -2290,6 +2481,27 @@ $('notifClear')&&$('notifClear').addEventListener('click',clearNotif);
 updateBadge();
 initSharePreview();
 renderFamilyView('我的页面');
+
+// 连续打卡（峰终 · 投资变量）
+var streak={days:6,todayDone:false,week:[1,1,1,1,1,0,0]};
+function renderStreak(){
+  var wk=$('streakWeek'); if(!wk) return;
+  var labels=['一','二','三','四','五','六','日'], h='';
+  for(var i=0;i<7;i++){
+    var done=streak.week[i], isToday=(i===5);
+    h+='<div class="sd'+(done?' on':'')+(isToday&&!streak.todayDone?' today':'')+'">'+(done?'✓':labels[i])+'</div>';
+  }
+  wk.innerHTML=h;
+  var n=$('streakDays'); if(n) n.textContent=streak.days;
+}
+function doCheckin(){
+  if(streak.todayDone){ toast('今天已签到，明天再来～'); return; }
+  streak.todayDone=true; streak.days++; streak.week[5]=1;
+  var b=$('checkinBtn'); if(b){ b.textContent='已签到'; b.disabled=true; b.style.opacity='.6'; }
+  renderStreak();
+  toast('🔥 已连续签到 '+streak.days+' 天，明天见');
+}
+renderStreak();
 
 // Toast
 var tT;
